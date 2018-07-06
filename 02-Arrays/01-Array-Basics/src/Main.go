@@ -8,7 +8,7 @@ func main() {
 		arr[i] = i
 	}
 
-	scores := []int{100, 99, 66}
+	scores := [...]int{100, 99, 66}
 	for i := 0; i < len(scores); i++ {
 		fmt.Println(scores[i])
 	}
@@ -18,7 +18,6 @@ func main() {
 	}
 
 	scores[0] = 96;
-
 	for i := 0; i < len(scores); i++ {
 		fmt.Println(scores[i])
 	}
