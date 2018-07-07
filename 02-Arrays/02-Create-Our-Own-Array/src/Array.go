@@ -9,13 +9,14 @@ type Array struct {
 // 传入数组的容量 capacity 返回 Slice
 // 注：在 Go 中不同长度的数组属于不同类型，所以这里使用 Slice
 func getArray(capacity int) (a *Array) {
+	a = &Array{}
 	a.data = make([]int, capacity)
 	a.size = 0
 	return
 }
 
 // 获取数组的容量
-func (a *Array) getCapacity() int  {
+func (a *Array) getCapacity() int {
 	return len(a.data)
 }
 
@@ -28,4 +29,3 @@ func (a *Array) getSize() int {
 func (a *Array) isEmpty() bool {
 	return a.size == 0
 }
-
