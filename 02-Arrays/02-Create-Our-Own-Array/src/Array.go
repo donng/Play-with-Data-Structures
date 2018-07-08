@@ -7,7 +7,7 @@ type Array struct {
 }
 
 // 传入数组的容量 capacity 返回 Slice
-// 注：在 Go 中不同长度的数组属于不同类型，所以这里使用 Slice
+// 注：Go 中数组类型的长度是编译时指定，无法满足此需求，这里用 slice 代替
 func getArray(capacity int) (a *Array) {
 	a = &Array{}
 	a.data = make([]int, capacity)
