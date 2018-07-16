@@ -4,9 +4,9 @@ import "fmt"
 
 type node struct {
 	e interface{}
-	next node
+	next *node
 }
 
-func (n node) String() string {
+func (n *node) String() string {
 	return fmt.Sprint(n.e)
 }
