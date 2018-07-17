@@ -1,25 +1,44 @@
 package main
 
+import (
+	"bytes"
+)
+
 type LinkedListStack struct {
-	list LinkedList
+	list *LinkedList
 }
 
-func (*LinkedListStack) GetSize() int {
-	panic("implement me")
+func GetLinkedListStack() *LinkedListStack {
+	stack := &LinkedListStack{}
+	stack.list = getLinkedList()
+
+	return stack
 }
 
-func (*LinkedListStack) IsEmpty() bool {
-	panic("implement me")
+func (l *LinkedListStack) GetSize() int {
+	return l.list.GetSize()
 }
 
-func (*LinkedListStack) Push(interface{}) {
-	panic("implement me")
+func (l *LinkedListStack) IsEmpty() bool {
+	return l.list.IsEmpty()
 }
 
-func (*LinkedListStack) Pop() interface{} {
-	panic("implement me")
+func (l *LinkedListStack) Push(e interface{}) {
+	l.list.AddFirst(e)
 }
 
-func (*LinkedListStack) Peek() interface{} {
-	panic("implement me")
+func (l *LinkedListStack) Pop() interface{} {
+	return l.list.RemoveFirst()
+}
+
+func (l *LinkedListStack) Peek() interface{} {
+	return l.list.GetFirst()
+}
+
+func (l *LinkedListStack) String() string {
+	buffer := bytes.Buffer{}
+	buffer.WriteString("Stack: top ")
+	buffer.WriteString(l.list.String())
+
+	return buffer.String()
 }
