@@ -9,7 +9,7 @@ type ArrayStack struct {
 	array *Array
 }
 
-func getArrayStack(capacity int) (arrayStack *ArrayStack) {
+func GetArrayStack(capacity int) (arrayStack *ArrayStack) {
 	arrayStack = &ArrayStack{}
 	arrayStack.array = GetArray(capacity)
 	return

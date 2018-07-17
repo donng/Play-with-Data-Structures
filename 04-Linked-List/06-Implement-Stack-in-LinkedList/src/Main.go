@@ -31,7 +31,7 @@ func main() {
 	//fmt.Println(stack)
 	opCount := 10000000
 
-	arrayStack := getArrayStack(20)
+	arrayStack := GetArrayStack(20)
 	time1 := testStack(arrayStack, opCount)
 	fmt.Println("ArrayStack, time: ", time1, " s")
 
