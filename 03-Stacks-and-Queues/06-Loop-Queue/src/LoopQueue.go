@@ -1,13 +1,13 @@
 package main
 
 type LoopQueue struct {
-	data []interface{}
+	data  []interface{}
 	front int
-	tail int
-	size int
+	tail  int
+	size  int
 }
 
-func getLoopQueue(capacity int) (l *LoopQueue) {
+func GetLoopQueue(capacity int) (l *LoopQueue) {
 	l = &LoopQueue{}
 	l.data = make([]interface{}, capacity)
 	l.front = 0
@@ -17,27 +17,26 @@ func getLoopQueue(capacity int) (l *LoopQueue) {
 	return
 }
 
-func (l *LoopQueue)getCapacity() int {
+func (l *LoopQueue) GetCapacity() int {
 	return len(l.data) - 1
 }
 
-func (l *LoopQueue) getSize() int {
+func (l *LoopQueue) GetSize() int {
 	return l.size
 }
 
-func (l *LoopQueue) isEmpty() bool {
+func (l *LoopQueue) IsEmpty() bool {
 	return l.front == l.tail
 }
 
-func (l *LoopQueue) enqueue(interface{}) {
+func (l *LoopQueue) Enqueue(interface{}) {
 	panic("implement me")
 }
 
-func (l *LoopQueue) dequeue() interface{} {
+func (l *LoopQueue) Eequeue() interface{} {
 	panic("implement me")
 }
 
-func (l *LoopQueue) getFront() interface{} {
+func (l *LoopQueue) GetFront() interface{} {
 	panic("implement me")
 }
-

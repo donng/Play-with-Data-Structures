@@ -10,10 +10,10 @@ func testQueue(queue Queue, opCount int) float64 {
 	startTime := time.Now()
 
 	for i := 0; i < opCount; i++ {
-		queue.enqueue(rand.Int())
+		queue.Enqueue(rand.Int())
 	}
 	for i := 0; i < opCount; i++ {
-		queue.dequeue()
+		queue.Dequeue()
 	}
 
 	return time.Now().Sub(startTime).Seconds()
@@ -22,11 +22,11 @@ func testQueue(queue Queue, opCount int) float64 {
 func main() {
 	opCount := 100000
 
-	arrayQueue := getArrayQueue(20)
+	arrayQueue := GetArrayQueue(20)
 	time := testQueue(arrayQueue, opCount)
 	fmt.Println("ArrayQueue, time:", time, "s")
 
-	loopQueue := getLoopQueue(20)
+	loopQueue := GetLoopQueue(20)
 	time = testQueue(loopQueue, opCount)
 	fmt.Println("LoopQueue, time:", time, "s")
 

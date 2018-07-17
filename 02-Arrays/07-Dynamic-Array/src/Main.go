@@ -3,15 +3,15 @@ package main
 import "fmt"
 
 func main() {
-	arr := getArray(10)
+	arr := GetArray(10)
 	for i := 0; i < 10; i++ {
-		arr.addLast(i)
+		arr.AddLast(i)
 	}
 	fmt.Println(arr)
 
-	arr.add(1, 100)
+	arr.Add(1, 100)
 	fmt.Println(arr)
 
-	arr.addFirst(-1)
+	arr.AddFirst(-1)
 	fmt.Println(arr)
 }

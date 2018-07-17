@@ -5,39 +5,39 @@ import (
 )
 
 func main() {
-	arr := getArray(20)
+	arr := GetArray(20)
 	for i := 0; i < 10; i++ {
-		arr.addLast(i)
+		arr.AddLast(i)
 	}
 	fmt.Println(arr)
 
-	arr.add(1, 100)
+	arr.Add(1, 100)
 	fmt.Println(arr)
 
-	arr.addFirst(-1)
+	arr.AddFirst(-1)
 	fmt.Println(arr)
 	// [-1, 0, 100, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-	arr.remove(2)
+	arr.Remove(2)
 	fmt.Println(arr)
 
-	arr.removeElement(4)
+	arr.RemoveElement(4)
 	fmt.Println(arr)
 
-	arr.removeFirst()
+	arr.RemoveFirst()
 	fmt.Println(arr)
 
-	arr.addLast(1)
-	indexes := arr.findAll(1)
+	arr.AddLast(1)
+	indexes := arr.FindAll(1)
 	fmt.Println(arr, indexes)
 
-	isRemove := arr.removeAllElement(1)
+	isRemove := arr.RemoveAllElement(1)
 	fmt.Println(arr, isRemove)
 
 	// 测试 student 类型
-	students := getArray(10)
-	students.addLast(Student{"Alice", 100})
-	students.addLast(Student{"Bob", 66})
-	students.addLast(Student{"Charlie", 88})
+	students := GetArray(10)
+	students.AddLast(Student{"Alice", 100})
+	students.AddLast(Student{"Bob", 66})
+	students.AddLast(Student{"Charlie", 88})
 	fmt.Println(students)
 }

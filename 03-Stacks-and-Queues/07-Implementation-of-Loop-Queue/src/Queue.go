@@ -1,9 +1,9 @@
 package main
 
 type Queue interface {
-	getSize() int
-	isEmpty() bool
-	enqueue(interface{})
-	dequeue() interface{}
-	getFront() interface{}
+	GetSize() int
+	IsEmpty() bool
+	Enqueue(interface{})
+	Dequeue() interface{}
+	GetFront() interface{}
 }

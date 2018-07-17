@@ -14,7 +14,7 @@ type Array struct {
 
 // 传入数组的容量 capacity 返回 Slice
 // 注：在 Go 中不同长度的数组属于不同类型，所以这里使用 Slice
-func getArray(capacity int) (a *Array) {
+func GetArray(capacity int) (a *Array) {
 	a = &Array{}
 	a.data = make([]int, capacity)
 	a.size = 0
@@ -22,43 +22,43 @@ func getArray(capacity int) (a *Array) {
 }
 
 // 获取数组的容量
-func (a *Array) getCapacity() int {
+func (a *Array) GetCapacity() int {
 	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (a *Array) getSize() int {
+func (a *Array) GetSize() int {
 	return a.size
 }
 
 // 返回数组是否为空
-func (a *Array) isEmpty() bool {
+func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
 // 向所有元素后添加一个新元素
-func (a *Array) addLast(element int) {
+func (a *Array) AddLast(element int) {
 	//if a.size == len(a.data) {
 	//	panic("AddLast failed,Array is full.")
 	//}
 	//
 	//a.data[a.size] = element
 	//a.size++
-	a.add(a.size, element)
+	a.Add(a.size, element)
 }
 
 // 向所有元素前添加一个新元素
-func (a *Array) addFirst(element int) {
-	a.add(0, element)
+func (a *Array) AddFirst(element int) {
+	a.Add(0, element)
 }
 
 // 在第 index 个位置插入一个新元素 element
-func (a *Array) add(index int, element int) {
+func (a *Array) Add(index int, element int) {
 	if a.size == len(a.data) {
 		panic("Add failed,Array is full")
 	}
 
-	if index < 0 || index > a.getCapacity() {
+	if index < 0 || index > a.GetCapacity() {
 		panic("Add failed,require index >= 0 and index <= a.cap")
 	}
 
@@ -71,7 +71,7 @@ func (a *Array) add(index int, element int) {
 }
 
 // 获取 index 索引位置的元素
-func (a *Array) get(index int) int {
+func (a *Array) Get(index int) int {
 	if index < 0 || index >= a.size {
 		panic("Get failed,Index is illegal.")
 	}
@@ -79,7 +79,7 @@ func (a *Array) get(index int) int {
 }
 
 // 修改 index 索引位置的元素
-func (a *Array) set(index int, element int) {
+func (a *Array) Set(index int, element int) {
 	if index < 0 || index >= a.size {
 		panic("Set failed,Index is illegal.")
 	}

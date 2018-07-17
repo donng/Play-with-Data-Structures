@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	a := getArray(5)
+	a := GetArray(5)
 
 	fmt.Println(a)
-	fmt.Println(a.getCapacity(), a.getSize(), a.isEmpty())
+	fmt.Println(a.GetCapacity(), a.GetSize(), a.IsEmpty())
 }

@@ -11,28 +11,28 @@ type ArrayStack struct {
 
 func getArrayStack(capacity int) (arrayStack *ArrayStack) {
 	arrayStack = &ArrayStack{}
-	arrayStack.array = getArray(capacity)
+	arrayStack.array = GetArray(capacity)
 	return
 }
 
-func (a *ArrayStack) getSize() int {
-	return a.array.getSize()
+func (a *ArrayStack) GetSize() int {
+	return a.array.GetSize()
 }
 
-func (a *ArrayStack) isEmpty() bool {
-	return a.array.isEmpty()
+func (a *ArrayStack) IsEmpty() bool {
+	return a.array.IsEmpty()
 }
 
-func (a *ArrayStack) push(element interface{}) {
-	a.array.addLast(element)
+func (a *ArrayStack) Push(element interface{}) {
+	a.array.AddLast(element)
 }
 
-func (a *ArrayStack) pop() interface{} {
-	return a.array.removeLast()
+func (a *ArrayStack) Pop() interface{} {
+	return a.array.RemoveLast()
 }
 
-func (a *ArrayStack) peek() interface{} {
-	return a.array.getLast()
+func (a *ArrayStack) Peek() interface{} {
+	return a.array.GetLast()
 }
 
 func (a *ArrayStack) String() string {
@@ -40,9 +40,9 @@ func (a *ArrayStack) String() string {
 
 	buffer.WriteString("Stack: ")
 	buffer.WriteString("[")
-	for i := 0; i < a.array.getSize(); i++ {
+	for i := 0; i < a.array.GetSize(); i++ {
 		buffer.WriteString(fmt.Sprint(a.array.data[i]))
-		if i != a.array.getSize() - 1 {
+		if i != a.array.GetSize() - 1 {
 			buffer.WriteString(", ")
 		}
 	}

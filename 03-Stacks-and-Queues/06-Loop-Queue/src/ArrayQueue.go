@@ -10,35 +10,35 @@ type ArrayQueue struct {
 	array *Array
 }
 
-func getArrayQueue(capacity int) (queue *ArrayQueue) {
+func GetArrayQueue(capacity int) (queue *ArrayQueue) {
 	queue = &ArrayQueue{}
-	queue.array = getArray(capacity)
+	queue.array = GetArray(capacity)
 
 	return
 }
 
-func (q *ArrayQueue) getSize() int {
-	return q.array.getSize()
+func (q *ArrayQueue) GetSize() int {
+	return q.array.GetSize()
 }
 
-func (q *ArrayQueue) isEmpty() bool {
-	return q.array.isEmpty()
+func (q *ArrayQueue) IsEmpty() bool {
+	return q.array.IsEmpty()
 }
 
-func (q *ArrayQueue) getCapacity() int {
-	return q.array.getCapacity()
+func (q *ArrayQueue) GetCapacity() int {
+	return q.array.GetCapacity()
 }
 
-func (q *ArrayQueue) enqueue(e interface{}) {
-	q.array.addLast(e)
+func (q *ArrayQueue) Enqueue(e interface{}) {
+	q.array.AddLast(e)
 }
 
-func (q *ArrayQueue) dequeue() interface{} {
-	return q.array.removeFirst()
+func (q *ArrayQueue) Dequeue() interface{} {
+	return q.array.RemoveFirst()
 }
 
-func (q *ArrayQueue) getFront() interface{} {
-	return q.array.getFirst()
+func (q *ArrayQueue) GetFront() interface{} {
+	return q.array.GetFirst()
 }
 
 func (q *ArrayQueue) String() string {
@@ -46,27 +46,14 @@ func (q *ArrayQueue) String() string {
 
 	buffer.WriteString("Queue: ")
 	buffer.WriteString("front [");
-	for i := 0; i < q.array.getSize(); i++ {
+	for i := 0; i < q.array.GetSize(); i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
 		buffer.WriteString(fmt.Sprint(q.array.data[i]))
-		if i != (q.array.getSize() - 1) {
+		if i != (q.array.GetSize() - 1) {
 			buffer.WriteString(", ")
 		}
 	}
 	buffer.WriteString("] tail")
 
 	return buffer.String()
-}
-
-func main()  {
-	queue := getArrayQueue(20)
-	for i := 0; i < 10; i++ {
-		queue.enqueue(i)
-		fmt.Println(queue)
-
-		if i % 3 == 2 {
-			queue.dequeue()
-			fmt.Println(queue)
-		}
-	}
 }

@@ -13,7 +13,7 @@ type Array struct {
 
 // 传入数组的容量 capacity 返回 Slice
 // 注：在 Go 中不同长度的数组属于不同类型，所以这里使用 Slice
-func getArray(capacity int) (a *Array) {
+func GetArray(capacity int) (a *Array) {
 	a = &Array{}
 	a.data = make([]interface{}, capacity)
 	a.size = 0
@@ -21,23 +21,23 @@ func getArray(capacity int) (a *Array) {
 }
 
 // 获取数组的容量
-func (a *Array) getCapacity() int {
+func (a *Array) GetCapacity() int {
 	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (a *Array) getSize() int {
+func (a *Array) GetSize() int {
 	return a.size
 }
 
 // 返回数组是否为空
-func (a *Array) isEmpty() bool {
+func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
 // 在第 index 个位置插入一个新元素 element
-func (a *Array) add(index int, element interface{}) {
-	if index < 0 || index > a.getCapacity() {
+func (a *Array) Add(index int, element interface{}) {
+	if index < 0 || index > a.GetCapacity() {
 		panic("Add failed,require index >= 0 and index <= a.cap")
 	}
 
@@ -54,39 +54,39 @@ func (a *Array) add(index int, element interface{}) {
 }
 
 // 向所有元素后添加一个新元素
-func (a *Array) addLast(element interface{}) {
+func (a *Array) AddLast(element interface{}) {
 	//if a.size == len(a.data) {
 	//	panic("AddLast failed,Array is full.")
 	//}
 	//
 	//a.data[a.size] = element
 	//a.size++
-	a.add(a.size, element)
+	a.Add(a.size, element)
 }
 
 // 向所有元素前添加一个新元素
-func (a *Array) addFirst(element interface{}) {
-	a.add(0, element)
+func (a *Array) AddFirst(element interface{}) {
+	a.Add(0, element)
 }
 
 // 获取 index 索引位置的元素
-func (a *Array) get(index int) interface{} {
+func (a *Array) Get(index int) interface{} {
 	if index < 0 || index >= a.size {
 		panic("Get failed,Index is illegal.")
 	}
 	return a.data[index]
 }
 
-func (a *Array) getLast() interface{} {
-	return a.get(a.size - 1)
+func (a *Array) GetLast() interface{} {
+	return a.Get(a.size - 1)
 }
 
-func (a *Array) getFirst() interface{} {
-	return a.get(0)
+func (a *Array) GetFirst() interface{} {
+	return a.Get(0)
 }
 
 // 修改 index 索引位置的元素
-func (a *Array) set(index int, element interface{}) {
+func (a *Array) Set(index int, element interface{}) {
 	if index < 0 || index >= a.size {
 		panic("Set failed,Index is illegal.")
 	}
@@ -94,7 +94,7 @@ func (a *Array) set(index int, element interface{}) {
 }
 
 // 查找数组中是否有元素 element
-func (a *Array) contains(element interface{}) bool {
+func (a *Array) Contains(element interface{}) bool {
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
 			return true
@@ -105,7 +105,7 @@ func (a *Array) contains(element interface{}) bool {
 }
 
 // 查找数组中元素 element 所在的索引，不存在则返回 -1
-func (a *Array) find(element interface{}) int {
+func (a *Array) Find(element interface{}) int {
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
 			return i
@@ -116,7 +116,7 @@ func (a *Array) find(element interface{}) int {
 }
 
 // 查找数组中元素 element 所有的索引组成的切片，不存在则返回 -1
-func (a *Array) findAll(element interface{}) (indexes []int) {
+func (a *Array) FindAll(element interface{}) (indexes []int) {
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
 			indexes = append(indexes, i)
@@ -127,7 +127,7 @@ func (a *Array) findAll(element interface{}) (indexes []int) {
 }
 
 // 从数组中删除 index 位置的元素，返回删除的元素
-func (a *Array) remove(index int) (element interface{}) {
+func (a *Array) Remove(index int) (element interface{}) {
 	if index < 0 || index >= a.size {
 		panic("Set failed,Index is illegal.")
 	}
@@ -146,35 +146,35 @@ func (a *Array) remove(index int) (element interface{}) {
 }
 
 // 从数组中删除第一个元素，返回删除的元素
-func (a *Array) removeFirst() interface{} {
-	return a.remove(0)
+func (a *Array) RemoveFirst() interface{} {
+	return a.Remove(0)
 }
 
 // 从数组中删除最后一个元素，返回删除的元素
-func (a *Array) removeLast() interface{} {
-	return a.remove(a.size - 1)
+func (a *Array) RemoveLast() interface{} {
+	return a.Remove(a.size - 1)
 }
 
 // 从数组中删除一个元素 element
-func (a *Array) removeElement(element interface{}) bool {
-	index := a.find(element)
+func (a *Array) RemoveElement(element interface{}) bool {
+	index := a.Find(element)
 	if index == -1 {
 		return false
 	}
 
-	a.remove(index)
+	a.Remove(index)
 	return true
 }
 
 // 从数组中删除所有元素 element
-func (a *Array) removeAllElement(element interface{}) bool {
-	if a.find(element) == -1 {
+func (a *Array) RemoveAllElement(element interface{}) bool {
+	if a.Find(element) == -1 {
 		return false
 	}
 
 	for i := 0; i < a.size; i++ {
 		if a.data[i] == element {
-			a.remove(i)
+			a.Remove(i)
 		}
 	}
 	return true

@@ -12,7 +12,7 @@ type LoopQueue struct {
 	size  int
 }
 
-func getLoopQueue(capacity int) (l *LoopQueue) {
+func GetLoopQueue(capacity int) (l *LoopQueue) {
 	l = &LoopQueue{}
 	l.data = make([]interface{}, capacity + 1)
 	l.front = 0
@@ -22,22 +22,22 @@ func getLoopQueue(capacity int) (l *LoopQueue) {
 	return
 }
 
-func (l *LoopQueue) getCapacity() int {
+func (l *LoopQueue) GetCapacity() int {
 	return len(l.data) - 1
 }
 
-func (l *LoopQueue) getSize() int {
+func (l *LoopQueue) GetSize() int {
 	return l.size
 }
 
-func (l *LoopQueue) isEmpty() bool {
+func (l *LoopQueue) IsEmpty() bool {
 	return l.front == l.tail
 }
 
 // 入队
-func (l *LoopQueue) enqueue(e interface{}) {
+func (l *LoopQueue) Enqueue(e interface{}) {
 	if (l.tail+1)%len(l.data) == l.front {
-		l.resize(l.getCapacity() * 2)
+		l.resize(l.GetCapacity() * 2)
 	}
 	l.data[l.tail] = e
 	l.tail = (l.tail + 1) % len(l.data)
@@ -45,8 +45,8 @@ func (l *LoopQueue) enqueue(e interface{}) {
 }
 
 // 获得队列头部元素
-func (l *LoopQueue) dequeue() (e interface{}) {
-	if l.isEmpty() {
+func (l *LoopQueue) Dequeue() (e interface{}) {
+	if l.IsEmpty() {
 		panic("cannot dequeue from empty queue")
 	}
 
@@ -55,16 +55,16 @@ func (l *LoopQueue) dequeue() (e interface{}) {
 	// 循环队列需要执行求余运算
 	l.front = (l.front + 1) % len(l.data)
 	l.size--
-	if l.size == l.getCapacity()/4 && l.size != 0 {
-		l.resize(l.getCapacity() / 2)
+	if l.size == l.GetCapacity()/4 && l.size != 0 {
+		l.resize(l.GetCapacity() / 2)
 	}
 
 	return
 }
 
 // 查看队列头部元素
-func (l *LoopQueue) getFront() interface{} {
-	if l.isEmpty() {
+func (l *LoopQueue) GetFront() interface{} {
+	if l.IsEmpty() {
 		panic("Queue is empty")
 	}
 
@@ -84,7 +84,7 @@ func (l *LoopQueue) resize(capacity int) {
 func (l *LoopQueue) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", l.size, l.getCapacity()))
+	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", l.size, l.GetCapacity()))
 	buffer.WriteString("front [");
 	for i := l.front; i != l.tail; i = (i + 1) % len(l.data) {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
@@ -99,13 +99,13 @@ func (l *LoopQueue) String() string {
 }
 
 func main()  {
-	queue := getLoopQueue(10)
+	queue := GetLoopQueue(10)
 	for i := 0; i < 10; i++ {
-		queue.enqueue(i)
+		queue.Enqueue(i)
 		fmt.Println(queue)
 
 		if i % 3 == 2 {
-			queue.dequeue()
+			queue.Dequeue()
 			fmt.Println(queue)
 		}
 	}
