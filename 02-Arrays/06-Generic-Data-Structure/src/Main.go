@@ -36,8 +36,8 @@ func main() {
 
 	// 测试 student 类型
 	students := GetArray(10)
-	students.AddLast(Student{"Alice", 100})
-	students.AddLast(Student{"Bob", 66})
-	students.AddLast(Student{"Charlie", 88})
+	students.AddLast(GetStudent("Alice", 100))
+	students.AddLast(GetStudent("Bob", 66))
+	students.AddLast(GetStudent("Charlie", 88))
 	fmt.Println(students)
 }

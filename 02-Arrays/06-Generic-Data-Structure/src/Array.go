@@ -176,7 +176,7 @@ func (a *Array) String() string {
 	buffer.WriteString("[");
 	for i := 0; i < a.size; i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(a.data[i]))
+		buffer.WriteString(fmt.Sprintf("%v", a.data[i]))
 		if i != (a.size - 1) {
 			buffer.WriteString(", ")
 		}

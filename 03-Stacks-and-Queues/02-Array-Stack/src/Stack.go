@@ -1,6 +1,6 @@
 package main
 
-type stack interface {
+type Stack interface {
 	GetSize() int
 	IsEmpty() bool
 	Push(interface{})
