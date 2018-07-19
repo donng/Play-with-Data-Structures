@@ -14,7 +14,7 @@ type LoopQueue struct {
 
 func GetLoopQueue(capacity int) (l *LoopQueue) {
 	l = &LoopQueue{}
-	l.data = make([]interface{}, capacity + 1)
+	l.data = make([]interface{}, capacity+1)
 	l.front = 0
 	l.tail = 0
 	l.size = 0
@@ -55,7 +55,7 @@ func (l *LoopQueue) Dequeue() (e interface{}) {
 	// 循环队列需要执行求余运算
 	l.front = (l.front + 1) % len(l.data)
 	l.size--
-	if l.size == l.GetCapacity()/4 && l.size != 0 {
+	if l.size == l.GetCapacity()/4 && l.GetCapacity()/2 != 0 {
 		l.resize(l.GetCapacity() / 2)
 	}
 
@@ -98,13 +98,13 @@ func (l *LoopQueue) String() string {
 	return buffer.String()
 }
 
-func main()  {
+func main() {
 	queue := GetLoopQueue(10)
 	for i := 0; i < 10; i++ {
 		queue.Enqueue(i)
 		fmt.Println(queue)
 
-		if i % 3 == 2 {
+		if i%3 == 2 {
 			queue.Dequeue()
 			fmt.Println(queue)
 		}
