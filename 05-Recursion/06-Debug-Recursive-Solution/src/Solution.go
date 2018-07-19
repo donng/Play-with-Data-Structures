@@ -6,7 +6,9 @@ import (
 )
 
 func removeElements(head *ListNode, val int, depth int) *ListNode {
+	// depthString 代表递归深度
 	depthString := generateDepthString(depth)
+	// 递归调用前打印
 	fmt.Print(depthString)
 	fmt.Println("Call: remove", val, " in ", head)
 
@@ -17,6 +19,7 @@ func removeElements(head *ListNode, val int, depth int) *ListNode {
 	}
 
 	res := removeElements(head.Next, val, depth + 1)
+	// 递归调用后打印
 	fmt.Print(depthString)
 	fmt.Println("After remove ", val, ": ", res)
 
@@ -27,6 +30,7 @@ func removeElements(head *ListNode, val int, depth int) *ListNode {
 		head.Next = res
 		ret = head
 	}
+	// 节点处理后打印
 	fmt.Print(depthString)
 	fmt.Println("Return: ", ret)
 
