@@ -21,7 +21,7 @@ func (t *BST) IsEmpty() bool {
 
 // 向二分搜索树中添加新的元素 e
 func (t *BST) Add(e int) {
-	t.add(t.root, e)
+	add(t.root, e)
 }
 
 // 向以 node 为跟的二分搜索树中插入元素 e，递归算法
@@ -39,4 +39,25 @@ func (t *BST) add(node *node, e int) *node {
 		node.right = t.add(node.right, e)
 	}
 	return node
+}
+
+// 看二分搜索树中是否包含元素 e
+func (t *BST) Contains(e int) bool {
+	return contains(t.root, e)
+}
+
+// 看以 node 为根的二分搜索树是否包含元素 e，递归算法
+func contains(node *node, e int) bool {
+	if node == nil {
+		return false
+	}
+
+	if e == node.e {
+		return true
+	} else if e < node.e {
+		return contains(node.left, e)
+	} else {
+		return contains(node.right, e)
+	}
+
 }
