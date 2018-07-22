@@ -28,27 +28,27 @@ func (t *BST) Add(e int) {
 	}
 }
 
-func (t *BST) add(node *node, e int) {
+func (t *BST) add(n *node, e int) {
 	// 不处理重复数据的节点
-	if e == node.e {
+	if e == n.e {
 		return
 		// 左子树递归终止条件
-	} else if e < node.e && node.left == nil {
-		node.left = &node{e: e}
+	} else if e < n.e && n.left == nil {
+		n.left = &node{e: e}
 		t.size++
 		return
 		// 右子树递归终止条件
-	} else if e > node.e && node.right == nil {
-		node.right = &node{e: e}
+	} else if e > n.e && n.right == nil {
+		n.right = &node{e: e}
 		t.size++
 		return
 	}
 
 	// 递归调用
-	if e < node.e {
-		t.add(node.left, e)
+	if e < n.e {
+		t.add(n.left, e)
 	} else {
-		t.add(node.right, e)
+		t.add(n.right, e)
 	}
 }
 

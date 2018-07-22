@@ -21,22 +21,22 @@ func (t *BST) IsEmpty() bool {
 
 // 向二分搜索树中添加新的元素 e
 func (t *BST) Add(e int) {
-	t.add(t.root, e)
+	t.root = t.add(t.root, e)
 }
 
 // 向以 node 为跟的二分搜索树中插入元素 e，递归算法
 // 返回插入新节点后二分搜索树的根
-func (t *BST) add(node *node, e int) *node {
-	if node == nil {
+func (t *BST) add(n *node, e int) *node {
+	if n == nil {
 		t.size++
 		return &node{e: e}
 	}
 
 	// 递归调用
-	if e < node.e {
-		node.left = t.add(node.left, e)
-	} else if e > node.e {
-		node.right = t.add(node.right, e)
+	if e < n.e {
+		n.left = t.add(n.left, e)
+	} else if e > n.e {
+		n.right = t.add(n.right, e)
 	}
-	return node
+	return n
 }

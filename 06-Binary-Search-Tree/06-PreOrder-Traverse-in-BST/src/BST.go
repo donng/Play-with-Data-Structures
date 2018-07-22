@@ -1,4 +1,10 @@
-package src
+package main
+
+import (
+	"fmt"
+	"bytes"
+	"strconv"
+)
 
 type node struct {
 	e     int
@@ -59,5 +65,45 @@ func contains(node *node, e int) bool {
 	} else {
 		return contains(node.right, e)
 	}
-
 }
+
+func (t *BST) PreOrder()  {
+	preOrder(t.root)
+}
+
+func preOrder(node *node)  {
+	if node == nil {
+		return
+	}
+
+	fmt.Println(node.e)
+	preOrder(node.left)
+	preOrder(node.right)
+}
+
+func (t *BST) String() string {
+	var buffer bytes.Buffer
+	generateBSTSting(t.root, 0, &buffer)
+	return buffer.String()
+}
+
+// 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
+func generateBSTSting(node *node, depth int, buffer *bytes.Buffer)  {
+	if node == nil {
+		buffer.WriteString(generateDepthString(depth) + "nil\n")
+		return
+	}
+
+	buffer.WriteString(generateDepthString(depth) + strconv.Itoa(node.e) + "\n")
+	generateBSTSting(node.left, depth + 1, buffer)
+	generateBSTSting(node.right, depth + 1, buffer)
+}
+
+func generateDepthString(depth int) string {
+	var buffer bytes.Buffer
+	for i := 0; i < depth; i++ {
+		buffer.WriteString("--")
+	}
+	return buffer.String()
+}
+
