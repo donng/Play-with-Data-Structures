@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	stack := getArrayStack(10)
+	stack := GetArrayStack(10)
 	fmt.Println(stack)
 	for i := 0; i < 10; i++ {
 		stack.Push(i)
