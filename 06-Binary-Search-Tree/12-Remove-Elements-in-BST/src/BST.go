@@ -224,6 +224,50 @@ func (t *BST) removeMax(n *node) *node {
 	return n
 }
 
+// 从二分搜索树中删除元素为 e 的节点
+func (t *BST) Remove(e int) {
+	t.root = t.remove(t.root, e)
+}
+
+// 删除以 node 为根的二分搜索树中值为 e 的节点，递归算法
+// 返回删除节点后新的二分搜索树的根
+func (t *BST) remove(n *node, e int) *node {
+	if n == nil {
+		return nil
+	}
+
+	if e < n.e {
+		n.left = t.remove(n.left, e)
+	} else if e > n.e {
+		n.right = t.remove(n.right, e)
+	} else {
+		// 待删除节点左子树为空的情况
+		if n.left == nil {
+			rightNode := n.right
+			n.right = nil
+			t.size--
+			return rightNode
+		}
+		// 待删除节点右子树为空的情况
+		if n.right == nil {
+			leftNode := n.left
+			n.left = nil
+			t.size--
+			return leftNode
+		}
+		// 待删除节点左右子树均不为空的情况
+		// 找到比待删除节点大的最小节点，即待删除节点右子树的最小节点
+		// 用这个节点顶替待删除节点的位置
+		successor := minimum(n.right)
+		successor.right = t.removeMin(n.right)
+		successor.left = n.left
+		n.left = nil
+		n.right = nil
+
+		return successor
+	}
+}
+
 func (t *BST) String() string {
 	var buffer bytes.Buffer
 	generateBSTSting(t.root, 0, &buffer)
