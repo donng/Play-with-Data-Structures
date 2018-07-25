@@ -238,8 +238,10 @@ func (t *BST) remove(n *node, e int) *node {
 
 	if e < n.e {
 		n.left = t.remove(n.left, e)
+		return n
 	} else if e > n.e {
 		n.right = t.remove(n.right, e)
+		return n
 	} else {
 		// 待删除节点左子树为空的情况
 		if n.left == nil {
