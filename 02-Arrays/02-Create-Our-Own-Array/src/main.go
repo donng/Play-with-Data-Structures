@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/02-Arrays/02-Create-Our-Own-Array/src/Array"
+	"fmt"
 )
 
 func main() {

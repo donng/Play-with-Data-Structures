@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/02-Arrays/04-Query-and-Update-Element/src/Array"
+	"fmt"
 )
 
 func main() {
