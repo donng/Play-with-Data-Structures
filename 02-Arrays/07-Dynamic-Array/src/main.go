@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"Play-with-Data-Structures/02-Arrays/07-Dynamic-Array/src/Array"
+	"fmt"
+)
 
 func main() {
-	arr := GetArray(10)
+	arr := Array.GetArray(10)
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}

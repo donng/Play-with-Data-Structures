@@ -1,11 +1,14 @@
 package main
 
 import (
+	"Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/src/Array"
+	"Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/src/Student"
 	"fmt"
 )
 
 func main() {
-	arr := GetArray(20)
+	arr := Array.GetArray(20)
+
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}
@@ -35,9 +38,9 @@ func main() {
 	fmt.Println(arr, isRemove)
 
 	// 测试 student 类型
-	students := GetArray(10)
-	students.AddLast(GetStudent("Alice", 100))
-	students.AddLast(GetStudent("Bob", 66))
-	students.AddLast(GetStudent("Charlie", 88))
+	students := Array.GetArray(10)
+	students.AddLast(Student.GetStudent("Alice", 100))
+	students.AddLast(Student.GetStudent("Bob", 66))
+	students.AddLast(Student.GetStudent("Charlie", 88))
 	fmt.Println(students)
 }

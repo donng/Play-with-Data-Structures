@@ -1,4 +1,4 @@
-package main
+package Array
 
 import (
 	"bytes"
@@ -121,7 +121,7 @@ func (a *Array) FindAll(element interface{}) (indexes []int) {
 // 从数组中删除 index 位置的元素，返回删除的元素
 func (a *Array) Remove(index int) (element interface{}) {
 	if index < 0 || index >= a.size {
-		panic("Remove failed,Index is illegal.")
+		panic("Set failed,Index is illegal.")
 	}
 
 	element = a.data[index]
@@ -131,8 +131,7 @@ func (a *Array) Remove(index int) (element interface{}) {
 	a.size--
 	a.data[a.size] = nil //loitering object != memory leak
 
-	// 考虑边界条件，避免长度为 1 时，resize 为 0
-	if a.size == len(a.data)/4 && len(a.data)/2 != 0 {
+	if a.size == len(a.data) / 2 {
 		a.resize(len(a.data) / 2)
 	}
 	return
@@ -174,9 +173,9 @@ func (a *Array) RemoveAllElement(element interface{}) bool {
 }
 
 // 为数组扩容
-func (a *Array) resize(newCapacity int) {
+func (a *Array) resize(newCapacity int)  {
 	newData := make([]interface{}, newCapacity)
-	for i := 0; i < a.size; i++ {
+	for i:= 0; i < a.size; i++ {
 		newData[i] = a.data[i]
 	}
 
