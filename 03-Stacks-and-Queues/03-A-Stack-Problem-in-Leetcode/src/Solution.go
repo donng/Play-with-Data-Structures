@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 // go 的字符串实际是 byte 类型组成的切片
 func isValid(s string) bool {
@@ -8,6 +11,7 @@ func isValid(s string) bool {
 	var stack []rune
 
 	for _, char := range s {
+		fmt.Println(reflect.TypeOf(char))
 		if char == '(' || char == '{' || char == '[' {
 			// 入栈
 			stack = append(stack, char)

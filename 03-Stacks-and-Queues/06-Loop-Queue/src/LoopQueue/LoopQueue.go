@@ -1,4 +1,4 @@
-package main
+package LoopQueue
 
 type LoopQueue struct {
 	data  []interface{}

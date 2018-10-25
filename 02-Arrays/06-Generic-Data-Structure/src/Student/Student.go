@@ -7,10 +7,10 @@ type Student struct {
 	score int
 }
 
-func GetStudent(studentName string, studentScore int) (student *Student) {
+func GetStudent(name string, score int) (student *Student) {
 	student = &Student{}
-	student.name = studentName
-	student.score = studentScore
+	student.name = name
+	student.score = score
 
 	return
 }
