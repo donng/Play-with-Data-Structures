@@ -1,12 +1,15 @@
 package main
 
 import (
+	"Play-with-Data-Structures/04-Linked-List/06-Implement-Stack-in-LinkedList/src/ArrayStack"
+	"Play-with-Data-Structures/04-Linked-List/06-Implement-Stack-in-LinkedList/src/LinkedListStack"
+	"Play-with-Data-Structures/04-Linked-List/06-Implement-Stack-in-LinkedList/src/Stack"
 	"fmt"
-	"time"
 	"math/rand"
+	"time"
 )
 
-func testStack(stack Stack, opCount int) float64 {
+func testStack(stack Stack.Stack, opCount int) float64 {
 	startTime := time.Now()
 
 	for i := 0; i < opCount; i++ {
@@ -31,13 +34,13 @@ func main() {
 	//fmt.Println(stack)
 	opCount := 10000000
 
-	arrayStack := GetArrayStack(20)
+	arrayStack := ArrayStack.GetArrayStack(20)
 	time1 := testStack(arrayStack, opCount)
 	fmt.Println("ArrayStack, time: ", time1, " s")
 
-	linkedListStack := GetLinkedListStack()
+	linkedListStack := LinkedListStack.GetLinkedListStack()
 	time2 := testStack(linkedListStack, opCount)
-	fmt.Println("ArrayStack, time: ", time2, " s")
+	fmt.Println("LinkedListStack, time: ", time2, " s")
 
 	// 其实这个时间比较很复杂，因为 LinkedListStack 中包含更多的 new 操作
 }

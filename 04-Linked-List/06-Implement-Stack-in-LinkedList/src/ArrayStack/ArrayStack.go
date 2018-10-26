@@ -1,17 +1,18 @@
-package main
+package ArrayStack
 
 import (
+	"Play-with-Data-Structures/04-Linked-List/06-Implement-Stack-in-LinkedList/src/Array"
 	"bytes"
 	"fmt"
 )
 
 type ArrayStack struct {
-	array *Array
+	array *Array.Array
 }
 
 func GetArrayStack(capacity int) (arrayStack *ArrayStack) {
 	arrayStack = &ArrayStack{}
-	arrayStack.array = GetArray(capacity)
+	arrayStack.array = Array.GetArray(capacity)
 	return
 }
 
@@ -41,7 +42,7 @@ func (a *ArrayStack) String() string {
 	buffer.WriteString("Stack: ")
 	buffer.WriteString("[")
 	for i := 0; i < a.array.GetSize(); i++ {
-		buffer.WriteString(fmt.Sprint(a.array.data[i]))
+		buffer.WriteString(fmt.Sprint(a.array.Get(i)))
 		if i != a.array.GetSize() - 1 {
 			buffer.WriteString(", ")
 		}

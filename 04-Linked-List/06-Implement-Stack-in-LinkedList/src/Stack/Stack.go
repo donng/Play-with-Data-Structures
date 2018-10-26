@@ -1,4 +1,4 @@
-package main
+package Stack
 
 type Stack interface {
 	GetSize() int

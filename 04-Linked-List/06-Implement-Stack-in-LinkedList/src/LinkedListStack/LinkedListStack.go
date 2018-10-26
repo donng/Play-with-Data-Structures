@@ -1,16 +1,17 @@
-package main
+package LinkedListStack
 
 import (
+	"Play-with-Data-Structures/04-Linked-List/06-Implement-Stack-in-LinkedList/src/LinkedList"
 	"bytes"
 )
 
 type LinkedListStack struct {
-	list *LinkedList
+	list *LinkedList.LinkedList
 }
 
 func GetLinkedListStack() *LinkedListStack {
 	stack := &LinkedListStack{}
-	stack.list = getLinkedList()
+	stack.list = LinkedList.GetLinkedList()
 
 	return stack
 }

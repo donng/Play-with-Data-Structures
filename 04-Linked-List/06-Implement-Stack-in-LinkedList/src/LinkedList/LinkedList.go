@@ -1,8 +1,8 @@
-package main
+package LinkedList
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 type node struct {
@@ -15,7 +15,7 @@ type LinkedList struct {
 	size      int
 }
 
-func getLinkedList() *LinkedList {
+func GetLinkedList() *LinkedList {
 	linkedList := &LinkedList{
 		dummyHead: &node{},
 	}
