@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"Play-with-Data-Structures/04-Linked-List/04-Query-and-Update-in-LinkedList/src/LinkedList"
+	"fmt"
+)
 
 func main() {
-	linkedList := getLinkedList()
+	linkedList := LinkedList.GetLinkedList()
 
 	for i := 0; i < 5; i++ {
 		linkedList.AddFirst(i)

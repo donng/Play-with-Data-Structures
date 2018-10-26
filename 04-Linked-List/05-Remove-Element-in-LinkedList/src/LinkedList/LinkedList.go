@@ -1,8 +1,8 @@
-package main
+package LinkedList
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 type node struct {
@@ -15,7 +15,7 @@ type LinkedList struct {
 	size      int
 }
 
-func getLinkedList() *LinkedList {
+func GetLinkedList() *LinkedList {
 	linkedList := &LinkedList{
 		dummyHead: &node{},
 	}
@@ -137,12 +137,12 @@ func (l *LinkedList) Remove(index int) interface{} {
 }
 
 // 从链表中删除第一个元素，返回删除的元素
-func (l *LinkedList) RemoveFirst()  {
+func (l *LinkedList) RemoveFirst() {
 	l.Remove(0)
 }
 
 // 从链表中删除最后一个元素，返回删除的元素
-func (l *LinkedList) RemoveLast()  {
+func (l *LinkedList) RemoveLast() {
 	l.Remove(l.size - 1)
 }
 
