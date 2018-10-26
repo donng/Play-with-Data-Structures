@@ -1,4 +1,4 @@
-package main
+package Queue
 
 type Queue interface {
 	GetSize() int

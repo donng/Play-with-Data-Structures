@@ -1,8 +1,8 @@
-package main
+package LinkedListQueue
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 type node struct {
