@@ -1,8 +1,8 @@
 package main
 
 // 虚拟头结点
-func removeElements3(head *ListNode, val int) *ListNode {
-	dummyHead := &ListNode{}
+func RemoveElements3(head *ListNode, val int) *ListNode {
+	dummyHead := &ListNodRe{}
 	dummyHead.Next = head
 
 	prev := dummyHead
