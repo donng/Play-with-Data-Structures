@@ -1,8 +1,10 @@
-package main
+package Solution
 
-func removeElements(head *ListNode, val int) *ListNode {
+import "Play-with-Data-Structures/05-Recursion/02-Test-Your-LinkedList-Solution/src/ListNode"
+
+func RemoveElements(head *ListNode.ListNode, val int) *ListNode.ListNode {
 	for head != nil && head.Val == val {
-		delNode := head;
+		delNode := head
 		head = head.Next
 		delNode.Next = nil
 	}
