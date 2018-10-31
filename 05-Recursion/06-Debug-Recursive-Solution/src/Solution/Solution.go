@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"Play-with-Data-Structures/05-Recursion/06-Debug-Recursive-Solution/src/ListNode"
 	"bytes"
+	"fmt"
 )
 
-func removeElements(head *ListNode, val int, depth int) *ListNode {
+func RemoveElements(head *ListNode.ListNode, val int, depth int) *ListNode.ListNode {
 	// depthString 代表递归深度
 	depthString := generateDepthString(depth)
 	// 递归调用前打印
@@ -18,12 +19,12 @@ func removeElements(head *ListNode, val int, depth int) *ListNode {
 		return nil
 	}
 
-	res := removeElements(head.Next, val, depth + 1)
+	res := removeElements(head.Next, val, depth+1)
 	// 递归调用后打印
 	fmt.Print(depthString)
 	fmt.Println("After remove ", val, ": ", res)
 
-	ret := &ListNode{}
+	ret := &ListNode.ListNode{}
 	if head.Val == val {
 		ret = res
 	} else {
@@ -45,11 +46,11 @@ func generateDepthString(depth int) string {
 	return buffer.String()
 }
 
-func main()  {
+func main() {
 	nums := []int{1, 2, 6, 3, 4, 5, 6}
-	head := GetListNode(nums)
+	head := ListNode.GetListNode(nums)
 	fmt.Println(head)
 
-	res := removeElements(head, 6, 0)
+	res := RemoveElements(head, 6, 0)
 	fmt.Println(res)
 }
