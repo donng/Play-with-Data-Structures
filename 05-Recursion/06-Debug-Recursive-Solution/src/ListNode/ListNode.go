@@ -32,9 +32,11 @@ func GetListNode(arr []int) *ListNode {
 
 func (l *ListNode) String() string {
 	var buffer bytes.Buffer
-	for l != nil {
-		buffer.WriteString(fmt.Sprintf("%v ->", l.Val))
-		l = l.Next
+
+	cur := l
+	for cur != nil {
+		buffer.WriteString(fmt.Sprintf("%v ->", cur.Val))
+		cur = cur.Next
 	}
 	buffer.WriteString("NULL")
 	return buffer.String()
