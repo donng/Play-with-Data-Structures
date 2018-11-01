@@ -19,7 +19,7 @@ func RemoveElements(head *ListNode.ListNode, val int, depth int) *ListNode.ListN
 		return nil
 	}
 
-	res := removeElements(head.Next, val, depth+1)
+	res := RemoveElements(head.Next, val, depth+1)
 	// 递归调用后打印
 	fmt.Print(depthString)
 	fmt.Println("After remove ", val, ": ", res)
