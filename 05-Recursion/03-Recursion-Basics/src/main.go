@@ -1,9 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/05-Recursion/03-Recursion-Basics/src/ListNode"
 	"Play-with-Data-Structures/05-Recursion/03-Recursion-Basics/src/Solution3"
+	"fmt"
 )
 
 func main() {

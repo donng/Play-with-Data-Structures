@@ -1,8 +1,8 @@
 package main
 
 type node struct {
-	e interface{}
-	left *node
+	e     interface{}
+	left  *node
 	right *node
 }
 

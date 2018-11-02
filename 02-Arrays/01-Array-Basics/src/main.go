@@ -17,7 +17,7 @@ func main() {
 		fmt.Println(score)
 	}
 
-	scores[0] = 96;
+	scores[0] = 96
 	for i := 0; i < len(scores); i++ {
 		fmt.Println(scores[i])
 	}

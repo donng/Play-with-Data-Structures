@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"strconv"
 )
 
@@ -68,12 +68,12 @@ func contains(node *node, e int) bool {
 }
 
 // 二分搜索树的前序遍历
-func (t *BST) PreOrder()  {
+func (t *BST) PreOrder() {
 	preOrder(t.root)
 }
 
 // 前序遍历以 node 为根的二分搜索树，递归算法
-func preOrder(node *node)  {
+func preOrder(node *node) {
 	if node == nil {
 		return
 	}
@@ -84,7 +84,7 @@ func preOrder(node *node)  {
 }
 
 // 二分搜索树的非递归前序遍历
-func (t *BST) PreOrderNR()  {
+func (t *BST) PreOrderNR() {
 	// 使用之前我们自己实现的数组栈
 	stack := GetArrayStack(20)
 	stack.Push(t.root)
@@ -103,12 +103,12 @@ func (t *BST) PreOrderNR()  {
 }
 
 // 二分搜索树的中序遍历
-func (t *BST) InOrder()  {
+func (t *BST) InOrder() {
 	inOrder(t.root)
 }
 
 // 中序遍历以 node 为根的二分搜索树，递归算法
-func inOrder(node *node)  {
+func inOrder(node *node) {
 	if node == nil {
 		return
 	}
@@ -119,12 +119,12 @@ func inOrder(node *node)  {
 }
 
 // 二分搜索树的后序遍历
-func (t *BST) PostOrder()  {
+func (t *BST) PostOrder() {
 	postOrder(t.root)
 }
 
 // 后序遍历以 node 为根的二分搜索树，递归算法
-func postOrder(node *node)  {
+func postOrder(node *node) {
 	if node == nil {
 		return
 	}
@@ -141,15 +141,15 @@ func (t *BST) String() string {
 }
 
 // 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
-func generateBSTSting(node *node, depth int, buffer *bytes.Buffer)  {
+func generateBSTSting(node *node, depth int, buffer *bytes.Buffer) {
 	if node == nil {
 		buffer.WriteString(generateDepthString(depth) + "nil\n")
 		return
 	}
 
 	buffer.WriteString(generateDepthString(depth) + strconv.Itoa(node.e) + "\n")
-	generateBSTSting(node.left, depth + 1, buffer)
-	generateBSTSting(node.right, depth + 1, buffer)
+	generateBSTSting(node.left, depth+1, buffer)
+	generateBSTSting(node.right, depth+1, buffer)
 }
 
 func generateDepthString(depth int) string {
@@ -159,4 +159,3 @@ func generateDepthString(depth int) string {
 	}
 	return buffer.String()
 }
-

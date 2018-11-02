@@ -147,7 +147,7 @@ func (l *LinkedList) RemoveLast() interface{} {
 }
 
 // 从链表中删除元素e
-func (l *LinkedList) RemoveElement(e interface{})  {
+func (l *LinkedList) RemoveElement(e interface{}) {
 	prev := l.dummyHead
 	for prev.next != nil {
 		if prev.next.e == e {

@@ -3,7 +3,7 @@ package Student
 import "fmt"
 
 type Student struct {
-	name string
+	name  string
 	score int
 }
 

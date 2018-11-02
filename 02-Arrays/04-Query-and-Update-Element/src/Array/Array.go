@@ -91,7 +91,7 @@ func (a *Array) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
-	buffer.WriteString("[");
+	buffer.WriteString("[")
 	for i := 0; i < a.size; i++ {
 		buffer.WriteString(strconv.Itoa(a.data[i]))
 		if i != (a.size - 1) {

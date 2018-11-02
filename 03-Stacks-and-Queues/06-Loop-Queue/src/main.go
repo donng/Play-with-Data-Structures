@@ -11,7 +11,7 @@ func main() {
 		queue.Enqueue(i)
 		fmt.Println(queue)
 
-		if i % 3 == 2 {
+		if i%3 == 2 {
 			queue.Dequeue()
 			fmt.Println(queue)
 		}

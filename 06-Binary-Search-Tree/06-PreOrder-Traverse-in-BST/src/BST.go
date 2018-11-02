@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 	"strconv"
 )
 
@@ -67,11 +67,11 @@ func contains(node *node, e int) bool {
 	}
 }
 
-func (t *BST) PreOrder()  {
+func (t *BST) PreOrder() {
 	preOrder(t.root)
 }
 
-func preOrder(node *node)  {
+func preOrder(node *node) {
 	if node == nil {
 		return
 	}
@@ -88,15 +88,15 @@ func (t *BST) String() string {
 }
 
 // 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
-func generateBSTSting(node *node, depth int, buffer *bytes.Buffer)  {
+func generateBSTSting(node *node, depth int, buffer *bytes.Buffer) {
 	if node == nil {
 		buffer.WriteString(generateDepthString(depth) + "nil\n")
 		return
 	}
 
 	buffer.WriteString(generateDepthString(depth) + strconv.Itoa(node.e) + "\n")
-	generateBSTSting(node.left, depth + 1, buffer)
-	generateBSTSting(node.right, depth + 1, buffer)
+	generateBSTSting(node.left, depth+1, buffer)
+	generateBSTSting(node.right, depth+1, buffer)
 }
 
 func generateDepthString(depth int) string {
@@ -106,4 +106,3 @@ func generateDepthString(depth int) string {
 	}
 	return buffer.String()
 }
-

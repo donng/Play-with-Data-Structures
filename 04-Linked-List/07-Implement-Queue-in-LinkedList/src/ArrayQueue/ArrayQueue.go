@@ -46,7 +46,7 @@ func (q *ArrayQueue) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString("Queue: ")
-	buffer.WriteString("front [");
+	buffer.WriteString("front [")
 	for i := 0; i < q.array.GetSize(); i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
 		buffer.WriteString(fmt.Sprint(q.array.Get(i)))

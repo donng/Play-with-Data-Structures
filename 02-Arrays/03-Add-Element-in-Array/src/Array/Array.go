@@ -30,7 +30,6 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
-
 // 在第 index 个位置插入一个新元素 element
 func (a *Array) Add(index int, element int) {
 	if a.size == len(a.data) {
@@ -48,7 +47,6 @@ func (a *Array) Add(index int, element int) {
 	a.data[index] = element
 	a.size++
 }
-
 
 // 向所有元素后添加一个新元素
 func (a *Array) AddLast(element int) {

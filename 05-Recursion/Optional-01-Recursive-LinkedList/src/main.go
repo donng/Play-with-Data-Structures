@@ -1,9 +1,9 @@
 package main
 
 import (
+	"Play-with-Data-Structures/05-Recursion/Optional-01-Recursive-LinkedList/src/LinkedList"
 	"Play-with-Data-Structures/05-Recursion/Optional-01-Recursive-LinkedList/src/LinkedListR"
 	"fmt"
-	"Play-with-Data-Structures/05-Recursion/Optional-01-Recursive-LinkedList/src/LinkedList"
 )
 
 func main() {

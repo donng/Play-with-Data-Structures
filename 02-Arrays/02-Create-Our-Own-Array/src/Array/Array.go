@@ -1,8 +1,8 @@
 package Array
 
 type Array struct {
-	data []int  // 自定义数组的数据
-	size int    // 元素个数
+	data []int // 自定义数组的数据
+	size int   // 元素个数
 }
 
 // 获得指定容量的自定义数组

@@ -1,8 +1,8 @@
 package main
 
 import (
-	"math/rand"
 	"fmt"
+	"math/rand"
 	"time"
 )
 
@@ -28,7 +28,7 @@ func main() {
 	}
 
 	// 乱序删除[0...n)范围里的所有元素
-	for  i := 0; i < n; i++ {
+	for i := 0; i < n; i++ {
 		if bst.Contains(nums[i]) {
 			bst.Remove(nums[i])
 			fmt.Println("After remove", nums[i], ", size = ", bst.size)

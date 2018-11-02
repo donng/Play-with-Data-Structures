@@ -131,7 +131,7 @@ func (a *Array) Remove(index int) (element interface{}) {
 	a.size--
 	a.data[a.size] = nil //loitering object != memory leak
 
-	if a.size == len(a.data) / 2 {
+	if a.size == len(a.data)/2 {
 		a.resize(len(a.data) / 2)
 	}
 	return
@@ -173,9 +173,9 @@ func (a *Array) RemoveAllElement(element interface{}) bool {
 }
 
 // 为数组扩容
-func (a *Array) resize(newCapacity int)  {
+func (a *Array) resize(newCapacity int) {
 	newData := make([]interface{}, newCapacity)
-	for i:= 0; i < a.size; i++ {
+	for i := 0; i < a.size; i++ {
 		newData[i] = a.data[i]
 	}
 
@@ -187,7 +187,7 @@ func (a *Array) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
-	buffer.WriteString("[");
+	buffer.WriteString("[")
 	for i := 0; i < a.size; i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
 		buffer.WriteString(fmt.Sprint(a.data[i]))

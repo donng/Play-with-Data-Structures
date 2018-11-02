@@ -85,7 +85,7 @@ func (l *LoopQueue) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", l.size, l.GetCapacity()))
-	buffer.WriteString("front [");
+	buffer.WriteString("front [")
 	for i := l.front; i != l.tail; i = (i + 1) % len(l.data) {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
 		buffer.WriteString(fmt.Sprint(l.data[i]))

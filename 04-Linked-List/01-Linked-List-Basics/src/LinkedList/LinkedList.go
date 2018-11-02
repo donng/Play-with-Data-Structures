@@ -3,7 +3,7 @@ package LinkedList
 import "fmt"
 
 type node struct {
-	e interface{}
+	e    interface{}
 	next *node
 }
 

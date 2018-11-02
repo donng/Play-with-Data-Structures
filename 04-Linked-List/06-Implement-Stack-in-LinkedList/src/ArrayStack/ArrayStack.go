@@ -43,7 +43,7 @@ func (a *ArrayStack) String() string {
 	buffer.WriteString("[")
 	for i := 0; i < a.array.GetSize(); i++ {
 		buffer.WriteString(fmt.Sprint(a.array.Get(i)))
-		if i != a.array.GetSize() - 1 {
+		if i != a.array.GetSize()-1 {
 			buffer.WriteString(", ")
 		}
 	}
@@ -51,5 +51,3 @@ func (a *ArrayStack) String() string {
 
 	return buffer.String()
 }
-
-

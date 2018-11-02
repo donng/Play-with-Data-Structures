@@ -3,7 +3,7 @@ package LinkedList
 import "fmt"
 
 type node struct {
-	e interface{}
+	e    interface{}
 	next *node
 }
 
@@ -23,7 +23,7 @@ func (l *LinkedList) IsEmpty() bool {
 }
 
 // 在链表头添加新的元素e
-func (l *LinkedList) AddFirst(e interface{})  {
+func (l *LinkedList) AddFirst(e interface{}) {
 	//node := &node{e: e}
 	//node.next = l.head
 	//l.head = node
@@ -33,7 +33,7 @@ func (l *LinkedList) AddFirst(e interface{})  {
 
 // 在链表的index(0-based)位置添加新的元素e
 // 在链表中不是一个常用的操作，练习用：）
-func (l *LinkedList) Add(index int, e interface{})  {
+func (l *LinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
 		panic("Add failed.Illegal index.")
 	}
@@ -43,7 +43,7 @@ func (l *LinkedList) Add(index int, e interface{})  {
 	} else {
 		// 获得待插入节点的前一个节点
 		prev := l.head
-		for i := 0; i < index - 1; i++ {
+		for i := 0; i < index-1; i++ {
 			prev = prev.next
 		}
 
@@ -56,7 +56,7 @@ func (l *LinkedList) Add(index int, e interface{})  {
 }
 
 // 在链表末尾添加新的元素e
-func (l *LinkedList) AddLast(e interface{})  {
+func (l *LinkedList) AddLast(e interface{}) {
 	l.Add(l.size, e)
 }
 

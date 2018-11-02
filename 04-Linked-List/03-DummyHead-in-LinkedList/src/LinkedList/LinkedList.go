@@ -3,13 +3,13 @@ package LinkedList
 import "fmt"
 
 type node struct {
-	e interface{}
+	e    interface{}
 	next *node
 }
 
 type LinkedList struct {
 	dummyHead *node
-	size int
+	size      int
 }
 
 // 获取链表中的元素个数
@@ -22,10 +22,9 @@ func (l *LinkedList) IsEmpty() bool {
 	return l.size == 0
 }
 
-
 // 在链表的index(0-based)位置添加新的元素e
 // 在链表中不是一个常用的操作，练习用：）
-func (l *LinkedList) Add(index int, e interface{})  {
+func (l *LinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
 		panic("Add failed.Illegal index.")
 	}
@@ -44,12 +43,12 @@ func (l *LinkedList) Add(index int, e interface{})  {
 }
 
 // 在链表头添加新的元素e
-func (l *LinkedList) AddFirst(e interface{})  {
+func (l *LinkedList) AddFirst(e interface{}) {
 	l.Add(0, e)
 }
 
 // 在链表末尾添加新的元素e
-func (l *LinkedList) AddLast(e interface{})  {
+func (l *LinkedList) AddLast(e interface{}) {
 	l.Add(l.size, e)
 }
 

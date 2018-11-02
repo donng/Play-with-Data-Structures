@@ -51,4 +51,3 @@ func (t *BST) add(n *node, e int) {
 		t.add(n.right, e)
 	}
 }
-
