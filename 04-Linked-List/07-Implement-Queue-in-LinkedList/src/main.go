@@ -36,5 +36,4 @@ func main() {
 	linkedListpQueue := &LinkedListQueue.LinkedListQueue{}
 	time = testQueue(linkedListpQueue, opCount)
 	fmt.Println("linkedListpQueue, time:", time, "s")
-
 }
