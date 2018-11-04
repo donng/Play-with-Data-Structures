@@ -1,7 +1,12 @@
 package main
 
+import (
+	"fmt"
+	"Play-with-Data-Structures/06-Binary-Search-Tree/09-Non-Recursion-Preorder-Traverse-in-BST/src/BST"
+)
+
 func main() {
-	bst := &BST{}
+	bst := BST.GetBST()
 	nums := [...]int{5, 3, 6, 8, 4, 2}
 	for _, num := range nums {
 		bst.Add(num)
@@ -14,11 +19,10 @@ func main() {
 	//  / \    \   //
 	// 2  4     8  //
 	/////////////////
-	bst.LevelOrder()
-	//bst.PreOrder()
-	//fmt.Println()
-	//
-	//bst.PreOrderNR()
+	bst.PreOrder()
+	fmt.Println()
+
+	bst.PreOrderNR()
 	//bst.InOrder()
 	//fmt.Println()
 	//

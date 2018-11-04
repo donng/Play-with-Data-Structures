@@ -1,9 +1,10 @@
-package main
+package BST
 
 import (
 	"bytes"
 	"fmt"
 	"strconv"
+	"Play-with-Data-Structures/06-Binary-Search-Tree/09-Non-Recursion-Preorder-Traverse-in-BST/src/ArrayStack"
 )
 
 type node struct {
@@ -15,6 +16,14 @@ type node struct {
 type BST struct {
 	root *node
 	size int
+}
+
+func GetBST() *BST {
+	bst := &BST{}
+	bst.root = nil
+	bst.size = 0
+
+	return bst
 }
 
 func (t *BST) GetSize() int {
@@ -67,10 +76,12 @@ func contains(node *node, e int) bool {
 	}
 }
 
+// 二分搜索树的前序遍历
 func (t *BST) PreOrder() {
 	preOrder(t.root)
 }
 
+// 前序遍历以 node 为根的二分搜索树，递归算法
 func preOrder(node *node) {
 	if node == nil {
 		return
@@ -79,6 +90,25 @@ func preOrder(node *node) {
 	fmt.Println(node.e)
 	preOrder(node.left)
 	preOrder(node.right)
+}
+
+// 二分搜索树的非递归前序遍历
+func (t *BST) PreOrderNR() {
+	// 使用之前我们自己实现的数组栈
+	stack := ArrayStack.GetArrayStack(20)
+	stack.Push(t.root)
+
+	for !stack.IsEmpty() {
+		cur := stack.Pop().(*node)
+		fmt.Println(cur.e)
+
+		if cur.right != nil {
+			stack.Push(cur.right)
+		}
+		if cur.left != nil {
+			stack.Push(cur.left)
+		}
+	}
 }
 
 // 二分搜索树的中序遍历

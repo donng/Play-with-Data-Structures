@@ -1,17 +1,18 @@
-package main
+package ArrayStack
 
 import (
 	"bytes"
 	"fmt"
+	"Play-with-Data-Structures/06-Binary-Search-Tree/09-Non-Recursion-Preorder-Traverse-in-BST/src/Array"
 )
 
 type ArrayStack struct {
-	array *Array
+	array *Array.Array
 }
 
 func GetArrayStack(capacity int) (arrayStack *ArrayStack) {
 	arrayStack = &ArrayStack{}
-	arrayStack.array = GetArray(capacity)
+	arrayStack.array = Array.GetArray(capacity)
 	return
 }
 
@@ -41,7 +42,7 @@ func (a *ArrayStack) String() string {
 	buffer.WriteString("Stack: ")
 	buffer.WriteString("[")
 	for i := 0; i < a.array.GetSize(); i++ {
-		buffer.WriteString(fmt.Sprint(a.array.data[i]))
+		buffer.WriteString(fmt.Sprint(a.array.Get(i)))
 		if i != a.array.GetSize()-1 {
 			buffer.WriteString(", ")
 		}

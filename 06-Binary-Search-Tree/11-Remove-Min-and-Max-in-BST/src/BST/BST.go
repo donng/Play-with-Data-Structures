@@ -1,4 +1,4 @@
-package main
+package BST
 
 import (
 	"bytes"
@@ -15,6 +15,14 @@ type node struct {
 type BST struct {
 	root *node
 	size int
+}
+
+func GetBST() *BST {
+	bst := &BST{}
+	bst.root = nil
+	bst.size = 0
+
+	return bst
 }
 
 func (t *BST) GetSize() int {
@@ -84,23 +92,23 @@ func preOrder(node *node) {
 }
 
 // 二分搜索树的非递归前序遍历
-func (t *BST) PreOrderNR() {
-	// 使用之前我们自己实现的数组栈
-	stack := GetArrayStack(20)
-	stack.Push(t.root)
-
-	for !stack.IsEmpty() {
-		cur := stack.Pop().(*node)
-		fmt.Println(cur.e)
-
-		if cur.right != nil {
-			stack.Push(cur.right)
-		}
-		if cur.left != nil {
-			stack.Push(cur.left)
-		}
-	}
-}
+//func (t *BST) PreOrderNR() {
+//	// 使用之前我们自己实现的数组栈
+//	stack := GetArrayStack(20)
+//	stack.Push(t.root)
+//
+//	for !stack.IsEmpty() {
+//		cur := stack.Pop().(*node)
+//		fmt.Println(cur.e)
+//
+//		if cur.right != nil {
+//			stack.Push(cur.right)
+//		}
+//		if cur.left != nil {
+//			stack.Push(cur.left)
+//		}
+//	}
+//}
 
 // 二分搜索树的中序遍历
 func (t *BST) InOrder() {
@@ -132,6 +140,96 @@ func postOrder(node *node) {
 	postOrder(node.left)
 	postOrder(node.right)
 	fmt.Println(node.e)
+}
+
+// 二分搜索树的层序遍历
+//func (t *BST) LevelOrder() {
+//	// 使用我们之前实现的循环队列
+//	queue := GetLoopQueue(20)
+//	queue.Enqueue(t.root)
+//	for !queue.IsEmpty() {
+//		cur := queue.Dequeue().(*node)
+//		fmt.Println(cur.e)
+//
+//		if cur.left != nil {
+//			queue.Enqueue(cur.left)
+//		}
+//		if cur.right != nil {
+//			queue.Enqueue(cur.right)
+//		}
+//	}
+//}
+
+// 寻找二分搜索树的最小元素
+func (t *BST) Minimum() int {
+	if t.size == 0 {
+		panic("BST is empty!")
+	}
+	return minimum(t.root).e
+}
+
+// 返回以 node 为根的二分搜索树的最小值所在的节点
+func minimum(n *node) *node {
+	if n.left == nil {
+		return n
+	}
+	return minimum(n.left)
+}
+
+// 寻找二分搜索树的最大元素
+func (t *BST) Maximum() int {
+	if t.size == 0 {
+		panic("BST is empty!")
+	}
+	return maximum(t.root).e
+}
+
+// 返回以 node 为根的二分搜索树的最大值所在的节点
+func maximum(n *node) *node {
+	if n.right == nil {
+		return n
+	}
+	return maximum(n.right)
+}
+
+// 从二分搜索树中删除最小值所在的节点，返回最小值
+func (t *BST) RemoveMin() int {
+	// 获得最小值
+	ret := t.Minimum()
+	t.root = t.removeMin(t.root)
+	return ret
+}
+
+// 删除以 node 为根的二分搜索树中的最小节点
+// 返回删除节点后新的二分搜索树的根
+func (t *BST) removeMin(n *node) *node {
+	if n.left == nil {
+		rightNode := n.right
+		t.size--
+		return rightNode
+	}
+	n.left = t.removeMin(n.left)
+	return n
+}
+
+// 从二分搜索树中删除最小值所在的节点，返回最小值
+func (t *BST) RemoveMax() int {
+	// 获得最小值
+	ret := t.Maximum()
+	t.root = t.removeMax(t.root)
+	return ret
+}
+
+// 删除以 node 为根的二分搜索树中的最小节点
+// 返回删除节点后新的二分搜索树的根
+func (t *BST) removeMax(n *node) *node {
+	if n.right == nil {
+		leftNode := n.left
+		t.size--
+		return leftNode
+	}
+	n.right = t.removeMax(n.right)
+	return n
 }
 
 func (t *BST) String() string {

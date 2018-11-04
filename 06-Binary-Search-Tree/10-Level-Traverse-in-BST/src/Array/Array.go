@@ -1,4 +1,4 @@
-package main
+package Array
 
 import (
 	"bytes"
@@ -167,7 +167,7 @@ func (a *Array) RemoveElement(element interface{}) bool {
 }
 
 // 从数组中删除所有元素 element
-func (a *Array) RemoveAllElement(element interface{}) bool {
+func (a *Array) removeAllElement(element interface{}) bool {
 	if a.Find(element) == -1 {
 		return false
 	}

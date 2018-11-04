@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"Play-with-Data-Structures/06-Binary-Search-Tree/12-Remove-Elements-in-BST/src/BST"
 )
 
 func main() {
-	bst := &BST{}
+	bst := BST.GetBST()
 
 	n := 1000
 	nums := []int{}
@@ -31,9 +32,9 @@ func main() {
 	for i := 0; i < n; i++ {
 		if bst.Contains(nums[i]) {
 			bst.Remove(nums[i])
-			fmt.Println("After remove", nums[i], ", size = ", bst.size)
+			fmt.Println("After remove", nums[i], ", size = ", bst.GetSize())
 		}
 	}
 	// 最终整个二分搜索树应该为空
-	fmt.Println(bst.size)
+	fmt.Println(bst.GetSize())
 }

@@ -1,4 +1,4 @@
-package main
+package BST
 
 type node struct {
 	e     interface{}

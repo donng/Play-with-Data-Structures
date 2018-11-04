@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"math/rand"
 	"time"
+	"Play-with-Data-Structures/06-Binary-Search-Tree/11-Remove-Min-and-Max-in-BST/src/BST"
 )
 
 func main() {
-	bst := &BST{}
+	bst := BST.GetBST()
 
 	n := 1000
 	nums := []int{}

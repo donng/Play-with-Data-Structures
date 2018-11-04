@@ -1,7 +1,7 @@
-package src
+package BST
 
 type node struct {
-	e     int
+	e     string
 	left  *node
 	right *node
 }
@@ -9,6 +9,14 @@ type node struct {
 type BST struct {
 	root *node
 	size int
+}
+
+func GetBST() *BST {
+	bst := &BST{}
+	bst.root = nil
+	bst.size = 0
+
+	return bst
 }
 
 func (t *BST) GetSize() int {
@@ -20,13 +28,13 @@ func (t *BST) IsEmpty() bool {
 }
 
 // 向二分搜索树中添加新的元素 e
-func (t *BST) Add(e int) {
+func (t *BST) Add(e string) {
 	t.root = t.add(t.root, e)
 }
 
 // 向以 node 为跟的二分搜索树中插入元素 e，递归算法
 // 返回插入新节点后二分搜索树的根
-func (t *BST) add(n *node, e int) *node {
+func (t *BST) add(n *node, e string) *node {
 	if n == nil {
 		t.size++
 		return &node{e: e}
