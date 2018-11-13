@@ -1,8 +1,8 @@
 package BSTMap
 
 import (
-	"fmt"
 	"bytes"
+	"fmt"
 )
 
 type node struct {

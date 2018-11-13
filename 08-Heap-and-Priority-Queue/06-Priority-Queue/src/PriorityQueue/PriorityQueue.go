@@ -25,4 +25,3 @@ func (q *PriorityQueue) Dequeue() interface{} {
 func (q *PriorityQueue) GetFront() interface{} {
 	return q.maxHeap.FindMax()
 }
-

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"Play-with-Data-Structures/06-Binary-Search-Tree/04-Improved-Add-Elements-in-BST/src/BST"
 	"bytes"
 	"fmt"
-	"Play-with-Data-Structures/06-Binary-Search-Tree/04-Improved-Add-Elements-in-BST/src/BST"
 )
 
 /// Leetcode 804. Unique Morse Code Words
@@ -12,7 +12,7 @@ import (
 /// 课程中在这里暂时没有介绍这个问题
 /// 该代码主要用于使用Leetcode上的问题测试我们的BST类
 func uniqueMorseRepresentations(words []string) int {
-	morseCode := []string{".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."}
+	morseCode := []string{".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."}
 
 	buffer := bytes.Buffer{}
 	uniqueTree := BST.GetBST()
@@ -20,7 +20,7 @@ func uniqueMorseRepresentations(words []string) int {
 	for _, word := range words {
 		buffer.Reset()
 		for _, letter := range word {
-			buffer.WriteString(morseCode[letter - 'a'])
+			buffer.WriteString(morseCode[letter-'a'])
 		}
 		uniqueTree.Add(buffer.String())
 	}
@@ -33,5 +33,3 @@ func main() {
 
 	fmt.Println(uniqueMorseRepresentations(words))
 }
-
-

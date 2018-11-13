@@ -1,10 +1,10 @@
 package main
 
 import (
+	"Play-with-Data-Structures/06-Binary-Search-Tree/12-Remove-Elements-in-BST/src/BST"
 	"fmt"
 	"math/rand"
 	"time"
-	"Play-with-Data-Structures/06-Binary-Search-Tree/12-Remove-Elements-in-BST/src/BST"
 )
 
 func main() {

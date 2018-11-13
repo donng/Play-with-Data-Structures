@@ -1,14 +1,14 @@
 package main
 
 import (
+	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/BSTMap"
+	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/FileOperation"
+	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/LinkedList"
 	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/Map"
-	"time"
 	"fmt"
 	"os"
 	"path/filepath"
-	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/FileOperation"
-	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/BSTMap"
-	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/LinkedList"
+	"time"
 )
 
 func testSet(p Map.Map, filename string) time.Duration {
@@ -19,7 +19,7 @@ func testSet(p Map.Map, filename string) time.Duration {
 
 	for _, word := range words {
 		if p.Contains(word) {
-			p.Set(word, p.Get(word).(int) + 1)
+			p.Set(word, p.Get(word).(int)+1)
 		} else {
 			p.Add(word, 1)
 		}
@@ -40,7 +40,6 @@ func main() {
 	bstMap := BSTMap.GetBSTMap()
 	time1 := testSet(bstMap, filename)
 	fmt.Println("BST map :", time1)
-
 
 	linkedListMap := LinkedListMap.GetLinkedListMap()
 	time2 := testSet(linkedListMap, filename)

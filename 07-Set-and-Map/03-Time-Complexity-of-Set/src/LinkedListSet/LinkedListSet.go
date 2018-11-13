@@ -35,4 +35,3 @@ func (s *LinkedListSet) GetSize() int {
 func (s *LinkedListSet) IsEmpty() bool {
 	return s.LinkedList.IsEmpty()
 }
-

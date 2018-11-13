@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/06-Binary-Search-Tree/06-PreOrder-Traverse-in-BST/src/BST"
+	"fmt"
 )
 
 func main() {

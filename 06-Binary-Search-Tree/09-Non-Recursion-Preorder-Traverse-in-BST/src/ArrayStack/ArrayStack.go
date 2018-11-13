@@ -1,9 +1,9 @@
 package ArrayStack
 
 import (
+	"Play-with-Data-Structures/06-Binary-Search-Tree/09-Non-Recursion-Preorder-Traverse-in-BST/src/Array"
 	"bytes"
 	"fmt"
-	"Play-with-Data-Structures/06-Binary-Search-Tree/09-Non-Recursion-Preorder-Traverse-in-BST/src/Array"
 )
 
 type ArrayStack struct {

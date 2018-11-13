@@ -16,7 +16,7 @@ func intersect(nums1 []int, nums2 []int) []int {
 
 	for _, num := range nums1 {
 		if customMap.Contains(num) {
-			customMap.Set(num, customMap.Get(num).(int) + 1)
+			customMap.Set(num, customMap.Get(num).(int)+1)
 		} else {
 			customMap.Add(num, 1)
 		}
@@ -26,7 +26,7 @@ func intersect(nums1 []int, nums2 []int) []int {
 		value := customMap.Get(num)
 		if value != nil && value.(int) > 0 {
 			res = append(res, num)
-			customMap.Set(num, value.(int) - 1)
+			customMap.Set(num, value.(int)-1)
 		}
 	}
 

@@ -1,9 +1,9 @@
 package FileOperation
 
 import (
-	"os"
 	"bufio"
 	"io"
+	"os"
 	"strings"
 )
 

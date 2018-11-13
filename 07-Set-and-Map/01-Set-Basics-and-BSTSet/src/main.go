@@ -1,11 +1,11 @@
 package main
 
 import (
-	"Play-with-Data-Structures/07-Set-and-Map/01-Set-Basics-and-BSTSet/src/FileOperation"
-	"path/filepath"
-	"os"
-	"fmt"
 	"Play-with-Data-Structures/07-Set-and-Map/01-Set-Basics-and-BSTSet/src/BSTSet"
+	"Play-with-Data-Structures/07-Set-and-Map/01-Set-Basics-and-BSTSet/src/FileOperation"
+	"fmt"
+	"os"
+	"path/filepath"
 )
 
 func main() {

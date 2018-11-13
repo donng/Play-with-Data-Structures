@@ -1,9 +1,9 @@
 package ArrayStack
 
 import (
+	"Play-with-Data-Structures/03-Stacks-and-Queues/04-More-about-Leetcode/src/Array"
 	"bytes"
 	"fmt"
-	"Play-with-Data-Structures/03-Stacks-and-Queues/04-More-about-Leetcode/src/Array"
 )
 
 type ArrayStack struct {

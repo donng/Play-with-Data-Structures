@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/08-Heap-and-Priority-Queue/05-Heapify-and-Replace-in-Heap/src/Array"
+	"fmt"
 )
 
 type MaxHeap struct {
@@ -111,7 +111,7 @@ func (h *MaxHeap) siftDown(k int) {
 	for h.leftChild(k) < h.data.GetSize() {
 		j := h.leftChild(k)
 		// j+1是右孩子索引，如果存在右孩子比较后获得左右孩子中较大值的索引
-		if j+1 < h.data.GetSize() && h.data.Get(j + 1).(*freq).compareTo(h.data.Get(j).(*freq)) > 0 {
+		if j+1 < h.data.GetSize() && h.data.Get(j+1).(*freq).compareTo(h.data.Get(j).(*freq)) > 0 {
 			j++
 		}
 		// data[j] 是 leftChild 和 rightChild 中的最大值
@@ -180,7 +180,7 @@ func topKFrequent(nums []int, k int) []int {
 		if pq.GetSize() < k {
 			pq.Enqueue(&freq{e: num, frequency: f})
 		} else {
-			if  f > pq.GetFront().(*freq).frequency {
+			if f > pq.GetFront().(*freq).frequency {
 				pq.Dequeue()
 				pq.Enqueue(&freq{e: num, frequency: f})
 			}

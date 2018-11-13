@@ -33,4 +33,3 @@ func (s *BSTSet) GetSize() int {
 func (s *BSTSet) IsEmpty() bool {
 	return s.BST.IsEmpty()
 }
-

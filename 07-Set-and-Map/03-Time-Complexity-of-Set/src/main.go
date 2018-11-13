@@ -1,14 +1,14 @@
 package main
 
 import (
+	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/BSTSet"
+	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/FileOperation"
+	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/LinkedListSet"
 	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/Set"
+	"fmt"
 	"os"
 	"path/filepath"
-	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/BSTSet"
-	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/LinkedListSet"
-	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/FileOperation"
 	"time"
-	"fmt"
 )
 
 func testSet(set Set.Set, filename string) time.Duration {

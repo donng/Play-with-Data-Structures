@@ -146,7 +146,7 @@ func (l *LinkedList) RemoveLast() {
 	l.Remove(l.size - 1)
 }
 
-func (l *LinkedList) RemoveElement(e interface{})  {
+func (l *LinkedList) RemoveElement(e interface{}) {
 	prev := l.dummyHead
 
 	for prev.next != nil {

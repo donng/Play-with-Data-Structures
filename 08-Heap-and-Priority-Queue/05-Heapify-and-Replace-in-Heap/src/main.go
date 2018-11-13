@@ -1,11 +1,11 @@
 package main
 
 import (
+	"Play-with-Data-Structures/08-Heap-and-Priority-Queue/05-Heapify-and-Replace-in-Heap/src/MaxHeap"
 	"fmt"
 	"math"
 	"math/rand"
 	"time"
-	"Play-with-Data-Structures/08-Heap-and-Priority-Queue/05-Heapify-and-Replace-in-Heap/src/MaxHeap"
 )
 
 func testHeap(testData []interface{}, isHeapify bool) time.Duration {
@@ -26,7 +26,7 @@ func testHeap(testData []interface{}, isHeapify bool) time.Duration {
 		arr[i] = maxHeap.ExtractMax()
 	}
 	for i := 1; i < len(testData); i++ {
-		if arr[i - 1].(int) < arr[i].(int) {
+		if arr[i-1].(int) < arr[i].(int) {
 			panic("Error")
 		}
 	}

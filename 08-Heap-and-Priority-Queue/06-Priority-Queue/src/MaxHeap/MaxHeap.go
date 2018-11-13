@@ -90,7 +90,7 @@ func (h *MaxHeap) siftDown(k int) {
 	for leftChild(k) < h.data.GetSize() {
 		j := leftChild(k)
 		// j+1是右孩子索引，如果存在右孩子比较后获得左右孩子中较大值的索引
-		if j + 1 < h.data.GetSize() && h.data.Get(j + 1).(int) > h.data.Get(j).(int) {
+		if j+1 < h.data.GetSize() && h.data.Get(j+1).(int) > h.data.Get(j).(int) {
 			j++
 		}
 		// data[j] 是 leftChild 和 rightChild 中的最大值

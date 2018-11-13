@@ -34,25 +34,23 @@ func (h *MaxHeap) parent(index int) int {
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
 func (h *MaxHeap) leftChild(index int) int {
-	return index * 2 + 1
+	return index*2 + 1
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
 func (h *MaxHeap) rightChild(index int) int {
-	return index * 2 + 2
+	return index*2 + 2
 }
 
 // 向堆中添加元素
-func (h *MaxHeap)Add(e interface{}) {
+func (h *MaxHeap) Add(e interface{}) {
 	h.data.AddLast(e)
 	h.siftUp(h.data.GetSize() - 1)
 }
 
-func (h *MaxHeap) siftUp(k int)  {
-	for k >0 && h.data.Get(k).(int) > h.data.Get(h.parent(k)).(int) {
+func (h *MaxHeap) siftUp(k int) {
+	for k > 0 && h.data.Get(k).(int) > h.data.Get(h.parent(k)).(int) {
 		h.data.Swap(k, h.parent(k))
 		k = h.parent(k)
 	}
 }
-
-

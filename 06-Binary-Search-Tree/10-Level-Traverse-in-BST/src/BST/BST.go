@@ -1,10 +1,10 @@
 package BST
 
 import (
+	"Play-with-Data-Structures/06-Binary-Search-Tree/10-Level-Traverse-in-BST/src/LoopQueue"
 	"bytes"
 	"fmt"
 	"strconv"
-	"Play-with-Data-Structures/06-Binary-Search-Tree/10-Level-Traverse-in-BST/src/LoopQueue"
 )
 
 type node struct {

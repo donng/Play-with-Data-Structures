@@ -34,10 +34,10 @@ func (h *MaxHeap) parent(index int) int {
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
 func (h *MaxHeap) leftChild(index int) int {
-	return index * 2 + 1
+	return index*2 + 1
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
 func (h *MaxHeap) rightChild(index int) int {
-	return index * 2 + 2
+	return index*2 + 2
 }

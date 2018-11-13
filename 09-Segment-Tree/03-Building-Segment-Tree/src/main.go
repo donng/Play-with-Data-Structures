@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-func main()  {
+func main() {
 	nums := []interface{}{-2, 0, 3, -5, 2, -1}
 
 	setTree := SegmentTree.GetSegmentTree(nums, func(a interface{}, b interface{}) interface{} {

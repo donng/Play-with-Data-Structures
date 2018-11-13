@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/07-Set-and-Map/02-LinkedListSet/src/LinkedListSet"
+	"fmt"
 )
 
 /// Leetcode 349. Intersection of Two Arrays
