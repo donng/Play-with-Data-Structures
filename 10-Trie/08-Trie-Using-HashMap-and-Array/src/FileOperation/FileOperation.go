@@ -11,6 +11,7 @@ func ReadFile(filename string) []string {
 	var words []string
 
 	file, err := os.Open(filename)
+
 	if err != nil {
 		panic(err)
 	}
@@ -24,9 +25,11 @@ func ReadFile(filename string) []string {
 			break
 		}
 
-		strArr := strings.Fields(line)
-		for _, word := range strArr {
-			words = append(words, extractStr(strings.ToLower(word)))
+		wordSlice := strings.Fields(line)
+		for _, word := range wordSlice {
+			if word = extractStr(strings.ToLower(word)); word != "" {
+				words = append(words, word)
+			}
 		}
 	}
 
@@ -34,11 +37,11 @@ func ReadFile(filename string) []string {
 }
 
 func extractStr(str string) string {
-	newStr := []rune{}
-	for _, w := range str {
-		if w >= 'a' && w <= 'z' {
-			newStr = append(newStr, w)
+	var res []rune
+	for _, letter := range str {
+		if letter >= 'a' && letter <= 'z' {
+			res = append(res, letter)
 		}
 	}
-	return string(newStr)
+	return string(res)
 }

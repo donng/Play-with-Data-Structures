@@ -24,6 +24,10 @@ func main() {
 	words2 := FileOperation.ReadFile(filename2)
 	words := append(words1, words2...)
 
+	for i := 0; i < 200; i++ {
+		fmt.Println(words[i])
+	}
+
 	startTime := time.Now()
 
 	bstSet := BSTSet.Constructor()
