@@ -58,4 +58,3 @@ func (this *Trie) Contains(word string) bool {
 
 	return cur.isWord
 }
-

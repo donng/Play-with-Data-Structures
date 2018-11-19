@@ -1,13 +1,13 @@
 package main
 
 import (
+	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/BSTSet"
+	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/FileOperation"
+	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/Trie"
 	"fmt"
 	"os"
 	"path/filepath"
-	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/BSTSet"
-	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/FileOperation"
 	"time"
-	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/Trie"
 )
 
 func main() {

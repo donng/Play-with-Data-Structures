@@ -115,8 +115,8 @@ func (t *SegmentTree) set(treeIndex int, l int, r int, index int, e interface{})
 	// treeIndex的节点分为[l...mid]和[mid+1...r]两部分
 	leftTreeIndex := leftChild(treeIndex)
 	rightTreeIndex := rightChild(treeIndex)
-	if index >= mid + 1 {
-		t.set(rightTreeIndex, mid + 1, r, index, e)
+	if index >= mid+1 {
+		t.set(rightTreeIndex, mid+1, r, index, e)
 	} else {
 		t.set(leftTreeIndex, l, mid, index, e)
 	}

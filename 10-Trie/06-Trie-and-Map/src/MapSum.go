@@ -4,7 +4,7 @@ import "fmt"
 
 type node struct {
 	value int
-	next map[string]*node
+	next  map[string]*node
 }
 
 type MapSum struct {
@@ -21,7 +21,7 @@ func Constructor() MapSum {
 	return MapSum{n}
 }
 
-func (this *MapSum) Insert(key string, val int)  {
+func (this *MapSum) Insert(key string, val int) {
 	cur := this.root
 
 	for _, w := range []rune(key) {

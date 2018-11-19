@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/09-Segment-Tree/06-Update-Single-Element-in-Segment-Tree/src/SegmentTree"
+	"fmt"
 )
 
 /// Leetcode 307. Range Sum Query - Mutable

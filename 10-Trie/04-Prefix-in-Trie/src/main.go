@@ -1,13 +1,13 @@
 package main
 
 import (
+	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/BSTSet"
+	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/FileOperation"
+	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/Trie"
 	"fmt"
 	"os"
 	"path/filepath"
-	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/BSTSet"
-	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/FileOperation"
 	"time"
-	"Play-with-Data-Structures/10-Trie/04-Prefix-in-Trie/src/Trie"
 )
 
 func main() {

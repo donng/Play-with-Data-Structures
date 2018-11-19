@@ -132,7 +132,6 @@ func Constructor(nums []int) NumArray {
 	return NumArray{setTree}
 }
 
-
 func (this *NumArray) SumRange(i int, j int) int {
 	if this.segmentTree == nil {
 		panic("Segment Tree is null")
