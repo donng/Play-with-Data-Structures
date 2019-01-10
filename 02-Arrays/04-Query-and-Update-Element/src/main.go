@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	arr := Array.GetArray(20)
+	arr := Array.Constructor(20)
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}

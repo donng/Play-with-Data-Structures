@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	arr := Array.GetArray(20)
+	arr := Array.Constructor(20)
 
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
@@ -38,7 +38,7 @@ func main() {
 	fmt.Println(arr, isRemove)
 
 	// 测试 student 类型
-	students := Array.GetArray(10)
+	students := Array.Constructor(10)
 	students.AddLast(Student.GetStudent("Alice", 100))
 	students.AddLast(Student.GetStudent("Bob", 66))
 	students.AddLast(Student.GetStudent("Charlie", 88))

@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	a := Array.GetArray(5)
+	a := Array.Constructor(5)
 
 	a.AddLast(2)
 	a.AddLast(3)

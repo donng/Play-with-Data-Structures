@@ -7,12 +7,8 @@ type Student struct {
 	score int
 }
 
-func GetStudent(name string, score int) (student *Student) {
-	student = &Student{}
-	student.name = name
-	student.score = score
-
-	return
+func GetStudent(name string, score int) *Student {
+	return &Student{name, score}
 }
 
 func (s *Student) String() string {

@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	a := Array.GetArray(5)
+	a := Array.Constructor(5)
 
 	fmt.Println(a)
 	fmt.Println(a.GetCapacity(), a.GetSize(), a.IsEmpty())
