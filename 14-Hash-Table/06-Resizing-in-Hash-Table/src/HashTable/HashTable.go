@@ -2,9 +2,9 @@ package HashTable
 
 import (
 	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/RBTree"
-	"strconv"
-	"hash/fnv"
 	"fmt"
+	"hash/fnv"
+	"strconv"
 )
 
 const upperTol = 10

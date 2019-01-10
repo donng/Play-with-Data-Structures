@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"math"
+	"reflect"
 )
 
 /// Leetcode 350. Intersection of Two Arrays II
@@ -363,7 +363,7 @@ func intersect(nums1 []int, nums2 []int) []int {
 		if !avlMap.Contains(num) {
 			avlMap.Add(num, 1)
 		} else {
-			avlMap.Set(num, avlMap.Get(num).(int) + 1)
+			avlMap.Set(num, avlMap.Get(num).(int)+1)
 		}
 	}
 
@@ -371,7 +371,7 @@ func intersect(nums1 []int, nums2 []int) []int {
 	for _, num := range nums2 {
 		if avlMap.Contains(num) {
 			list = append(list, num)
-			avlMap.Set(num, avlMap.Get(num).(int) - 1)
+			avlMap.Set(num, avlMap.Get(num).(int)-1)
 			if avlMap.Get(num) == 0 {
 				avlMap.Remove(num)
 			}
@@ -380,4 +380,3 @@ func intersect(nums1 []int, nums2 []int) []int {
 
 	return list
 }
-

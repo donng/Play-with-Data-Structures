@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"math"
+	"reflect"
 )
 
 /// Leetcode 349. Intersection of Two Arrays

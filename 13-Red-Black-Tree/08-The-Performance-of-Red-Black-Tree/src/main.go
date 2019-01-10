@@ -1,13 +1,13 @@
 package main
 
 import (
-	"time"
+	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/AVLTree"
+	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/BSTMap"
+	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/FileOperation"
+	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/RBTree"
 	"fmt"
 	"path/filepath"
-	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/FileOperation"
-	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/BSTMap"
-	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/AVLTree"
-	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/RBTree"
+	"time"
 )
 
 func main() {

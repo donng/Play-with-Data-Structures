@@ -1,14 +1,14 @@
 package main
 
 import (
+	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/AVLSet"
+	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/BSTSet"
 	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/FileOperation"
 	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/LinkedListSet"
+	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/Set"
 	"fmt"
 	"path/filepath"
 	"time"
-	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/Set"
-	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/BSTSet"
-	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/AVLSet"
 )
 
 func testSet(set Set.Set, filename string) time.Duration {

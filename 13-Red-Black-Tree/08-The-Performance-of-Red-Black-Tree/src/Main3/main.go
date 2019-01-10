@@ -1,10 +1,10 @@
 package main
 
 import (
-	"time"
-	"fmt"
 	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/AVLTree"
 	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/RBTree"
+	"fmt"
+	"time"
 )
 
 func main() {

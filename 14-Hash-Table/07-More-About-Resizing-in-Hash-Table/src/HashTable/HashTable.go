@@ -2,9 +2,9 @@ package HashTable
 
 import (
 	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/RBTree"
-	"strconv"
-	"hash/fnv"
 	"fmt"
+	"hash/fnv"
+	"strconv"
 )
 
 const upperTol = 10
@@ -43,7 +43,7 @@ func (this *HashTable) Add(key interface{}, value interface{}) {
 		m.Add(key, value)
 		this.size++
 
-		if this.size >= upperTol*this.M && capacityIndex + 1 < len(capacity){
+		if this.size >= upperTol*this.M && capacityIndex+1 < len(capacity) {
 			capacityIndex++
 			this.resize(capacity[capacityIndex])
 		}
@@ -55,7 +55,7 @@ func (this *HashTable) Remove(key interface{}) interface{} {
 	if m.Contains(key) {
 		ret := m.Remove(key)
 		this.size--
-		if this.size < lowerTol*this.M && capacityIndex - 1 >= 0 {
+		if this.size < lowerTol*this.M && capacityIndex-1 >= 0 {
 			capacityIndex--
 			this.resize(capacity[capacityIndex])
 		}

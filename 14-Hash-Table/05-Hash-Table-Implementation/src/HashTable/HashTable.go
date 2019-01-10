@@ -2,9 +2,9 @@ package HashTable
 
 import (
 	"Play-with-Data-Structures/14-Hash-Table/05-Hash-Table-Implementation/src/RBTree"
-	"strconv"
-	"hash/fnv"
 	"fmt"
+	"hash/fnv"
+	"strconv"
 )
 
 type HashTable struct {

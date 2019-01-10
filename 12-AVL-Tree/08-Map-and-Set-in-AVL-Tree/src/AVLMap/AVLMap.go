@@ -37,5 +37,3 @@ func (this *AVLMap) GetSize() int {
 func (this *AVLMap) IsEmpty() bool {
 	return this.avl.IsEmpty()
 }
-
-

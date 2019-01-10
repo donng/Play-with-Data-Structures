@@ -1,12 +1,12 @@
 package main
 
 import (
-	"time"
+	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/AVLTree"
+	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/BSTMap"
+	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/FileOperation"
 	"fmt"
 	"path/filepath"
-	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/FileOperation"
-	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/BSTMap"
-	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/AVLTree"
+	"time"
 )
 
 func main() {

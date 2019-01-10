@@ -1,16 +1,16 @@
 package main
 
 import (
-	"math/rand"
-	"math"
-	"time"
-	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/BSTMap"
-	"fmt"
 	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/AVLTree"
+	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/BSTMap"
 	"Play-with-Data-Structures/13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/src/RBTree"
+	"fmt"
+	"math"
+	"math/rand"
+	"time"
 )
 
-func main()  {
+func main() {
 	n := 20000000
 
 	var testData []int

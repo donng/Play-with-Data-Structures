@@ -1,14 +1,14 @@
 package main
 
 import (
-	"time"
+	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/AVLTree"
+	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/BSTMap"
+	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/FileOperation"
+	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/HashTable"
+	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/RBTree"
 	"fmt"
 	"path/filepath"
-	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/FileOperation"
-	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/BSTMap"
-	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/AVLTree"
-	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/RBTree"
-	"Play-with-Data-Structures/14-Hash-Table/07-More-About-Resizing-in-Hash-Table/src/HashTable"
+	"time"
 )
 
 func main() {

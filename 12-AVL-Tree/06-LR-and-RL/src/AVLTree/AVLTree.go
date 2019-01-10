@@ -1,11 +1,11 @@
 package AVLTree
 
 import (
+	"Play-with-Data-Structures/12-AVL-Tree/06-LR-and-RL/src/FileOperation"
 	"bytes"
 	"fmt"
 	"math"
 	"path/filepath"
-	"Play-with-Data-Structures/12-AVL-Tree/06-LR-and-RL/src/FileOperation"
 	"reflect"
 )
 

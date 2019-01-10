@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
-	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/FileOperation"
-	"time"
-	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/BSTMap"
 	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/AVLTree"
+	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/BSTMap"
+	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/FileOperation"
+	"fmt"
 	"path/filepath"
+	"time"
 )
 
 func main() {
@@ -22,7 +22,7 @@ func main() {
 	bst := BSTMap.Constructor()
 	for _, word := range words {
 		if bst.Contains(word) {
-			bst.Set(word, bst.Get(word).(int) + 1)
+			bst.Set(word, bst.Get(word).(int)+1)
 		} else {
 			bst.Add(word, 1)
 		}
@@ -40,7 +40,7 @@ func main() {
 	avl := AVLTree.Constructor()
 	for _, word := range words {
 		if avl.Contains(word) {
-			avl.Set(word, avl.Get(word).(int) + 1)
+			avl.Set(word, avl.Get(word).(int)+1)
 		} else {
 			avl.Add(word, 1)
 		}

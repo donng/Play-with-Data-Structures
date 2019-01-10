@@ -5,10 +5,10 @@ import (
 	"Play-with-Data-Structures/11-Union-Find/07-More-about-Union-Find/src/UnionFind3"
 	"Play-with-Data-Structures/11-Union-Find/07-More-about-Union-Find/src/UnionFind4"
 	"Play-with-Data-Structures/11-Union-Find/07-More-about-Union-Find/src/UnionFind5"
+	"Play-with-Data-Structures/11-Union-Find/07-More-about-Union-Find/src/UnionFind6"
 	"fmt"
 	"math/rand"
 	"time"
-	"Play-with-Data-Structures/11-Union-Find/07-More-about-Union-Find/src/UnionFind6"
 )
 
 func testUF(uf UF.UF, m int) time.Duration {

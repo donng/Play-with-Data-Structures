@@ -1,11 +1,11 @@
 package main
 
 import (
+	"Play-with-Data-Structures/12-AVL-Tree/04-Rotation-Operations/src/FileOperation"
 	"bytes"
 	"fmt"
 	"math"
 	"path/filepath"
-	"Play-with-Data-Structures/12-AVL-Tree/04-Rotation-Operations/src/FileOperation"
 	"reflect"
 )
 
@@ -108,7 +108,6 @@ func (this *AVLTree) isBalanced(n *node) bool {
 	}
 	return this.isBalanced(n.left) && this.isBalanced(n.right)
 }
-
 
 // 返回以 node 为根节点的二分搜索树中，key所在的节点
 func (this *AVLTree) getNode(node *node, key interface{}) *node {

@@ -1,11 +1,11 @@
 package main
 
 import (
+	"Play-with-Data-Structures/12-AVL-Tree/02-Calculating-Balance-Factor/src/FileOperation"
 	"bytes"
 	"fmt"
 	"math"
 	"path/filepath"
-	"Play-with-Data-Structures/12-AVL-Tree/02-Calculating-Balance-Factor/src/FileOperation"
 	"reflect"
 )
 
