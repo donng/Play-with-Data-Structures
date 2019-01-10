@@ -64,7 +64,7 @@ func (this *Array) Add(index int, e int) {
 // 获取 index 索引位置的元素
 func (this *Array) Get(index int) int {
 	if index < 0 || index >= this.size {
-		panic("Get failed,Index is illegal.")
+		panic("Get failed. Index is illegal.")
 	}
 	return this.data[index]
 }
@@ -72,7 +72,7 @@ func (this *Array) Get(index int) int {
 // 修改 index 索引位置的元素
 func (this *Array) Set(index int, e int) {
 	if index < 0 || index >= this.size {
-		panic("Set failed,Index is illegal.")
+		panic("Set failed. Index is illegal.")
 	}
 	this.data[index] = e
 }

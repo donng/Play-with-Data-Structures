@@ -1,12 +1,12 @@
 package main
 
 import (
-	"Play-with-Data-Structures/03-Stacks-and-Queues/06-Loop-Queue/src/ArrayQueue"
 	"fmt"
+	"Play-with-Data-Structures/03-Stacks-and-Queues/07-Implementation-of-Loop-Queue/src/LoopQueue"
 )
 
 func main() {
-	queue := ArrayQueue.Constructor(20)
+	queue := LoopQueue.Constructor(10)
 	for i := 0; i < 10; i++ {
 		queue.Enqueue(i)
 		fmt.Println(queue)

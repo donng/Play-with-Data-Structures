@@ -1,4 +1,4 @@
-package main
+package ArrayQueue
 
 import (
 	"Play-with-Data-Structures/03-Stacks-and-Queues/05-Array-Queue/src/Array"
@@ -11,63 +11,49 @@ type ArrayQueue struct {
 	array *Array.Array
 }
 
-func getArrayQueue(capacity int) (queue *ArrayQueue) {
-	queue = &ArrayQueue{}
-	queue.array = Array.GetArray(capacity)
-
-	return
+func Constructor(capacity int) *ArrayQueue {
+	return &ArrayQueue{
+		array: Array.Constructor(capacity),
+	}
 }
 
-func (q *ArrayQueue) GetSize() int {
-	return q.array.GetSize()
+func (this *ArrayQueue) GetSize() int {
+	return this.array.GetSize()
 }
 
-func (q *ArrayQueue) IsEmpty() bool {
-	return q.array.IsEmpty()
+func (this *ArrayQueue) IsEmpty() bool {
+	return this.array.IsEmpty()
 }
 
-func (q *ArrayQueue) GetCapacity() int {
-	return q.array.GetCapacity()
+func (this *ArrayQueue) GetCapacity() int {
+	return this.array.GetCapacity()
 }
 
-func (q *ArrayQueue) Enqueue(e interface{}) {
-	q.array.AddLast(e)
+func (this *ArrayQueue) Enqueue(e interface{}) {
+	this.array.AddLast(e)
 }
 
-func (q *ArrayQueue) Dequeue() interface{} {
-	return q.array.RemoveFirst()
+func (this *ArrayQueue) Dequeue() interface{} {
+	return this.array.RemoveFirst()
 }
 
-func (q *ArrayQueue) GetFront() interface{} {
-	return q.array.GetFirst()
+func (this *ArrayQueue) GetFront() interface{} {
+	return this.array.GetFirst()
 }
 
-func (q *ArrayQueue) String() string {
+func (this *ArrayQueue) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString("Queue: ")
 	buffer.WriteString("front [")
-	for i := 0; i < q.array.GetSize(); i++ {
+	for i := 0; i < this.array.GetSize(); i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(q.array.Get(i)))
-		if i != (q.array.GetSize() - 1) {
+		buffer.WriteString(fmt.Sprint(this.array.Get(i)))
+		if i != (this.array.GetSize() - 1) {
 			buffer.WriteString(", ")
 		}
 	}
 	buffer.WriteString("] tail")
 
 	return buffer.String()
-}
-
-func main() {
-	queue := getArrayQueue(20)
-	for i := 0; i < 10; i++ {
-		queue.Enqueue(i)
-		fmt.Println(queue)
-
-		if i%3 == 2 {
-			queue.Dequeue()
-			fmt.Println(queue)
-		}
-	}
 }

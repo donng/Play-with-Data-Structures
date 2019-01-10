@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	stack := ArrayStack.GetArrayStack(10)
+	stack := ArrayStack.Constructor(10)
 	fmt.Println(stack)
 	for i := 0; i < 10; i++ {
 		stack.Push(i)

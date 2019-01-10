@@ -25,11 +25,11 @@ func testQueue(queue Queue.Queue, opCount int) float64 {
 func main() {
 	opCount := 100000
 
-	arrayQueue := ArrayQueue.GetArrayQueue(20)
+	arrayQueue := ArrayQueue.Constructor(20)
 	time := testQueue(arrayQueue, opCount)
 	fmt.Println("ArrayQueue, time:", time, "s")
 
-	loopQueue := LoopQueue.GetLoopQueue(20)
+	loopQueue := LoopQueue.Constructor(20)
 	time = testQueue(loopQueue, opCount)
 	fmt.Println("LoopQueue, time:", time, "s")
 

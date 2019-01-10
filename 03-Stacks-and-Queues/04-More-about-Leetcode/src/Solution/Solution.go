@@ -8,7 +8,7 @@ import (
 // go 的字符串实际是 byte 类型组成的切片
 func isValid(s string) bool {
 	brackets := map[rune]rune{')': '(', ']': '[', '}': '{'}
-	stack := ArrayStack.GetArrayStack(20)
+	stack := ArrayStack.Constructor(20)
 
 	for _, char := range s {
 		if char == '(' || char == '{' || char == '[' {

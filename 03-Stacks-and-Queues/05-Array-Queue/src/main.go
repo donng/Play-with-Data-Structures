@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Play-with-Data-Structures/03-Stacks-and-Queues/06-Loop-Queue/src/ArrayQueue"
 	"fmt"
+	"Play-with-Data-Structures/03-Stacks-and-Queues/05-Array-Queue/src/ArrayQueue"
 )
 
 func main() {

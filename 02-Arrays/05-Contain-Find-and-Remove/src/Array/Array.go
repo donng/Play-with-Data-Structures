@@ -108,17 +108,17 @@ func (this *Array) FindAll(e int) (indexes []int) {
 }
 
 // 从数组中删除 index 位置的元素，返回删除的元素
-func (this *Array) Remove(index int) (e int) {
+func (this *Array) Remove(index int) int {
 	if index < 0 || index >= this.size {
 		panic("Set failed. Index is illegal.")
 	}
 
-	e = this.data[index]
+	e := this.data[index]
 	for i := index + 1; i < this.size; i++ {
 		this.data[i-1] = this.data[i]
 	}
 	this.size--
-	return
+	return e
 }
 
 // 从数组中删除第一个元素，返回删除的元素

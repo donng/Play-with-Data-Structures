@@ -7,7 +7,7 @@ type LoopQueue struct {
 	size  int
 }
 
-func GetLoopQueue(capacity int) (l *LoopQueue) {
+func Constructor(capacity int) (l *LoopQueue) {
 	l = &LoopQueue{}
 	// 队列存在以空位，所以参数为20就需要开辟21的位置
 	l.data = make([]interface{}, capacity+1)
