@@ -35,7 +35,7 @@ func (this *Array) IsEmpty() bool {
 // 在第 index 个位置插入一个新元素 e
 func (this *Array) Add(index int, e interface{}) {
 	if index < 0 || index > this.GetCapacity() {
-		panic("Add failed. Require index >= 0 and index <= size")
+		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 
 	if this.size == len(this.data) {
@@ -115,12 +115,12 @@ func (this *Array) FindAll(e interface{}) (indexes []int) {
 }
 
 // 从数组中删除 index 位置的元素，返回删除的元素
-func (this *Array) Remove(index int) (e interface{}) {
+func (this *Array) Remove(index int) interface{} {
 	if index < 0 || index >= this.size {
 		panic("Remove failed,Index is illegal.")
 	}
 
-	e = this.data[index]
+	e := this.data[index]
 	for i := index + 1; i < this.size; i++ {
 		this.data[i-1] = this.data[i]
 	}
@@ -131,7 +131,7 @@ func (this *Array) Remove(index int) (e interface{}) {
 	if this.size == len(this.data)/4 && len(this.data)/2 != 0 {
 		this.resize(len(this.data) / 2)
 	}
-	return
+	return e
 }
 
 // 从数组中删除第一个元素，返回删除的元素
@@ -145,14 +145,11 @@ func (this *Array) RemoveLast() interface{} {
 }
 
 // 从数组中删除一个元素 e
-func (this *Array) RemoveElement(e interface{}) bool {
+func (this *Array) RemoveElement(e interface{}) {
 	index := this.Find(e)
-	if index == -1 {
-		return false
+	if index != -1 {
+		this.Remove(index)
 	}
-
-	this.Remove(index)
-	return true
 }
 
 // 从数组中删除所有元素 e
