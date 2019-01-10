@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	linkedList := LinkedList.GetLinkedList()
+	linkedList := LinkedList.Constructor()
 
 	for i := 0; i < 5; i++ {
 		linkedList.AddFirst(i)

@@ -9,37 +9,36 @@ type LinkedListStack struct {
 	list *LinkedList.LinkedList
 }
 
-func GetLinkedListStack() *LinkedListStack {
-	stack := &LinkedListStack{}
-	stack.list = LinkedList.GetLinkedList()
-
-	return stack
+func Constructor() *LinkedListStack {
+	return &LinkedListStack{
+		LinkedList.Constructor(),
+	}
 }
 
-func (l *LinkedListStack) GetSize() int {
-	return l.list.GetSize()
+func (this *LinkedListStack) GetSize() int {
+	return this.list.GetSize()
 }
 
-func (l *LinkedListStack) IsEmpty() bool {
-	return l.list.IsEmpty()
+func (this *LinkedListStack) IsEmpty() bool {
+	return this.list.IsEmpty()
 }
 
-func (l *LinkedListStack) Push(e interface{}) {
-	l.list.AddFirst(e)
+func (this *LinkedListStack) Push(e interface{}) {
+	this.list.AddFirst(e)
 }
 
-func (l *LinkedListStack) Pop() interface{} {
-	return l.list.RemoveFirst()
+func (this *LinkedListStack) Pop() interface{} {
+	return this.list.RemoveFirst()
 }
 
-func (l *LinkedListStack) Peek() interface{} {
-	return l.list.GetFirst()
+func (this *LinkedListStack) Peek() interface{} {
+	return this.list.GetFirst()
 }
 
-func (l *LinkedListStack) String() string {
+func (this *LinkedListStack) String() string {
 	buffer := bytes.Buffer{}
 	buffer.WriteString("Stack: top ")
-	buffer.WriteString(l.list.String())
+	buffer.WriteString(this.list.String())
 
 	return buffer.String()
 }

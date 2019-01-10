@@ -34,11 +34,11 @@ func main() {
 	//fmt.Println(stack)
 	opCount := 10000000
 
-	arrayStack := ArrayStack.GetArrayStack(20)
+	arrayStack := ArrayStack.Constructor(20)
 	time1 := testStack(arrayStack, opCount)
 	fmt.Println("ArrayStack, time: ", time1, " s")
 
-	linkedListStack := LinkedListStack.GetLinkedListStack()
+	linkedListStack := LinkedListStack.Constructor()
 	time2 := testStack(linkedListStack, opCount)
 	fmt.Println("LinkedListStack, time: ", time2, " s")
 

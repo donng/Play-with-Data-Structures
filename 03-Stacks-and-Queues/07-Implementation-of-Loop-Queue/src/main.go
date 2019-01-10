@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"Play-with-Data-Structures/03-Stacks-and-Queues/07-Implementation-of-Loop-Queue/src/LoopQueue"
+	"fmt"
 )
 
 func main() {

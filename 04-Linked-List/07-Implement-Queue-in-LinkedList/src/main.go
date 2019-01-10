@@ -10,6 +10,7 @@ import (
 	"time"
 )
 
+// 测试使用queue运行opCount个enqueueu和dequeue操作所需要的时间，单位：秒
 func testQueue(queue Queue.Queue, opCount int) float64 {
 	startTime := time.Now()
 
@@ -22,18 +23,19 @@ func testQueue(queue Queue.Queue, opCount int) float64 {
 
 	return time.Now().Sub(startTime).Seconds()
 }
+
 func main() {
 	opCount := 100000
 
-	arrayQueue := ArrayQueue.GetArrayQueue(20)
+	arrayQueue := ArrayQueue.Constructor(20)
 	time := testQueue(arrayQueue, opCount)
 	fmt.Println("ArrayQueue, time:", time, "s")
 
-	loopQueue := LoopQueue.GetLoopQueue(20)
+	loopQueue := LoopQueue.Constructor(20)
 	time = testQueue(loopQueue, opCount)
 	fmt.Println("LoopQueue, time:", time, "s")
 
-	linkedListpQueue := &LinkedListQueue.LinkedListQueue{}
-	time = testQueue(linkedListpQueue, opCount)
-	fmt.Println("linkedListpQueue, time:", time, "s")
+	linkedListQueue := LinkedListQueue.Constructor()
+	time = testQueue(linkedListQueue, opCount)
+	fmt.Println("linkedListQueue, time:", time, "s")
 }
