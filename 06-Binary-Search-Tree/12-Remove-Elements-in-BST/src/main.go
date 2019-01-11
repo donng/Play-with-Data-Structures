@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	bst := BST.GetBST()
+	bst := BST.Constructor()
 
 	n := 1000
 	nums := []int{}

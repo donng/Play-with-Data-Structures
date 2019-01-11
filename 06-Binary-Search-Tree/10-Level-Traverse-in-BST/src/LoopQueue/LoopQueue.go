@@ -12,84 +12,80 @@ type LoopQueue struct {
 	size  int
 }
 
-func GetLoopQueue(capacity int) (l *LoopQueue) {
-	l = &LoopQueue{}
-	l.data = make([]interface{}, capacity+1)
-	l.front = 0
-	l.tail = 0
-	l.size = 0
-
-	return
+func Constructor(capacity int) *LoopQueue {
+	return &LoopQueue{
+		data: make([]interface{}, capacity+1),
+	}
 }
 
-func (l *LoopQueue) GetCapacity() int {
-	return len(l.data) - 1
+func (this *LoopQueue) GetCapacity() int {
+	return len(this.data) - 1
 }
 
-func (l *LoopQueue) GetSize() int {
-	return l.size
+func (this *LoopQueue) GetSize() int {
+	return this.size
 }
 
-func (l *LoopQueue) IsEmpty() bool {
-	return l.front == l.tail
+func (this *LoopQueue) IsEmpty() bool {
+	return this.front == this.tail
 }
 
 // 入队
-func (l *LoopQueue) Enqueue(e interface{}) {
-	if (l.tail+1)%len(l.data) == l.front {
-		l.resize(l.GetCapacity() * 2)
+func (this *LoopQueue) Enqueue(e interface{}) {
+	if (this.tail+1)%len(this.data) == this.front {
+		this.resize(this.GetCapacity() * 2)
 	}
-	l.data[l.tail] = e
-	l.tail = (l.tail + 1) % len(l.data)
-	l.size++
+	this.data[this.tail] = e
+	this.tail = (this.tail + 1) % len(this.data)
+	this.size++
 }
 
 // 获得队列头部元素
-func (l *LoopQueue) Dequeue() (e interface{}) {
-	if l.IsEmpty() {
+func (this *LoopQueue) Dequeue() (e interface{}) {
+	if this.IsEmpty() {
 		panic("cannot dequeue from empty queue")
 	}
 
-	e = l.data[l.front]
-	l.data[l.front] = nil
+	e = this.data[this.front]
+	this.data[this.front] = nil
 	// 循环队列需要执行求余运算
-	l.front = (l.front + 1) % len(l.data)
-	l.size--
-	if l.size == l.GetCapacity()/4 && l.GetCapacity()/2 != 0 {
-		l.resize(l.GetCapacity() / 2)
+	this.front = (this.front + 1) % len(this.data)
+	this.size--
+	if this.size == this.GetCapacity()/4 && this.GetCapacity()/2 != 0 {
+		this.resize(this.GetCapacity() / 2)
 	}
 
 	return
 }
 
 // 查看队列头部元素
-func (l *LoopQueue) GetFront() interface{} {
-	if l.IsEmpty() {
+func (this *LoopQueue) GetFront() interface{} {
+	if this.IsEmpty() {
 		panic("Queue is empty")
 	}
 
-	return l.data[l.front]
+	return this.data[this.front]
 }
 
-func (l *LoopQueue) resize(capacity int) {
+func (this *LoopQueue) resize(capacity int) {
 	newData := make([]interface{}, capacity+1)
-	for i := 0; i < l.size; i++ {
-		newData[i] = l.data[(i+l.front)%len(l.data)]
+	for i := 0; i < this.size; i++ {
+		newData[i] = this.data[(i+this.front)%len(this.data)]
 	}
-	l.data = newData
-	l.front = 0
-	l.tail = l.size
+	this.data = newData
+	this.front = 0
+	this.tail = this.size
 }
 
-func (l *LoopQueue) String() string {
+func (this *LoopQueue) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", l.size, l.GetCapacity()))
+	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", this.size, this.GetCapacity()))
 	buffer.WriteString("front [")
-	for i := l.front; i != l.tail; i = (i + 1) % len(l.data) {
+	for i := this.front; i != this.tail; i = (i + 1) % len(this.data) {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(l.data[i]))
-		if (i+1)%len(l.data) != l.tail {
+		buffer.WriteString(fmt.Sprint(this.data[i]))
+		if (i+1)%len(this.data) != this.tail {
 			buffer.WriteString(", ")
 		}
 	}

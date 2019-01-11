@@ -1,64 +1,68 @@
 package BST
 
-type node struct {
-	e     int
-	left  *node
-	right *node
+import (
+	"Play-with-Data-Structures/Utils/Interfaces"
+)
+
+type Node struct {
+	e     interface{}
+	left  *Node
+	right *Node
+}
+
+func generateNode(e interface{}) *Node {
+	return &Node{e: e}
 }
 
 type BST struct {
-	root *node
+	root *Node
 	size int
 }
 
-func GetBST(e interface{}) *BST {
-	bst := &BST{}
-	bst.root = nil
-	bst.size = 0
-
-	return bst
+func Constructor() *BST {
+	return &BST{}
 }
 
-func (t *BST) GetSize() int {
-	return t.size
+func (this *BST) GetSize() int {
+	return this.size
 }
 
-func (t *BST) IsEmpty() bool {
-	return t.size == 0
+func (this *BST) IsEmpty() bool {
+	return this.size == 0
 }
 
 // 向二分搜索树中添加新的元素e
-func (t *BST) Add(e int) {
+func (this *BST) Add(e interface{}) {
 	// tree 为空，设置根节点
-	if t.root == nil {
-		t.root = &node{e: e}
-		t.size++
+	if this.root == nil {
+		this.root = generateNode(e)
+		this.size++
 	} else {
-		t.add(t.root, e)
+		this.add(this.root, e)
 	}
 }
 
 // 向以node为根的二分搜索树中插入元素e，递归算法
-func (t *BST) add(n *node, e int) {
+func (this *BST) add(n *Node, e interface{}) {
 	// 不处理重复数据的节点
 	if e == n.e {
 		return
 		// 左子树递归终止条件
-	} else if e < n.e && n.left == nil {
-		n.left = &node{e: e}
-		t.size++
+	} else if Interfaces.Compare(e, n.e) < 0 && n.left == nil {
+		n.left = generateNode(e)
+		this.size++
 		return
 		// 右子树递归终止条件
-	} else if e > n.e && n.right == nil {
-		n.right = &node{e: e}
-		t.size++
+	} else if Interfaces.Compare(e, n.e) > 0 && n.right == nil {
+		n.right = generateNode(e)
+		this.size++
 		return
 	}
 
 	// 递归调用
-	if e < n.e {
-		t.add(n.left, e)
+	if Interfaces.Compare(e, n.e) < 0 {
+		this.add(n.left, e)
 	} else {
-		t.add(n.right, e)
+		this.add(n.right, e)
 	}
 }

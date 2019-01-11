@@ -1,104 +1,104 @@
 package BST
 
 import (
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
-	"strconv"
 )
 
-type node struct {
-	e     int
-	left  *node
-	right *node
+type Node struct {
+	e     interface{}
+	left  *Node
+	right *Node
+}
+
+func generateNode(e interface{}) *Node {
+	return &Node{e: e}
 }
 
 type BST struct {
-	root *node
+	root *Node
 	size int
 }
 
-func GetBST() *BST {
-	bst := &BST{}
-	bst.root = nil
-	bst.size = 0
-
-	return bst
+func Constructor() *BST {
+	return &BST{}
 }
 
-func (t *BST) GetSize() int {
-	return t.size
+func (this *BST) GetSize() int {
+	return this.size
 }
 
-func (t *BST) IsEmpty() bool {
-	return t.size == 0
+func (this *BST) IsEmpty() bool {
+	return this.size == 0
 }
 
 // 向二分搜索树中添加新的元素 e
-func (t *BST) Add(e int) {
-	t.root = t.add(t.root, e)
+func (this *BST) Add(e interface{}) {
+	this.root = this.add(this.root, e)
 }
 
-// 向以 node 为跟的二分搜索树中插入元素 e，递归算法
+// 向以 Node 为跟的二分搜索树中插入元素 e，递归算法
 // 返回插入新节点后二分搜索树的根
-func (t *BST) add(n *node, e int) *node {
+func (this *BST) add(n *Node, e interface{}) *Node {
 	if n == nil {
-		t.size++
-		return &node{e: e}
+		this.size++
+		return generateNode(e)
 	}
 
 	// 递归调用
-	if e < n.e {
-		n.left = t.add(n.left, e)
-	} else if e > n.e {
-		n.right = t.add(n.right, e)
+	if Interfaces.Compare(e, n.e) < 0 {
+		n.left = this.add(n.left, e)
+	} else if Interfaces.Compare(e, n.e) > 0 {
+		n.right = this.add(n.right, e)
 	}
 	return n
 }
 
 // 看二分搜索树中是否包含元素 e
-func (t *BST) Contains(e int) bool {
-	return contains(t.root, e)
+func (this *BST) Contains(e interface{}) bool {
+	return contains(this.root, e)
 }
 
-// 看以 node 为根的二分搜索树是否包含元素 e，递归算法
-func contains(node *node, e int) bool {
-	if node == nil {
+// 看以 Node 为根的二分搜索树是否包含元素 e，递归算法
+func contains(n *Node, e interface{}) bool {
+	if n == nil {
 		return false
 	}
 
-	if e == node.e {
+	if Interfaces.Compare(e, n.e) == 0 {
 		return true
-	} else if e < node.e {
-		return contains(node.left, e)
+	} else if Interfaces.Compare(e, n.e) < 0 {
+		return contains(n.left, e)
 	} else {
-		return contains(node.right, e)
+		return contains(n.right, e)
 	}
 }
 
 // 二分搜索树的前序遍历
-func (t *BST) PreOrder() {
-	preOrder(t.root)
+func (this *BST) PreOrder() {
+	preOrder(this.root)
 }
 
-// 前序遍历以 node 为根的二分搜索树，递归算法
-func preOrder(node *node) {
-	if node == nil {
+// 前序遍历以 Node 为根的二分搜索树，递归算法
+func preOrder(n *Node) {
+	if n == nil {
 		return
 	}
 
-	fmt.Println(node.e)
-	preOrder(node.left)
-	preOrder(node.right)
+	fmt.Println(n.e)
+	preOrder(n.left)
+	preOrder(n.right)
 }
 
 // 二分搜索树的非递归前序遍历
-//func (t *BST) PreOrderNR() {
+//func (this *BST) PreOrderNR() {
 //	// 使用之前我们自己实现的数组栈
-//	stack := GetArrayStack(20)
-//	stack.Push(t.root)
+//	stack := ArrayStack.Constructor(20)
+//	stack.Push(this.root)
 //
 //	for !stack.IsEmpty() {
-//		cur := stack.Pop().(*node)
+//		cur := stack.Pop().(*Node)
 //		fmt.Println(cur.e)
 //
 //		if cur.right != nil {
@@ -111,44 +111,44 @@ func preOrder(node *node) {
 //}
 
 // 二分搜索树的中序遍历
-func (t *BST) InOrder() {
-	inOrder(t.root)
+func (this *BST) InOrder() {
+	inOrder(this.root)
 }
 
-// 中序遍历以 node 为根的二分搜索树，递归算法
-func inOrder(node *node) {
-	if node == nil {
+// 中序遍历以 Node 为根的二分搜索树，递归算法
+func inOrder(n *Node) {
+	if n == nil {
 		return
 	}
 
-	inOrder(node.left)
-	fmt.Println(node.e)
-	inOrder(node.right)
+	inOrder(n.left)
+	fmt.Println(n.e)
+	inOrder(n.right)
 }
 
 // 二分搜索树的后序遍历
-func (t *BST) PostOrder() {
-	postOrder(t.root)
+func (this *BST) PostOrder() {
+	postOrder(this.root)
 }
 
-// 后序遍历以 node 为根的二分搜索树，递归算法
-func postOrder(node *node) {
-	if node == nil {
+// 后序遍历以 Node 为根的二分搜索树，递归算法
+func postOrder(n *Node) {
+	if n == nil {
 		return
 	}
 
-	postOrder(node.left)
-	postOrder(node.right)
-	fmt.Println(node.e)
+	postOrder(n.left)
+	postOrder(n.right)
+	fmt.Println(n.e)
 }
 
 // 二分搜索树的层序遍历
-//func (t *BST) LevelOrder() {
+//func (this *BST) LevelOrder() {
 //	// 使用我们之前实现的循环队列
-//	queue := GetLoopQueue(20)
-//	queue.Enqueue(t.root)
+//	queue := LoopQueue.Constructor(20)
+//	queue.Enqueue(this.root)
 //	for !queue.IsEmpty() {
-//		cur := queue.Dequeue().(*node)
+//		cur := queue.Dequeue().(*Node)
 //		fmt.Println(cur.e)
 //
 //		if cur.left != nil {
@@ -161,15 +161,15 @@ func postOrder(node *node) {
 //}
 
 // 寻找二分搜索树的最小元素
-func (t *BST) Minimum() int {
-	if t.size == 0 {
+func (this *BST) Minimum() interface{} {
+	if this.size == 0 {
 		panic("BST is empty!")
 	}
-	return minimum(t.root).e
+	return minimum(this.root).e
 }
 
-// 返回以 node 为根的二分搜索树的最小值所在的节点
-func minimum(n *node) *node {
+// 返回以 Node 为根的二分搜索树的最小值所在的节点
+func minimum(n *Node) *Node {
 	if n.left == nil {
 		return n
 	}
@@ -177,15 +177,15 @@ func minimum(n *node) *node {
 }
 
 // 寻找二分搜索树的最大元素
-func (t *BST) Maximum() int {
-	if t.size == 0 {
+func (this *BST) Maximum() interface{} {
+	if this.size == 0 {
 		panic("BST is empty!")
 	}
-	return maximum(t.root).e
+	return maximum(this.root).e
 }
 
-// 返回以 node 为根的二分搜索树的最大值所在的节点
-func maximum(n *node) *node {
+// 返回以 Node 为根的二分搜索树的最大值所在的节点
+func maximum(n *Node) *Node {
 	if n.right == nil {
 		return n
 	}
@@ -193,61 +193,61 @@ func maximum(n *node) *node {
 }
 
 // 从二分搜索树中删除最小值所在的节点，返回最小值
-func (t *BST) RemoveMin() int {
+func (this *BST) RemoveMin() interface{} {
 	// 获得最小值
-	ret := t.Minimum()
-	t.root = t.removeMin(t.root)
+	ret := this.Minimum()
+	this.root = this.removeMin(this.root)
 	return ret
 }
 
-// 删除以 node 为根的二分搜索树中的最小节点
+// 删除以 Node 为根的二分搜索树中的最小节点
 // 返回删除节点后新的二分搜索树的根
-func (t *BST) removeMin(n *node) *node {
+func (this *BST) removeMin(n *Node) *Node {
 	if n.left == nil {
 		rightNode := n.right
-		t.size--
+		this.size--
 		return rightNode
 	}
-	n.left = t.removeMin(n.left)
+	n.left = this.removeMin(n.left)
 	return n
 }
 
 // 从二分搜索树中删除最小值所在的节点，返回最小值
-func (t *BST) RemoveMax() int {
+func (this *BST) RemoveMax() interface{} {
 	// 获得最小值
-	ret := t.Maximum()
-	t.root = t.removeMax(t.root)
+	ret := this.Maximum()
+	this.root = this.removeMax(this.root)
 	return ret
 }
 
-// 删除以 node 为根的二分搜索树中的最小节点
+// 删除以 Node 为根的二分搜索树中的最小节点
 // 返回删除节点后新的二分搜索树的根
-func (t *BST) removeMax(n *node) *node {
+func (this *BST) removeMax(n *Node) *Node {
 	if n.right == nil {
 		leftNode := n.left
-		t.size--
+		this.size--
 		return leftNode
 	}
-	n.right = t.removeMax(n.right)
+	n.right = this.removeMax(n.right)
 	return n
 }
 
-func (t *BST) String() string {
+func (this *BST) String() string {
 	var buffer bytes.Buffer
-	generateBSTSting(t.root, 0, &buffer)
+	generateBSTSting(this.root, 0, &buffer)
 	return buffer.String()
 }
 
-// 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
-func generateBSTSting(node *node, depth int, buffer *bytes.Buffer) {
-	if node == nil {
+// 生成以 Node 为根节点，深度为 depth 的描述二叉树的字符串
+func generateBSTSting(n *Node, depth int, buffer *bytes.Buffer) {
+	if n == nil {
 		buffer.WriteString(generateDepthString(depth) + "nil\n")
 		return
 	}
 
-	buffer.WriteString(generateDepthString(depth) + strconv.Itoa(node.e) + "\n")
-	generateBSTSting(node.left, depth+1, buffer)
-	generateBSTSting(node.right, depth+1, buffer)
+	buffer.WriteString(generateDepthString(depth) + fmt.Sprint(n.e) + "\n")
+	generateBSTSting(n.left, depth+1, buffer)
+	generateBSTSting(n.right, depth+1, buffer)
 }
 
 func generateDepthString(depth int) string {

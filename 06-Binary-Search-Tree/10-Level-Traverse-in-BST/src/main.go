@@ -3,7 +3,7 @@ package main
 import "Play-with-Data-Structures/06-Binary-Search-Tree/10-Level-Traverse-in-BST/src/BST"
 
 func main() {
-	bst := BST.GetBST()
+	bst := BST.Constructor()
 	nums := [...]int{5, 3, 6, 8, 4, 2}
 	for _, num := range nums {
 		bst.Add(num)

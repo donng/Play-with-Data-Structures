@@ -29,7 +29,7 @@ func preorderNoRec(root *TreeNode) []int {
 		return nodes
 	}
 
-	stack := ArrayStack.GetArrayStack(20)
+	stack := ArrayStack.Constructor(20)
 	stack.Push(root)
 	for !stack.IsEmpty() {
 		cur := stack.Pop().(*TreeNode)

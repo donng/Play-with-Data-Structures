@@ -1,110 +1,110 @@
 package BST
 
 import (
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
-	"strconv"
 )
 
-type node struct {
-	e     int
-	left  *node
-	right *node
+type Node struct {
+	e     interface{}
+	left  *Node
+	right *Node
+}
+
+func generateNode(e interface{}) *Node {
+	return &Node{e: e}
 }
 
 type BST struct {
-	root *node
+	root *Node
 	size int
 }
 
-func GetBST() *BST {
-	bst := &BST{}
-	bst.root = nil
-	bst.size = 0
-
-	return bst
+func Constructor() *BST {
+	return &BST{}
 }
 
-func (t *BST) GetSize() int {
-	return t.size
+func (this *BST) GetSize() interface{} {
+	return this.size
 }
 
-func (t *BST) IsEmpty() bool {
-	return t.size == 0
+func (this *BST) IsEmpty() bool {
+	return this.size == 0
 }
 
 // 向二分搜索树中添加新的元素 e
-func (t *BST) Add(e int) {
-	t.root = t.add(t.root, e)
+func (this *BST) Add(e interface{}) {
+	this.root = this.add(this.root, e)
 }
 
-// 向以 node 为跟的二分搜索树中插入元素 e，递归算法
+// 向以 Node 为跟的二分搜索树中插入元素 e，递归算法
 // 返回插入新节点后二分搜索树的根
-func (t *BST) add(n *node, e int) *node {
+func (this *BST) add(n *Node, e interface{}) *Node {
 	if n == nil {
-		t.size++
-		return &node{e: e}
+		this.size++
+		return generateNode(e)
 	}
 
 	// 递归调用
-	if e < n.e {
-		n.left = t.add(n.left, e)
-	} else if e > n.e {
-		n.right = t.add(n.right, e)
+	if Interfaces.Compare(e, n.e) < 0 {
+		n.left = this.add(n.left, e)
+	} else if Interfaces.Compare(e, n.e) > 0 {
+		n.right = this.add(n.right, e)
 	}
 	return n
 }
 
 // 看二分搜索树中是否包含元素 e
-func (t *BST) Contains(e int) bool {
-	return contains(t.root, e)
+func (this *BST) Contains(e interface{}) bool {
+	return contains(this.root, e)
 }
 
-// 看以 node 为根的二分搜索树是否包含元素 e，递归算法
-func contains(node *node, e int) bool {
-	if node == nil {
+// 看以 Node 为根的二分搜索树是否包含元素 e，递归算法
+func contains(n *Node, e interface{}) bool {
+	if n == nil {
 		return false
 	}
 
-	if e == node.e {
+	if Interfaces.Compare(e, n.e) == 0 {
 		return true
-	} else if e < node.e {
-		return contains(node.left, e)
+	} else if Interfaces.Compare(e, n.e) < 0 {
+		return contains(n.left, e)
 	} else {
-		return contains(node.right, e)
+		return contains(n.right, e)
 	}
 }
 
-func (t *BST) PreOrder() {
-	preOrder(t.root)
+func (this *BST) PreOrder() {
+	preOrder(this.root)
 }
 
-func preOrder(node *node) {
-	if node == nil {
+func preOrder(n *Node) {
+	if n == nil {
 		return
 	}
 
-	fmt.Println(node.e)
-	preOrder(node.left)
-	preOrder(node.right)
+	fmt.Println(n.e)
+	preOrder(n.left)
+	preOrder(n.right)
 }
 
-func (t *BST) String() string {
+func (this *BST) String() string {
 	var buffer bytes.Buffer
-	generateBSTSting(t.root, 0, &buffer)
+	generateBSTSting(this.root, 0, &buffer)
 	return buffer.String()
 }
 
-// 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
-func generateBSTSting(node *node, depth int, buffer *bytes.Buffer) {
-	if node == nil {
+// 生成以 Node 为根节点，深度为 depth 的描述二叉树的字符串
+func generateBSTSting(n *Node, depth int, buffer *bytes.Buffer) {
+	if n == nil {
 		buffer.WriteString(generateDepthString(depth) + "nil\n")
 		return
 	}
 
-	buffer.WriteString(generateDepthString(depth) + strconv.Itoa(node.e) + "\n")
-	generateBSTSting(node.left, depth+1, buffer)
-	generateBSTSting(node.right, depth+1, buffer)
+	buffer.WriteString(generateDepthString(depth) + fmt.Sprint(n.e) + "\n")
+	generateBSTSting(n.left, depth+1, buffer)
+	generateBSTSting(n.right, depth+1, buffer)
 }
 
 func generateDepthString(depth int) string {

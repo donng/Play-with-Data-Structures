@@ -1,28 +1,28 @@
 package BST
 
-type node struct {
+type Node struct {
 	e     interface{}
-	left  *node
-	right *node
+	left  *Node
+	right *Node
+}
+
+func generateNode(e interface{}) *Node {
+	return &Node{e: e}
 }
 
 type BST struct {
-	root *node
+	root *Node
 	size int
 }
 
-func GetBST(e interface{}) *BST {
-	bst := &BST{}
-	bst.root = nil
-	bst.size = 0
-
-	return bst
+func Constructor() *BST {
+	return &BST{}
 }
 
-func (t *BST) GetSize() int {
-	return t.size
+func (this *BST) GetSize() int {
+	return this.size
 }
 
-func (t *BST) IsEmpty() bool {
-	return t.size == 0
+func (this *BST) IsEmpty() bool {
+	return this.size == 0
 }

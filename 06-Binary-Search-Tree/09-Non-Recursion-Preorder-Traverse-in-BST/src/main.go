@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	bst := BST.GetBST()
+	bst := BST.Constructor()
 	nums := [...]int{5, 3, 6, 8, 4, 2}
 	for _, num := range nums {
 		bst.Add(num)
