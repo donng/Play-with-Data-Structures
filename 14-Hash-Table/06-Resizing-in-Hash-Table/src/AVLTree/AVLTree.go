@@ -1,10 +1,10 @@
 package AVLTree
 
 import (
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
 	"math"
-	"reflect"
 )
 
 type Node struct {
@@ -34,7 +34,7 @@ func (this *AVLTree) IsBST() bool {
 	inOrder(this.root, keys)
 
 	for i := 1; i < len(keys); i++ {
-		if compare(keys[i-1], keys[i]) > 0 {
+		if Interfaces.Compare(keys[i-1], keys[i]) > 0 {
 			return false
 		}
 	}
@@ -76,9 +76,9 @@ func (this *AVLTree) getNode(n *Node, key interface{}) *Node {
 		return nil
 	}
 
-	if compare(key, n.key) == 0 {
+	if Interfaces.Compare(key, n.key) == 0 {
 		return n
-	} else if compare(key, n.key) < 0 {
+	} else if Interfaces.Compare(key, n.key) < 0 {
 		return this.getNode(n.left, key)
 	} else {
 		return this.getNode(n.right, key)
@@ -160,9 +160,9 @@ func (this *AVLTree) add(n *Node, key interface{}, value interface{}) *Node {
 		return generateNode(key, value)
 	}
 
-	if compare(key, n.key) < 0 {
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.add(n.left, key, value)
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.add(n.right, key, value)
 	} else {
 		n.value = value
@@ -214,10 +214,10 @@ func (this *AVLTree) remove(n *Node, key interface{}) *Node {
 	}
 
 	var retNode *Node
-	if compare(key, n.key) < 0 {
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.remove(n.left, key)
 		retNode = n
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.remove(n.right, key)
 		retNode = n
 	} else {
@@ -315,45 +315,6 @@ func (this *AVLTree) GetSize() int {
 
 func (this *AVLTree) IsEmpty() bool {
 	return this.size == 0
-}
-
-// interface{} 类型的比较
-func compare(a interface{}, b interface{}) int {
-	aType := reflect.TypeOf(a).String()
-	bType := reflect.TypeOf(b).String()
-
-	if aType != bType {
-		panic("cannot compare different type params")
-	}
-
-	switch a.(type) {
-	case int:
-		if a.(int) > b.(int) {
-			return 1
-		} else if a.(int) < b.(int) {
-			return -1
-		} else {
-			return 0
-		}
-	case string:
-		if a.(string) > b.(string) {
-			return 1
-		} else if a.(string) < b.(string) {
-			return -1
-		} else {
-			return 0
-		}
-	case float64:
-		if a.(float64) > b.(float64) {
-			return 1
-		} else if a.(float64) < b.(float64) {
-			return -1
-		} else {
-			return 0
-		}
-	default:
-		panic("unsupported type params")
-	}
 }
 
 func (this *AVLTree) String() string {

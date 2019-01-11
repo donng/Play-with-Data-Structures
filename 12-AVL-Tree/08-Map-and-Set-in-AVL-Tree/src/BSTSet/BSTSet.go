@@ -1,7 +1,7 @@
 package BSTSet
 
 import (
-	"Play-with-Data-Structures/12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/src/BST"
+	"Play-with-Data-Structures/07-Set-and-Map/01-Set-Basics-and-BSTSet/src/BST"
 )
 
 type BSTSet struct {
@@ -9,26 +9,27 @@ type BSTSet struct {
 }
 
 func Constructor() *BSTSet {
-	bst := BST.GetBST()
-	return &BSTSet{bst}
+	return &BSTSet{
+		BST: BST.Constructor(),
+	}
 }
 
-func (s *BSTSet) Add(e interface{}) {
-	s.BST.Add(e)
+func (this *BSTSet) Add(e interface{}) {
+	this.BST.Add(e)
 }
 
-func (s *BSTSet) Remove(e interface{}) {
-	s.BST.Remove(e)
+func (this *BSTSet) Remove(e interface{}) {
+	this.BST.Remove(e)
 }
 
-func (s *BSTSet) Contains(e interface{}) bool {
-	return s.BST.Contains(e)
+func (this *BSTSet) Contains(e interface{}) bool {
+	return this.BST.Contains(e)
 }
 
-func (s *BSTSet) GetSize() int {
-	return s.BST.GetSize()
+func (this *BSTSet) GetSize() int {
+	return this.BST.GetSize()
 }
 
-func (s *BSTSet) IsEmpty() bool {
-	return s.BST.IsEmpty()
+func (this *BSTSet) IsEmpty() bool {
+	return this.BST.IsEmpty()
 }

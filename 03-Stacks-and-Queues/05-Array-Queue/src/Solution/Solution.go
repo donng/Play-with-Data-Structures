@@ -9,6 +9,15 @@ package main
 /// 对于二叉树的层序遍历，这个课程后续会讲到。
 /// 届时，同学们也可以再回头看这个代码。
 /// 不过到时，大家应该已经学会自己编写二叉树的层序遍历啦：）
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+// 将以下所有代码提交到leetcode即可通过
+
 type Array struct {
 	data []interface{}
 	size int
@@ -220,12 +229,6 @@ type Queue interface {
 	Enqueue(interface{})
 	Dequeue() interface{}
 	GetFront() interface{}
-}
-
-type TreeNode struct {
-	Val   int
-	Left  *TreeNode
-	Right *TreeNode
 }
 
 type Pair struct {

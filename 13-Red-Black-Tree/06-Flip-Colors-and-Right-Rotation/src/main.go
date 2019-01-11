@@ -3,7 +3,7 @@ package main
 import (
 	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/AVLTree"
 	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/BSTMap"
-	"Play-with-Data-Structures/13-Red-Black-Tree/06-Flip-Colors-and-Right-Rotation/src/FileOperation"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
 	"path/filepath"
 	"time"

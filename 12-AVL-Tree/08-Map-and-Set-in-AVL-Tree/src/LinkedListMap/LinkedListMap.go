@@ -4,35 +4,33 @@ import (
 	"fmt"
 )
 
-type node struct {
+type Node struct {
 	key  interface{}
 	val  interface{}
-	next *node
+	next *Node
 }
 
 type LinkedListMap struct {
-	dummyHead *node
+	dummyHead *Node
 	size      int
 }
 
 func Constructor() *LinkedListMap {
-	linkedListMap := &LinkedListMap{
-		dummyHead: &node{},
+	return &LinkedListMap{
+		dummyHead: &Node{},
 	}
-
-	return linkedListMap
 }
 
-func (l *LinkedListMap) GetSize() int {
-	return l.size
+func (this *LinkedListMap) GetSize() int {
+	return this.size
 }
 
-func (l *LinkedListMap) IsEmpty() bool {
-	return l.size == 0
+func (this *LinkedListMap) IsEmpty() bool {
+	return this.size == 0
 }
 
-func (l *LinkedListMap) getNode(key interface{}) *node {
-	prev := l.dummyHead.next
+func (this *LinkedListMap) getNode(key interface{}) *Node {
+	prev := this.dummyHead.next
 	for prev != nil {
 		if prev.key == key {
 			return prev
@@ -43,24 +41,24 @@ func (l *LinkedListMap) getNode(key interface{}) *node {
 	return nil
 }
 
-func (l *LinkedListMap) Add(key interface{}, val interface{}) {
-	n := l.getNode(key)
+func (this *LinkedListMap) Add(key interface{}, val interface{}) {
+	n := this.getNode(key)
 
 	if n == nil {
-		newNode := &node{
+		newNode := &Node{
 			key:  key,
 			val:  val,
-			next: l.dummyHead.next,
+			next: this.dummyHead.next,
 		}
-		l.dummyHead.next = newNode
-		l.size++
+		this.dummyHead.next = newNode
+		this.size++
 	} else {
 		n.val = val
 	}
 }
 
-func (l *LinkedListMap) Get(key interface{}) interface{} {
-	n := l.getNode(key)
+func (this *LinkedListMap) Get(key interface{}) interface{} {
+	n := this.getNode(key)
 	if n == nil {
 		return nil
 	} else {
@@ -68,17 +66,17 @@ func (l *LinkedListMap) Get(key interface{}) interface{} {
 	}
 }
 
-func (l *LinkedListMap) Set(key interface{}, val interface{}) {
-	node := l.getNode(key)
-	if node == nil {
+func (this *LinkedListMap) Set(key interface{}, val interface{}) {
+	Node := this.getNode(key)
+	if Node == nil {
 		panic(fmt.Sprintf("%v, doesn't exist", key))
 	}
 
-	node.val = val
+	Node.val = val
 }
 
-func (l *LinkedListMap) Remove(key interface{}) interface{} {
-	prev := l.dummyHead
+func (this *LinkedListMap) Remove(key interface{}) interface{} {
+	prev := this.dummyHead
 	for prev.next != nil {
 		if prev.next.key == key {
 			delNode := prev.next
@@ -93,6 +91,6 @@ func (l *LinkedListMap) Remove(key interface{}) interface{} {
 	return nil
 }
 
-func (l *LinkedListMap) Contains(key interface{}) bool {
-	return l.getNode(key) != nil
+func (this *LinkedListMap) Contains(key interface{}) bool {
+	return this.getNode(key) != nil
 }

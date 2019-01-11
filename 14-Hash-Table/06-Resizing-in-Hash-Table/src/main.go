@@ -3,9 +3,9 @@ package main
 import (
 	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/AVLTree"
 	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/BSTMap"
-	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/FileOperation"
 	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/HashTable"
 	"Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/src/RBTree"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
 	"path/filepath"
 	"time"

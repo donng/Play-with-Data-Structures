@@ -24,8 +24,3 @@
 - 数组 栈 队列 链表
 - 二分搜索树 堆 线段树 Trie
 - 并查集 AVL 红黑树 哈希表
-
-## TODOLIST
-
-- [ ] 03-Stacks-and-Queues 和 06-Binary-Search-Tree 的 optional 章节
-- [ ] 08-Heap-and-Priority-Queue/08-Priority-Queue-in-Java

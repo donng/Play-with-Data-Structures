@@ -1,72 +1,31 @@
 package AVLTree
 
 import (
-	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/FileOperation"
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
 	"math"
-	"path/filepath"
-	"reflect"
 )
 
-type node struct {
+type Node struct {
 	key         interface{}
 	val         interface{}
-	left, right *node
+	left, right *Node
 	height      int
 }
 
 type AVLTree struct {
-	root *node
+	root *Node
 	size int
 }
 
-// 生成 node 节点
-func generateNode(k interface{}, v interface{}) *node {
-	return &node{key: k, val: v, height: 1}
+// 生成 Node 节点
+func generateNode(k interface{}, v interface{}) *Node {
+	return &Node{key: k, val: v, height: 1}
 }
 
 func Constructor() *AVLTree {
 	return &AVLTree{}
-}
-
-// interface{} 类型的比较
-func compare(a interface{}, b interface{}) int {
-	aType := reflect.TypeOf(a).String()
-	bType := reflect.TypeOf(b).String()
-
-	if aType != bType {
-		panic("cannot compare different type params")
-	}
-
-	switch a.(type) {
-	case int:
-		if a.(int) > b.(int) {
-			return 1
-		} else if a.(int) < b.(int) {
-			return -1
-		} else {
-			return 0
-		}
-	case string:
-		if a.(string) > b.(string) {
-			return 1
-		} else if a.(string) < b.(string) {
-			return -1
-		} else {
-			return 0
-		}
-	case float64:
-		if a.(float64) > b.(float64) {
-			return 1
-		} else if a.(float64) < b.(float64) {
-			return -1
-		} else {
-			return 0
-		}
-	default:
-		panic("unsupported type params")
-	}
 }
 
 // 判断该二叉树是否是一颗二分搜索树
@@ -75,14 +34,14 @@ func (this *AVLTree) IsBST() bool {
 	inOrder(this.root, keys)
 
 	for i := 1; i < len(keys); i++ {
-		if compare(keys[i-1], keys[i]) == 1 {
+		if Interfaces.Compare(keys[i-1], keys[i]) == 1 {
 			return false
 		}
 	}
 	return true
 }
 
-func inOrder(n *node, keys []interface{}) {
+func inOrder(n *Node, keys []interface{}) {
 	if n == nil {
 		return
 	}
@@ -98,7 +57,7 @@ func (this *AVLTree) IsBalanced() bool {
 }
 
 // 判断以Node为根的二叉树是否是一棵平衡二叉树，递归算法
-func (this *AVLTree) isBalanced(n *node) bool {
+func (this *AVLTree) isBalanced(n *Node) bool {
 	if n == nil {
 		return true
 	}
@@ -110,32 +69,32 @@ func (this *AVLTree) isBalanced(n *node) bool {
 	return this.isBalanced(n.left) && this.isBalanced(n.right)
 }
 
-// 返回以 node 为根节点的二分搜索树中，key所在的节点
-func (this *AVLTree) getNode(node *node, key interface{}) *node {
+// 返回以 Node 为根节点的二分搜索树中，key所在的节点
+func (this *AVLTree) getNode(Node *Node, key interface{}) *Node {
 	// 未找到等于 key 的节点
-	if node == nil {
+	if Node == nil {
 		return nil
 	}
 
-	if compare(key, node.key) == 0 {
-		return node
-	} else if compare(key, node.key) == -1 {
-		return this.getNode(node.left, key)
+	if Interfaces.Compare(key, Node.key) == 0 {
+		return Node
+	} else if Interfaces.Compare(key, Node.key) == -1 {
+		return this.getNode(Node.left, key)
 	} else {
-		return this.getNode(node.right, key)
+		return this.getNode(Node.right, key)
 	}
 }
 
-// 获得节点 node 的高度
-func (this *AVLTree) getHeight(n *node) int {
+// 获得节点 Node 的高度
+func (this *AVLTree) getHeight(n *Node) int {
 	if n == nil {
 		return 0
 	}
 	return n.height
 }
 
-// 获得节点 node 的平衡因子
-func (this *AVLTree) getBalanceFactor(n *node) int {
+// 获得节点 Node 的平衡因子
+func (this *AVLTree) getBalanceFactor(n *Node) int {
 	if n == nil {
 		return 0
 	}
@@ -150,7 +109,7 @@ func (this *AVLTree) getBalanceFactor(n *node) int {
 //    z   T3                       T1  T2 T3 T4
 //   / \
 // T1   T2
-func (this *AVLTree) rightRotate(y *node) *node {
+func (this *AVLTree) rightRotate(y *Node) *Node {
 	x := y.left
 	T3 := x.right
 
@@ -173,7 +132,7 @@ func (this *AVLTree) rightRotate(y *node) *node {
 //   T2  z                     T1 T2 T3 T4
 //      / \
 //     T3 T4
-func (this *AVLTree) leftRotate(y *node) *node {
+func (this *AVLTree) leftRotate(y *Node) *Node {
 	x := y.right
 	T2 := x.left
 
@@ -195,15 +154,15 @@ func (this *AVLTree) Add(key interface{}, val interface{}) {
 
 // 向以node为根的二分搜索树中插入元素(key, value)，递归算法
 // 返回插入新节点后二分搜索树的根
-func (this *AVLTree) add(n *node, key interface{}, val interface{}) *node {
+func (this *AVLTree) add(n *Node, key interface{}, val interface{}) *Node {
 	if n == nil {
 		this.size++
 		return generateNode(key, val)
 	}
 
-	if compare(key, n.key) < 0 {
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.add(n.left, key, val)
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.add(n.right, key, val)
 	} else {
 		n.val = val
@@ -249,16 +208,16 @@ func (this *AVLTree) Remove(key interface{}) interface{} {
 	return nil
 }
 
-func (this *AVLTree) remove(n *node, key interface{}) *node {
+func (this *AVLTree) remove(n *Node, key interface{}) *Node {
 	if n == nil {
 		return nil
 	}
 
-	var retNode *node
-	if compare(key, n.key) < 0 {
+	var retNode *Node
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.remove(n.left, key)
 		retNode = n
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.remove(n.right, key)
 		retNode = n
 	} else {
@@ -321,7 +280,7 @@ func (this *AVLTree) remove(n *node, key interface{}) *node {
 }
 
 // 返回以node为根的二分搜索树的最小值所在的节点
-func (this *AVLTree) minimum(n *node) *node {
+func (this *AVLTree) minimum(n *Node) *Node {
 	if n.left == nil {
 		return n
 	}
@@ -364,16 +323,16 @@ func (this *AVLTree) String() string {
 	return buffer.String()
 }
 
-// 生成以 node 为根节点，深度为 depth 的描述二叉树的字符串
-func generateBSTSting(node *node, depth int, buffer *bytes.Buffer) {
-	if node == nil {
+// 生成以 Node 为根节点，深度为 depth 的描述二叉树的字符串
+func generateBSTSting(Node *Node, depth int, buffer *bytes.Buffer) {
+	if Node == nil {
 		buffer.WriteString(generateDepthString(depth) + "nil\n")
 		return
 	}
 
-	buffer.WriteString(generateDepthString(depth) + fmt.Sprintf("%s", node.key) + "\n")
-	generateBSTSting(node.left, depth+1, buffer)
-	generateBSTSting(node.right, depth+1, buffer)
+	buffer.WriteString(generateDepthString(depth) + fmt.Sprintf("%s", Node.key) + "\n")
+	generateBSTSting(Node.left, depth+1, buffer)
+	generateBSTSting(Node.right, depth+1, buffer)
 }
 
 func generateDepthString(depth int) string {
@@ -382,34 +341,4 @@ func generateDepthString(depth int) string {
 		buffer.WriteString("--")
 	}
 	return buffer.String()
-}
-
-func main() {
-	filename, _ := filepath.Abs("12-AVL-Tree/02-Calculating-Balance-Factor/pride-and-prejudice.txt")
-
-	AVL := Constructor()
-
-	words := FileOperation.ReadFile(filename)
-
-	for _, word := range words {
-		if AVL.Contains(word) {
-			AVL.Set(word, AVL.Get(word).(int)+1)
-		} else {
-			AVL.Add(word, 1)
-		}
-	}
-
-	fmt.Println("Total different words: ", AVL.GetSize())
-	fmt.Println("Frequency of PRIDE:", AVL.Get("pride"))
-	fmt.Println("Frequency of PREJUDICE: ", AVL.Get("prejudice"))
-
-	fmt.Println("is BST:", AVL.IsBST())
-	fmt.Println("is Balanced", AVL.IsBalanced())
-
-	//for _, word := range words {
-	//	AVL.Remove(word)
-	//	if !AVL.IsBST() || !AVL.IsBalanced() {
-	//		panic("AVL remove wrong")
-	//	}
-	//}
 }

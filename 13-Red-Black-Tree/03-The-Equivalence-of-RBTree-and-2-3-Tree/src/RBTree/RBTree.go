@@ -1,9 +1,9 @@
 package RBTree
 
 import (
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
-	"reflect"
 )
 
 const RED = true
@@ -36,9 +36,9 @@ func (this *RBTree) getNode(n *Node, key interface{}) *Node {
 		return nil
 	}
 
-	if compare(key, n.key) == 0 {
+	if Interfaces.Compare(key, n.key) == 0 {
 		return n
-	} else if compare(key, n.key) < 0 {
+	} else if Interfaces.Compare(key, n.key) < 0 {
 		return this.getNode(n.left, key)
 	} else {
 		return this.getNode(n.right, key)
@@ -66,9 +66,9 @@ func (this *RBTree) add(n *Node, key interface{}, val interface{}) *Node {
 		return generateNode(key, val)
 	}
 
-	if compare(key, n.key) < 0 {
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.add(n.left, key, val)
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.add(n.right, key, val)
 	} else {
 		n.value = val
@@ -93,10 +93,10 @@ func (this *RBTree) remove(n *Node, key interface{}) *Node {
 		return nil
 	}
 
-	if compare(key, n.key) < 0 {
+	if Interfaces.Compare(key, n.key) < 0 {
 		n.left = this.remove(n.left, key)
 		return n
-	} else if compare(key, n.key) > 0 {
+	} else if Interfaces.Compare(key, n.key) > 0 {
 		n.right = this.remove(n.right, key)
 		return n
 	} else {
@@ -179,45 +179,6 @@ func (this *RBTree) GetSize() int {
 
 func (this *RBTree) IsEmpty() bool {
 	return this.size == 0
-}
-
-// interface{} 类型的比较
-func compare(a interface{}, b interface{}) int {
-	aType := reflect.TypeOf(a).String()
-	bType := reflect.TypeOf(b).String()
-
-	if aType != bType {
-		panic("cannot compare different type params")
-	}
-
-	switch a.(type) {
-	case int:
-		if a.(int) > b.(int) {
-			return 1
-		} else if a.(int) < b.(int) {
-			return -1
-		} else {
-			return 0
-		}
-	case string:
-		if a.(string) > b.(string) {
-			return 1
-		} else if a.(string) < b.(string) {
-			return -1
-		} else {
-			return 0
-		}
-	case float64:
-		if a.(float64) > b.(float64) {
-			return 1
-		} else if a.(float64) < b.(float64) {
-			return -1
-		} else {
-			return 0
-		}
-	default:
-		panic("unsupported type params")
-	}
 }
 
 func (this *RBTree) String() string {

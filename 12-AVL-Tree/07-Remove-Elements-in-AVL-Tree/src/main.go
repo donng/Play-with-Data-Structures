@@ -3,7 +3,7 @@ package main
 import (
 	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/AVLTree"
 	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/BSTMap"
-	"Play-with-Data-Structures/12-AVL-Tree/07-Remove-Elements-in-AVL-Tree/src/FileOperation"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
 	"path/filepath"
 	"time"
