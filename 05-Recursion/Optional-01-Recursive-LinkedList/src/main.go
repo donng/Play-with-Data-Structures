@@ -8,7 +8,7 @@ import (
 
 func main() {
 	// 普通链表测试
-	linkedList := LinkedList.GetLinkedList()
+	linkedList := LinkedList.Constructor()
 	for i := 0; i < 10; i++ {
 		linkedList.AddLast(i)
 	}
@@ -18,7 +18,7 @@ func main() {
 	fmt.Println(linkedList)
 
 	// 递归实现的链表测试
-	linkedListR := LinkedListR.GetLinkedListR()
+	linkedListR := LinkedListR.Constructor()
 	for i := 0; i < 10; i++ {
 		linkedListR.AddFirst(i)
 	}

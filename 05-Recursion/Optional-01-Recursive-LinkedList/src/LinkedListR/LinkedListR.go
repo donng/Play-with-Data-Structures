@@ -6,7 +6,7 @@ import (
 )
 
 type Node struct {
-	E    interface{}
+	e    interface{}
 	Next *Node
 }
 
@@ -15,173 +15,171 @@ type LinkedListR struct {
 	size int
 }
 
-type E interface{}
-
-func GetLinkedListR() *LinkedListR {
+func Constructor() *LinkedListR {
 	return &LinkedListR{}
 }
 
 // 获取链表中的元素个数
-func (l *LinkedListR) GetSize() int {
-	return l.size
+func (this *LinkedListR) GetSize() int {
+	return this.size
 }
 
 // 返回链表是否为空
-func (l *LinkedListR) IsEmpty() bool {
-	return l.size == 0
+func (this *LinkedListR) IsEmpty() bool {
+	return this.size == 0
 }
 
 // 在链表的index(0-based)位置添加新的元素e
-func (l *LinkedListR) Add(index int, e E) {
-	if index < 0 || index > l.size {
+func (this *LinkedListR) Add(index int, e interface{}) {
+	if index < 0 || index > this.size {
 		panic("Add failed. Illegal index.")
 	}
 
-	l.head = l.add(l.head, index, e)
-	l.size++
+	this.head = this.add(this.head, index, e)
+	this.size++
 }
 
 // 在以node为头结点的链表的index位置插入元素e，递归算法
-func (l *LinkedListR) add(node *Node, index int, e E) *Node {
+func (this *LinkedListR) add(n *Node, index int, e interface{}) *Node {
 	if index == 0 {
-		return &Node{e, node}
+		return &Node{e, n}
 	}
 
-	node.Next = l.add(node.Next, index-1, e)
-	return node
+	n.Next = this.add(n.Next, index-1, e)
+	return n
 }
 
 // 在链表头添加新的元素e
-func (l *LinkedListR) AddFirst(e E) {
-	l.Add(0, e)
+func (this *LinkedListR) AddFirst(e interface{}) {
+	this.Add(0, e)
 }
 
 // 在链表末尾添加新的元素e
-func (l *LinkedListR) AddLast(e E) {
-	l.Add(l.size, e)
+func (this *LinkedListR) AddLast(e interface{}) {
+	this.Add(this.size, e)
 }
 
 // 获得链表的第index(0-based)个位置的元素
-func (l *LinkedListR) Get(index int) E {
-	if index < 0 || index > (l.size-1) {
+func (this *LinkedListR) Get(index int) interface{} {
+	if index < 0 || index > (this.size-1) {
 		panic("Get failed. Illegal index.")
 	}
 
-	return l.get(l.head, index)
+	return this.get(this.head, index)
 }
 
 // 在以node为头结点的链表中，找到第index个元素，递归算法
-func (l *LinkedListR) get(node *Node, index int) E {
+func (this *LinkedListR) get(n *Node, index int) interface{} {
 	if index == 0 {
-		return node.E
+		return n.e
 	}
 
-	return l.get(node.Next, index-1)
+	return this.get(n.Next, index-1)
 }
 
 // 获得链表的第一个元素
-func (l *LinkedListR) GetFirst() E {
-	return l.Get(0)
+func (this *LinkedListR) GetFirst() interface{} {
+	return this.Get(0)
 }
 
 // 获得链表的最后一个元素
-func (l *LinkedListR) GetLast() E {
-	return l.Get(l.size - 1)
+func (this *LinkedListR) GetLast() interface{} {
+	return this.Get(this.size - 1)
 }
 
 // 修改链表的第index(0-based)个位置的元素为e
-func (l *LinkedListR) Set(index int, e E) {
-	if index < 0 || index > (l.size-1) {
+func (this *LinkedListR) Set(index int, e interface{}) {
+	if index < 0 || index > (this.size-1) {
 		panic("Set failed. Illegal index.")
 	}
 
-	l.set(l.head, index, e)
+	this.set(this.head, index, e)
 }
 
 // 修改以node为头结点的链表中，第index(0-based)个位置的元素为e，递归算法
-func (l *LinkedListR) set(node *Node, index int, e E) {
+func (this *LinkedListR) set(node *Node, index int, e interface{}) {
 	if index == 0 {
-		node.E = e
+		node.e = e
 		return
 	}
 
-	l.set(node.Next, index-1, e)
+	this.set(node.Next, index-1, e)
 }
 
 // 查找链表中是否有元素e
-func (l *LinkedListR) Contains(e E) bool {
-	return l.contains(l.head, e)
+func (this *LinkedListR) Contains(e interface{}) bool {
+	return this.contains(this.head, e)
 }
 
 // 在以node为头结点的链表中，查找是否存在元素e，递归算法
-func (l *LinkedListR) contains(node *Node, e E) bool {
-	if node == nil {
+func (this *LinkedListR) contains(n *Node, e interface{}) bool {
+	if n == nil {
 		return false
 	}
-	if node.E == e {
+	if n.e == e {
 		return true
 	}
 
-	return l.contains(node.Next, e)
+	return this.contains(n.Next, e)
 }
 
 // 从链表中删除index(0-based)位置的元素, 返回删除的元素
-func (l *LinkedListR) Remove(index int) E {
-	head, e := l.remove(l.head, index)
-	l.size--
+func (this *LinkedListR) Remove(index int) interface{} {
+	head, e := this.remove(this.head, index)
+	this.size--
 	// 只剩头节点时，head 为 nil
-	l.head = head
+	this.head = head
 	return e
 }
 
 // 从以node为头结点的链表中，删除第index位置的元素，递归算法
 // 返回值包含两个元素，删除后的链表头结点和删除的值：）
-func (l *LinkedListR) remove(node *Node, index int) (*Node, E) {
+func (this *LinkedListR) remove(n *Node, index int) (*Node, interface{}) {
 	if index == 0 {
 		// 最终返回待删除节点的下一个节点和待删除节点的值
-		return node.Next, node.E
+		return n.Next, n.e
 	}
 
-	nextNode, e := l.remove(node.Next, index-1)
+	nextNode, e := this.remove(n.Next, index-1)
 	// 最内层递归：待删除节点的上一个节点，设置 Next 为待删除节点的下一个节点
-	node.Next = nextNode
-	return node, e
+	n.Next = nextNode
+	return n, e
 }
 
 // 从链表中删除第一个元素, 返回删除的元素
-func (l *LinkedListR) RemoveFirst() E {
-	return l.Remove(0)
+func (this *LinkedListR) RemoveFirst() interface{} {
+	return this.Remove(0)
 }
 
 // 从链表中删除最后一个元素, 返回删除的元素
-func (l *LinkedListR) RemoveLast() E {
-	return l.Remove(l.size - 1)
+func (this *LinkedListR) RemoveLast() interface{} {
+	return this.Remove(this.size - 1)
 }
 
 // 从链表中删除元素e
-func (l *LinkedListR) RemoveElement(e E) {
-	l.removeElement(l.head, e)
+func (this *LinkedListR) RemoveElement(e interface{}) {
+	this.removeElement(this.head, e)
 }
 
 // 从以node为头结点的链表中，删除元素e，递归算法
-func (l *LinkedListR) removeElement(node *Node, e E) *Node {
-	if node == nil {
+func (this *LinkedListR) removeElement(n *Node, e interface{}) *Node {
+	if n == nil {
 		return nil
 	}
-	if node.E == e {
-		l.size--
-		return node.Next
+	if n.e == e {
+		this.size--
+		return n.Next
 	}
-	node.Next = l.removeElement(node.Next, e)
-	return node
+	n.Next = this.removeElement(n.Next, e)
+	return n
 }
 
-func (l *LinkedListR) String() string {
+func (this *LinkedListR) String() string {
 	buffer := bytes.Buffer{}
 
-	cur := l.head
+	cur := this.head
 	for cur != nil {
-		buffer.WriteString(fmt.Sprintf("%v ->", cur.E))
+		buffer.WriteString(fmt.Sprintf("%v ->", cur.e))
 		cur = cur.Next
 	}
 
