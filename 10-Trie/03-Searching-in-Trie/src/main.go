@@ -2,10 +2,9 @@ package main
 
 import (
 	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/BSTSet"
-	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/FileOperation"
 	"Play-with-Data-Structures/10-Trie/03-Searching-in-Trie/src/Trie"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
 )
@@ -13,10 +12,7 @@ import (
 func main() {
 	fmt.Println("Pride and Prejudice")
 
-	projectPath, _ := os.Getwd()
-	currentPath := filepath.Join(projectPath, "10-Trie", "03-Searching-in-Trie")
-
-	filename := filepath.Join(currentPath, "pride-and-prejudice.txt")
+	filename, _ := filepath.Abs("10-Trie/03-Searching-in-Trie/pride-and-prejudice.txt")
 	words := FileOperation.ReadFile(filename)
 
 	startTime := time.Now()

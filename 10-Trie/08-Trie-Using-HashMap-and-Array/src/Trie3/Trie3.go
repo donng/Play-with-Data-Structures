@@ -10,12 +10,12 @@ type Trie struct {
 	size int
 }
 
-func getNode() *node {
+func generateNode() *node {
 	return &node{next: [26]*node{}}
 }
 
 func Constructor() *Trie {
-	return &Trie{root: getNode()}
+	return &Trie{root: generateNode()}
 }
 
 // 获得Trie中存储的单词数量
@@ -34,7 +34,7 @@ func (this *Trie) Add(word string) {
 		}
 
 		if cur.next[offset] == nil {
-			cur.next[offset] = getNode()
+			cur.next[offset] = generateNode()
 		}
 		cur = cur.next[offset]
 	}

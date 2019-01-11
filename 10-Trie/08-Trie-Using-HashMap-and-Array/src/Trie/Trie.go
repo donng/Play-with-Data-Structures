@@ -2,22 +2,22 @@ package Trie
 
 import "Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/BSTMap"
 
-type node struct {
+type Node struct {
 	isWord bool
 	next   *BSTMap.BSTMap
 }
 
 type Trie struct {
-	root *node
+	root *Node
 	size int
 }
 
-func getNode() *node {
-	return &node{next: BSTMap.Constructor()}
+func generateNode() *Node {
+	return &Node{next: BSTMap.Constructor()}
 }
 
 func Constructor() *Trie {
-	return &Trie{root: getNode()}
+	return &Trie{root: generateNode()}
 }
 
 // 获得Trie中存储的单词数量
@@ -33,9 +33,9 @@ func (this *Trie) Add(word string) {
 		c := string(w)
 
 		if !cur.next.Contains(c) {
-			cur.next.Add(c, getNode())
+			cur.next.Add(c, generateNode())
 		}
-		cur = cur.next.Get(c).(*node)
+		cur = cur.next.Get(c).(*Node)
 	}
 
 	if cur.isWord == false {
@@ -53,7 +53,7 @@ func (this *Trie) Contains(word string) bool {
 		if !cur.next.Contains(c) {
 			return false
 		}
-		cur = cur.next.Get(c).(*node)
+		cur = cur.next.Get(c).(*Node)
 	}
 
 	return cur.isWord

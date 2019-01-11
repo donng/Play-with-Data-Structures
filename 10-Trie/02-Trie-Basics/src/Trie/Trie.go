@@ -1,25 +1,24 @@
 package Trie
 
-type node struct {
+type Node struct {
 	isWord bool
-	next   map[string]*node
+	next   map[string]*Node
 }
 
 type Trie struct {
-	root *node
+	root *Node
 	size int
 }
 
-func getNode() *node {
-	next := make(map[string]*node)
-	return &node{
-		next: next,
+func generateNode() *Node {
+	return &Node{
+		next: make(map[string]*Node),
 	}
 }
 
 func Constructor() *Trie {
 	return &Trie{
-		root: getNode(),
+		root: generateNode(),
 	}
 }
 
@@ -36,7 +35,7 @@ func (this *Trie) Add(word string) {
 		c := string(w)
 
 		if cur.next[c] == nil {
-			cur.next[c] = getNode()
+			cur.next[c] = generateNode()
 		}
 		cur = cur.next[c]
 	}

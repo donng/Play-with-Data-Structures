@@ -4,22 +4,26 @@ import "fmt"
 
 /// Leetcode 211. Add and Search Word - Data structure design
 /// https://leetcode.com/problems/add-and-search-word-data-structure-design/description/
-type node struct {
+type Node struct {
 	isWord bool
-	next   map[string]*node
+	next   map[string]*Node
 }
 
 type WordDictionary struct {
-	root *node
+	root *Node
 }
 
-func getNode() *node {
-	return &node{next: make(map[string]*node)}
+func getNode() *Node {
+	return &Node{
+		next: make(map[string]*Node),
+	}
 }
 
 /** Initialize your data structure here. */
 func Constructor() WordDictionary {
-	return WordDictionary{getNode()}
+	return WordDictionary{
+		root: getNode(),
+	}
 }
 
 /** Adds a word into the data structure. */
@@ -42,7 +46,7 @@ func (this *WordDictionary) Search(word string) bool {
 	return this.match(this.root, word, 0)
 }
 
-func (this *WordDictionary) match(n *node, word string, index int) bool {
+func (this *WordDictionary) match(n *Node, word string, index int) bool {
 	if index == len(word) {
 		return n.isWord
 	}

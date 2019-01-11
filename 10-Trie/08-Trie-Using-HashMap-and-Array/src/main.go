@@ -2,10 +2,10 @@ package main
 
 import (
 	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/BSTSet"
-	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/FileOperation"
 	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/Trie"
 	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/Trie2"
 	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/Trie3"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
 	"os"
 	"path/filepath"

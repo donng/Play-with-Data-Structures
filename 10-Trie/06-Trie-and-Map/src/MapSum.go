@@ -2,23 +2,26 @@ package main
 
 import "fmt"
 
-type node struct {
+type Node struct {
 	value int
-	next  map[string]*node
+	next  map[string]*Node
 }
 
 type MapSum struct {
-	root *node
+	root *Node
 }
 
-func getNode() *node {
-	return &node{next: make(map[string]*node)}
+func generateNode() *Node {
+	return &Node{
+		next: make(map[string]*Node),
+	}
 }
 
 /** Initialize your data structure here. */
 func Constructor() MapSum {
-	n := &node{next: make(map[string]*node)}
-	return MapSum{n}
+	return MapSum{
+		root: generateNode(),
+	}
 }
 
 func (this *MapSum) Insert(key string, val int) {
@@ -27,7 +30,7 @@ func (this *MapSum) Insert(key string, val int) {
 	for _, w := range []rune(key) {
 		c := string(w)
 		if cur.next[c] == nil {
-			cur.next[c] = getNode()
+			cur.next[c] = generateNode()
 		}
 		cur = cur.next[c]
 	}
@@ -48,7 +51,7 @@ func (this *MapSum) Sum(prefix string) int {
 	return this.sum(cur)
 }
 
-func (this *MapSum) sum(n *node) int {
+func (this *MapSum) sum(n *Node) int {
 	res := n.value
 	for s := range n.next {
 		res += this.sum(n.next[s])
