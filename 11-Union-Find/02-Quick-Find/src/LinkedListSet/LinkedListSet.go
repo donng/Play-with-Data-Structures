@@ -2,7 +2,6 @@ package LinkedListSet
 
 import (
 	"Play-with-Data-Structures/11-Union-Find/02-Quick-Find/src/LinkedList"
-	"Play-with-Data-Structures/11-Union-Find/02-Quick-Find/src/Set"
 )
 
 type LinkedListSet struct {
@@ -10,28 +9,29 @@ type LinkedListSet struct {
 }
 
 func Constructor() *LinkedListSet {
-	list := LinkedList.GetLinkedList()
-	return &LinkedListSet{list}
-}
-
-func (s *LinkedListSet) Add(e Set.E) {
-	if !s.LinkedList.Contains(e) {
-		s.LinkedList.AddFirst(e)
+	return &LinkedListSet{
+		LinkedList: LinkedList.Constructor(),
 	}
 }
 
-func (s *LinkedListSet) Remove(e Set.E) {
-	s.LinkedList.RemoveElement(e)
+func (this *LinkedListSet) Add(e interface{}) {
+	if !this.LinkedList.Contains(e) {
+		this.LinkedList.AddFirst(e)
+	}
 }
 
-func (s *LinkedListSet) Contains(e Set.E) bool {
-	return s.LinkedList.Contains(e)
+func (this *LinkedListSet) Remove(e interface{}) {
+	this.LinkedList.RemoveElement(e)
 }
 
-func (s *LinkedListSet) GetSize() int {
-	return s.LinkedList.GetSize()
+func (this *LinkedListSet) Contains(e interface{}) bool {
+	return this.LinkedList.Contains(e)
 }
 
-func (s *LinkedListSet) IsEmpty() bool {
-	return s.LinkedList.IsEmpty()
+func (this *LinkedListSet) GetSize() int {
+	return this.LinkedList.GetSize()
+}
+
+func (this *LinkedListSet) IsEmpty() bool {
+	return this.LinkedList.IsEmpty()
 }
