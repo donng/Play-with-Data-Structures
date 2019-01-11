@@ -1,25 +1,21 @@
 package main
 
 import (
-	"Play-with-Data-Structures/07-Set-and-Map/06-LinkedListMap/src/FileOperation"
 	"Play-with-Data-Structures/07-Set-and-Map/06-LinkedListMap/src/LinkedListMap"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
-	"os"
 	"path/filepath"
 )
 
 func main() {
 	fmt.Println("pride-and-prejudice")
 
-	projectPath, _ := os.Getwd()
-	currentPath := filepath.Join(projectPath, "07-Set-and-Map", "06-LinkedListMap")
-	filename := filepath.Join(currentPath, "pride-and-prejudice.txt")
-
+	filename, _ := filepath.Abs("07-Set-and-Map/06-LinkedListMap/pride-and-prejudice.txt")
 	words := FileOperation.ReadFile(filename)
 
 	fmt.Println("Total words: ", len(words))
 
-	customMap := LinkedListMap.GetLinkedListMap()
+	customMap := LinkedListMap.Constructor()
 	for _, word := range words {
 		if customMap.Contains(word) {
 			customMap.Set(word, customMap.Get(word).(int)+1)

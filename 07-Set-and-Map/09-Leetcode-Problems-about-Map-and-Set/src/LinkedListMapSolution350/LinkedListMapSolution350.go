@@ -12,7 +12,7 @@ import (
 /// 该代码主要用于使用Leetcode上的问题测试我们的LinkedListMap类
 func intersect(nums1 []int, nums2 []int) []int {
 	var res []int
-	customMap := LinkedListMap.GetLinkedListMap()
+	customMap := LinkedListMap.Constructor()
 
 	for _, num := range nums1 {
 		if customMap.Contains(num) {

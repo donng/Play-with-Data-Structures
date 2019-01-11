@@ -1,11 +1,9 @@
 package Set
 
-type E interface{}
-
 type Set interface {
-	Add(E)
-	Remove(E)
-	Contains(E) bool
+	Add(interface{})
+	Remove(interface{})
+	Contains(interface{}) bool
 	GetSize() int
 	IsEmpty() bool
 }

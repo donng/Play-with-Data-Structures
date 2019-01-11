@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Play-with-Data-Structures/07-Set-and-Map/02-LinkedListSet/src/LinkedListSet"
+	"Play-with-Data-Structures/07-Set-and-Map/01-Set-Basics-and-BSTSet/src/BSTSet"
 	"fmt"
 )
 
@@ -9,16 +9,16 @@ import (
 /// https://leetcode.com/problems/intersection-of-two-arrays/description/
 func intersection(nums1 []int, nums2 []int) []int {
 	var res []int
-	BSTSet := LinkedListSet.GetLinkedListSet()
+	bstSet := BSTSet.Constructor()
 
 	for _, num := range nums1 {
-		BSTSet.Add(num)
+		bstSet.Add(num)
 	}
 
 	for _, num := range nums2 {
-		if BSTSet.Contains(num) {
+		if bstSet.Contains(num) {
 			res = append(res, num)
-			BSTSet.Remove(num)
+			bstSet.Remove(num)
 		}
 	}
 

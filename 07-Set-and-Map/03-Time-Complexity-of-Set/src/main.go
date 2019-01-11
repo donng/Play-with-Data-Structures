@@ -2,11 +2,10 @@ package main
 
 import (
 	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/BSTSet"
-	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/FileOperation"
 	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/LinkedListSet"
 	"Play-with-Data-Structures/07-Set-and-Map/03-Time-Complexity-of-Set/src/Set"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
 )
@@ -25,16 +24,13 @@ func testSet(set Set.Set, filename string) time.Duration {
 }
 
 func main() {
-	projectPath, _ := os.Getwd()
-	currentPath := filepath.Join(projectPath, "07-Set-and-Map", "03-Time-Complexity-of-Set")
+	filename, _ := filepath.Abs("07-Set-and-Map/03-Time-Complexity-of-Set/pride-and-prejudice.txt")
 
-	filename := filepath.Join(currentPath, "pride-and-prejudice.txt")
-
-	bstSet := BSTSet.GetBSTSet()
+	bstSet := BSTSet.Constructor()
 	time1 := testSet(bstSet, filename)
 	fmt.Println("BST set :", time1)
 
-	linkedListSet := LinkedListSet.GetLinkedListSet()
+	linkedListSet := LinkedListSet.Constructor()
 	time2 := testSet(linkedListSet, filename)
 	fmt.Println("linkedList set:", time2)
 }

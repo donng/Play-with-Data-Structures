@@ -11,7 +11,7 @@ func uniqueMorseRepresentations(words []string) int {
 	morseCodes := []string{".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."}
 
 	buffer := bytes.Buffer{}
-	uniqueWordSet := LinkedListSet.GetLinkedListSet()
+	uniqueWordSet := LinkedListSet.Constructor()
 	for _, word := range words {
 		buffer.Reset()
 		for _, letter := range word {

@@ -2,22 +2,20 @@ package main
 
 import "fmt"
 
-type node struct {
+type Node struct {
 	e    interface{}
-	next *node
+	next *Node
 }
 
 type LinkedList struct {
-	dummyHead *node // 虚拟头结点，不计入size
+	dummyHead *Node // 虚拟头结点，不计入size
 	size      int
 }
 
 func GetLinkedList() *LinkedList {
-	linkedList := &LinkedList{
-		dummyHead: &node{},
+	return &LinkedList{
+		dummyHead: &Node{},
 	}
-
-	return linkedList
 }
 
 // 获取链表中的元素个数
@@ -34,7 +32,7 @@ func (l *LinkedList) IsEmpty() bool {
 // 在链表中不是一个常用的操作，练习用：）
 func (l *LinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
-		panic("Add failed.Illegal index.")
+		panic("Add failed. Illegal index.")
 	}
 
 	// 获得待插入节点的前一个节点
@@ -43,10 +41,7 @@ func (l *LinkedList) Add(index int, e interface{}) {
 		prev = prev.next
 	}
 
-	// 插入新节点
-	//node := &node{e: e, next: prev.next}
-	//prev.next = node
-	prev.next = &node{e, prev.next}
+	prev.next = &Node{e, prev.next}
 	l.size++
 }
 
@@ -64,7 +59,7 @@ func (l *LinkedList) AddLast(e interface{}) {
 // 在链表中不是一个常用的操作，练习用：）
 func (l *LinkedList) Get(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Add failed,Illegal index.")
+		panic("Add failed. Illegal index.")
 	}
 
 	cur := l.dummyHead.next

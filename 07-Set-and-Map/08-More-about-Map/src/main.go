@@ -2,11 +2,10 @@ package main
 
 import (
 	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/BSTMap"
-	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/FileOperation"
-	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/LinkedList"
+	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/LinkedListMap"
 	"Play-with-Data-Structures/07-Set-and-Map/08-More-about-Map/src/Map"
+	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
 )
@@ -32,16 +31,13 @@ func testSet(p Map.Map, filename string) time.Duration {
 }
 
 func main() {
-	projectPath, _ := os.Getwd()
-	currentPath := filepath.Join(projectPath, "07-Set-and-Map", "08-More-about-Map")
+	filename, _ := filepath.Abs("07-Set-and-Map/08-More-about-Map/pride-and-prejudice.txt")
 
-	filename := filepath.Join(currentPath, "pride-and-prejudice.txt")
-
-	bstMap := BSTMap.GetBSTMap()
+	bstMap := BSTMap.Constructor()
 	time1 := testSet(bstMap, filename)
 	fmt.Println("BST map :", time1)
 
-	linkedListMap := LinkedListMap.GetLinkedListMap()
+	linkedListMap := LinkedListMap.Constructor()
 	time2 := testSet(linkedListMap, filename)
 	fmt.Println("linkedListMap set:", time2)
 }
