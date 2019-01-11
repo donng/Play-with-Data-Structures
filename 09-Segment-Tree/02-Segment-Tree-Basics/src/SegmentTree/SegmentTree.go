@@ -5,7 +5,7 @@ type SegmentTree struct {
 	data []interface{}
 }
 
-func GetSegmentTree(arr []interface{}) *SegmentTree {
+func Constructor(arr []interface{}) *SegmentTree {
 	segmentTree := &SegmentTree{
 		tree: make([]interface{}, len(arr)*4),
 		data: make([]interface{}, len(arr)),
@@ -18,16 +18,16 @@ func GetSegmentTree(arr []interface{}) *SegmentTree {
 	return segmentTree
 }
 
-func (t *SegmentTree) GetSize() int {
-	return len(t.data)
+func (this *SegmentTree) GetSize() int {
+	return len(this.data)
 }
 
-func (t *SegmentTree) Get(index int) interface{} {
-	if index < 0 || index >= len(t.data) {
+func (this *SegmentTree) Get(index int) interface{} {
+	if index < 0 || index >= len(this.data) {
 		panic("Index is illegal.")
 	}
 
-	return t.data[index]
+	return this.data[index]
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引

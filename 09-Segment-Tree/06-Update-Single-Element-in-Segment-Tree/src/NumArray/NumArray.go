@@ -19,7 +19,7 @@ func Constructor(nums []int) NumArray {
 		data[i] = nums[i]
 	}
 
-	segTree := SegmentTree.GetSegmentTree(data, func(i interface{}, j interface{}) interface{} {
+	segTree := SegmentTree.Constructor(data, func(i interface{}, j interface{}) interface{} {
 		return i.(int) + j.(int)
 	})
 

@@ -11,7 +11,7 @@ type SegmentTree struct {
 	merger func(interface{}, interface{}) interface{}
 }
 
-func GetSegmentTree(arr []interface{}, merger func(interface{}, interface{}) interface{}) *SegmentTree {
+func Constructor(arr []interface{}, merger func(interface{}, interface{}) interface{}) *SegmentTree {
 	segmentTree := &SegmentTree{
 		tree:   make([]interface{}, len(arr)*4),
 		data:   make([]interface{}, len(arr)),
@@ -27,31 +27,31 @@ func GetSegmentTree(arr []interface{}, merger func(interface{}, interface{}) int
 }
 
 // 在treeIndex的位置创建表示区间[l...r]的线段树
-func (t *SegmentTree) buildSegmentTree(treeIndex int, l int, r int) {
+func (this *SegmentTree) buildSegmentTree(treeIndex int, l int, r int) {
 	if l == r {
-		t.tree[treeIndex] = t.data[l]
+		this.tree[treeIndex] = this.data[l]
 		return
 	}
 	leftTreeIndex := leftChild(treeIndex)
 	rightTreeIndex := rightChild(treeIndex)
 
 	mid := l + (r-l)/2
-	t.buildSegmentTree(leftTreeIndex, l, mid)
-	t.buildSegmentTree(rightTreeIndex, mid+1, r)
+	this.buildSegmentTree(leftTreeIndex, l, mid)
+	this.buildSegmentTree(rightTreeIndex, mid+1, r)
 
-	t.tree[treeIndex] = t.merger(t.tree[leftTreeIndex], t.tree[rightTreeIndex])
+	this.tree[treeIndex] = this.merger(this.tree[leftTreeIndex], this.tree[rightTreeIndex])
 }
 
-func (t *SegmentTree) GetSize() int {
-	return len(t.data)
+func (this *SegmentTree) GetSize() int {
+	return len(this.data)
 }
 
-func (t *SegmentTree) Get(index int) interface{} {
-	if index < 0 || index >= len(t.data) {
+func (this *SegmentTree) Get(index int) interface{} {
+	if index < 0 || index >= len(this.data) {
 		panic("Index is illegal.")
 	}
 
-	return t.data[index]
+	return this.data[index]
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
@@ -64,18 +64,18 @@ func rightChild(index int) int {
 	return index*2 + 2
 }
 
-func (t *SegmentTree) String() string {
+func (this *SegmentTree) String() string {
 	buffer := bytes.Buffer{}
 
 	buffer.WriteString("[")
-	for i := 0; i < len(t.tree); i++ {
-		if t.tree[i] != nil {
-			buffer.WriteString(fmt.Sprint(t.tree[i]))
+	for i := 0; i < len(this.tree); i++ {
+		if this.tree[i] != nil {
+			buffer.WriteString(fmt.Sprint(this.tree[i]))
 		} else {
 			buffer.WriteString("nil")
 		}
 
-		if i != len(t.tree)-1 {
+		if i != len(this.tree)-1 {
 			buffer.WriteString(", ")
 		}
 	}
