@@ -27,4 +27,5 @@
 
 ## TODOLIST
 
-- [ ] 06-Binary-Search-Tree 中 interface{} 类型的比较
+- [ ] 03-Stacks-and-Queues 和 06-Binary-Search-Tree 的 optional 章节
+- [ ] 08-Heap-and-Priority-Queue/08-Priority-Queue-in-Java

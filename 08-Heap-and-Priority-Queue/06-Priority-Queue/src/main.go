@@ -1,7 +1,7 @@
 package main
 
 import (
-	"Play-with-Data-Structures/08-Heap-and-Priority-Queue/05-Heapify-and-Replace-in-Heap/src/MaxHeap"
+	"Play-with-Data-Structures/08-Heap-and-Priority-Queue/06-Priority-Queue/src/MaxHeap"
 	"fmt"
 	"math"
 	"math/rand"
@@ -15,7 +15,7 @@ func testHeap(testData []interface{}, isHeapify bool) time.Duration {
 	if isHeapify {
 		maxHeap = MaxHeap.GetMaxHeapFromArr(testData)
 	} else {
-		maxHeap = MaxHeap.GetMaxHeap()
+		maxHeap = MaxHeap.Constructor()
 		for _, v := range testData {
 			maxHeap.Add(v)
 		}

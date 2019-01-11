@@ -11,7 +11,7 @@ import (
 func main() {
 	n := 1000000
 
-	maxHeap := MaxHeap.GetMaxHeap()
+	maxHeap := MaxHeap.Constructor()
 	rand.Seed(time.Now().Unix())
 	for i := 0; i < n; i++ {
 		randNum := rand.Intn(math.MaxInt32)
@@ -19,7 +19,6 @@ func main() {
 	}
 
 	arr := make([]int, n)
-	fmt.Println(arr)
 	for i := 0; i < n; i++ {
 		arr[i] = maxHeap.ExtractMax().(int)
 	}

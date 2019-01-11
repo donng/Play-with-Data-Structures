@@ -16,7 +16,7 @@ type freq struct {
 
 func GetMaxHeap() *MaxHeap {
 	maxHeap := &MaxHeap{
-		Array.GetArray(20),
+		Array.Constructor(20),
 	}
 
 	return maxHeap
@@ -43,7 +43,7 @@ func (h *MaxHeap) IsEmpty() bool {
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的父亲节点的索引
-func (h *MaxHeap) parent(index int) int {
+func parent(index int) int {
 	if index == 0 {
 		panic("index-0 doesn't have parent.")
 	}
@@ -51,12 +51,12 @@ func (h *MaxHeap) parent(index int) int {
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
-func (h *MaxHeap) leftChild(index int) int {
+func leftChild(index int) int {
 	return index*2 + 1
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的右孩子节点的索引
-func (h *MaxHeap) rightChild(index int) int {
+func rightChild(index int) int {
 	return index*2 + 2
 }
 
@@ -67,9 +67,9 @@ func (h *MaxHeap) Add(e interface{}) {
 }
 
 func (h *MaxHeap) siftUp(k int) {
-	for k > 0 && h.data.Get(k).(*freq).compareTo(h.data.Get(h.parent(k)).(*freq)) > 0 {
-		h.data.Swap(k, h.parent(k))
-		k = h.parent(k)
+	for k > 0 && h.data.Get(k).(*freq).compareTo(h.data.Get(parent(k)).(*freq)) > 0 {
+		h.data.Swap(k, parent(k))
+		k = parent(k)
 	}
 }
 
@@ -108,8 +108,8 @@ func (h *MaxHeap) ExtractMin() interface{} {
 
 // data[j] 是 leftChild 和 rightChild 中的最大值
 func (h *MaxHeap) siftDown(k int) {
-	for h.leftChild(k) < h.data.GetSize() {
-		j := h.leftChild(k)
+	for leftChild(k) < h.data.GetSize() {
+		j := leftChild(k)
 		// j+1是右孩子索引，如果存在右孩子比较后获得左右孩子中较大值的索引
 		if j+1 < h.data.GetSize() && h.data.Get(j+1).(*freq).compareTo(h.data.Get(j).(*freq)) > 0 {
 			j++
