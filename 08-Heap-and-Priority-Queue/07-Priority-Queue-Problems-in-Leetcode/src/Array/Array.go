@@ -46,7 +46,7 @@ func (this *Array) IsEmpty() bool {
 
 // 在第 index 个位置插入一个新元素 e
 func (this *Array) Add(index int, e interface{}) {
-	if index < 0 || index > this.GetCapacity() {
+	if index < 0 || index > this.size {
 		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 

@@ -33,7 +33,7 @@ func (this *Array) Add(index int, e int) {
 		panic("Add failed. Array is full.")
 	}
 
-	if index < 0 || index > this.GetCapacity() {
+	if index < 0 || index > this.size {
 		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 
