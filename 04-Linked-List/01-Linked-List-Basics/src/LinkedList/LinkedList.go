@@ -2,11 +2,11 @@ package LinkedList
 
 import "fmt"
 
-type node struct {
+type Node struct {
 	e    interface{}
-	next *node
+	next *Node
 }
 
-func (n *node) String() string {
+func (n *Node) String() string {
 	return fmt.Sprint(n.e)
 }
