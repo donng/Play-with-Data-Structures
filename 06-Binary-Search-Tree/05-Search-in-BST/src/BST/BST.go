@@ -62,7 +62,7 @@ func contains(n *Node, e interface{}) bool {
 		return false
 	}
 
-	if e == n.e {
+	if Interfaces.Compare(e, n.e) == 0 {
 		return true
 	} else if Interfaces.Compare(e, n.e) < 0 {
 		return contains(n.left, e)

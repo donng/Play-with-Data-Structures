@@ -205,6 +205,7 @@ func (this *BST) RemoveMin() interface{} {
 func (this *BST) removeMin(n *Node) *Node {
 	if n.left == nil {
 		rightNode := n.right
+		n.right = nil
 		this.size--
 		return rightNode
 	}
@@ -225,6 +226,7 @@ func (this *BST) RemoveMax() interface{} {
 func (this *BST) removeMax(n *Node) *Node {
 	if n.right == nil {
 		leftNode := n.left
+		n.left = nil
 		this.size--
 		return leftNode
 	}

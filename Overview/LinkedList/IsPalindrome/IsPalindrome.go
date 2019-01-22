@@ -1,4 +1,4 @@
-package LinkedList
+package main
 
 import (
 	"bytes"
@@ -132,18 +132,55 @@ func (l *LinkedList) String() string {
 	return buffer.String()
 }
 
+func IsPalindrome(head *Node) bool {
+	if head == nil || head.next == nil {
+		return true
+	}
+
+	var prev *Node
+	slow := head
+	fast := head
+
+	for fast != nil && fast.next != nil {
+		fast = fast.next.next
+		// 慢节点将要移动到的下一个节点
+		next := slow.next
+		slow.next = prev
+		prev = slow
+		slow = next
+	}
+
+	// 当 fast 不为 nil，说明 slow 在奇数个节点的中间位置，移动到下一个位置
+	// a<-b->a  prev 在a，slow在b，需要将slow移动到第二个a
+	if fast != nil {
+		slow = slow.next
+	}
+
+	for slow != nil {
+		if slow.e != prev.e {
+			return false
+		}
+		slow = slow.next
+		prev = prev.next
+	}
+	return true
+}
+
 func main() {
-	linkList := Constructor()
-	linkList.AddFirst("are")
-	fmt.Println(linkList)
+	testStr1 := []string{"a", "b", "c", "b", "a"} // true
+	testStr2 := []string{"a", "b", "c", "a", "b"} // false
 
-	linkList.AddFirst("where")
-	linkList.AddLast("you")
-	linkList.AddLast("form")
-	linkList.RemoveLast()
-	fmt.Println(linkList)
+	linkList1 := Constructor()
+	for _, s := range testStr1 {
+		linkList1.AddLast(s)
+	}
+	fmt.Println(linkList1)
+	fmt.Println(IsPalindrome(linkList1.dummyHead.next))
 
-	linkList.AddLast("from")
-
-	fmt.Println(linkList)
+	linkList2 := Constructor()
+	for _, s := range testStr2 {
+		linkList2.AddLast(s)
+	}
+	fmt.Println(linkList2)
+	fmt.Println(IsPalindrome(linkList2.dummyHead.next))
 }
