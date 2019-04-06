@@ -64,7 +64,7 @@ func (this *Array) Set(index int, e interface{}) {
 
 func (this *Array) Contains(e interface{}) bool {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -73,7 +73,7 @@ func (this *Array) Contains(e interface{}) bool {
 
 func (this *Array) Find(e interface{}) int {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -82,7 +82,7 @@ func (this *Array) Find(e interface{}) int {
 
 func (this *Array) FindAll(e interface{}) (indexes []int) {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -131,7 +131,7 @@ func (this *Array) RemoveAllElement(e interface{}) bool {
 	}
 
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			this.Remove(i)
 		}
 	}

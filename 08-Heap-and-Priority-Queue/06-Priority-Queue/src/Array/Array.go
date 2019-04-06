@@ -91,7 +91,7 @@ func (this *Array) Set(index int, e interface{}) {
 // 查找数组中是否有元素 e
 func (this *Array) Contains(e interface{}) bool {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -101,7 +101,7 @@ func (this *Array) Contains(e interface{}) bool {
 // 查找数组中元素 e 所在的索引，不存在则返回 -1
 func (this *Array) Find(e interface{}) int {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -111,7 +111,7 @@ func (this *Array) Find(e interface{}) int {
 // 查找数组中元素 e 所有的索引组成的切片，不存在则返回 -1
 func (this *Array) FindAll(e interface{}) (indexes []int) {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -166,7 +166,7 @@ func (this *Array) RemoveAllElement(e interface{}) bool {
 	}
 
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			this.Remove(i)
 		}
 	}

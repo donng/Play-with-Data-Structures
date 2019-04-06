@@ -80,7 +80,7 @@ func (this *Array) Set(index int, e int) {
 // 查找数组中是否有元素 e
 func (this *Array) Contains(e int) bool {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -90,7 +90,7 @@ func (this *Array) Contains(e int) bool {
 // 查找数组中元素 e 所在的索引，不存在则返回 -1
 func (this *Array) Find(e int) int {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -100,7 +100,7 @@ func (this *Array) Find(e int) int {
 // 查找数组中元素 e 所有的索引组成的切片，不存在则返回 -1
 func (this *Array) FindAll(e int) (indexes []int) {
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -149,7 +149,7 @@ func (this *Array) RemoveAllElement(e int) bool {
 	}
 
 	for i := 0; i < this.size; i++ {
-		if this.data[i] == e {
+		if Interfaces.Compare(this.data[i], e) == 0 {
 			this.Remove(i)
 		}
 	}
