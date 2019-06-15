@@ -1,5 +1,7 @@
 # Play-with-Data-Structures
 
+本仓库代码基于 liuyubobobo 老师在慕课网上的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，课程本身是基于 Java 语言讲解的，原仓库地址：https://github.com/liuyubobobo/Play-with-Data-Structures
+
 数据结构研究的是数据如何在计算机中进行组织和存储，使得我们可以**高效的获取数据或者修改数据**。
 
 我们需要根据应用的不同，灵活选择最合适的数据结构。
