@@ -14,7 +14,7 @@ import (
 func main() {
 	fmt.Println("Pride and Prejudice")
 
-	filename, _ := filepath.Abs("14-Hash-Table/05-Hash-Table-Implementation/pride-and-prejudice.txt")
+	filename, _ := filepath.Abs("../pride-and-prejudice.txt")
 	words := FileOperation.ReadFile(filename)
 	fmt.Println("Total words: ", len(words))
 

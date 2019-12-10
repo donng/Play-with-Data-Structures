@@ -13,7 +13,7 @@ import (
 func main() {
 	fmt.Println("Pride and Prejudice")
 
-	filename, _ := filepath.Abs("13-Red-Black-Tree/08-The-Performance-of-Red-Black-Tree/pride-and-prejudice.txt")
+	filename, _ := filepath.Abs("../pride-and-prejudice.txt")
 	words := FileOperation.ReadFile(filename)
 	fmt.Println("Total words: ", len(words))
 

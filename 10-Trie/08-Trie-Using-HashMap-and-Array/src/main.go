@@ -7,7 +7,6 @@ import (
 	"Play-with-Data-Structures/10-Trie/08-Trie-Using-HashMap-and-Array/src/Trie3"
 	"Play-with-Data-Structures/Utils/FileOperation"
 	"fmt"
-	"os"
 	"path/filepath"
 	"time"
 )
@@ -15,11 +14,8 @@ import (
 func main() {
 	fmt.Println("Pride and Prejudice")
 
-	projectPath, _ := os.Getwd()
-	currentPath := filepath.Join(projectPath, "10-Trie", "08-Trie-Using-HashMap-and-Array")
-
-	filename1 := filepath.Join(currentPath, "pride-and-prejudice.txt")
-	filename2 := filepath.Join(currentPath, "a-tale-of-two-cities.txt")
+	filename1, _ := filepath.Abs("../pride-and-prejudice.txt")
+	filename2, _ := filepath.Abs("../a-tale-of-two-cities.txt")
 	words1 := FileOperation.ReadFile(filename1)
 	words2 := FileOperation.ReadFile(filename2)
 	words := append(words1, words2...)

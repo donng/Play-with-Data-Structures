@@ -25,7 +25,7 @@ func testSet(set Set.Set, filename string) time.Duration {
 }
 
 func main() {
-	filename, _ := filepath.Abs("12-AVL-Tree/08-Map-and-Set-in-AVL-Tree/pride-and-prejudice.txt")
+	filename, _ := filepath.Abs("../../pride-and-prejudice.txt")
 
 	bstSet := BSTSet.Constructor()
 	time1 := testSet(bstSet, filename)

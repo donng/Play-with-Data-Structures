@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	filename, _ := filepath.Abs("12-AVL-Tree/02-Calculating-Balance-Factor/pride-and-prejudice.txt")
+	filename, _ := filepath.Abs("../pride-and-prejudice.txt")
 
 	bstMap := BSTMap.Constructor()
 
