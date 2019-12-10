@@ -6,6 +6,16 @@
 
 我们需要根据应用的不同，灵活选择最合适的数据结构。
 
+## Installation
+
+```
+cd $GOPATH/src
+
+git clone https://github.com/donng/Play-with-Data-Structures.git
+```
+
+注意： 本仓库暂未支持 `go module`，需要执行请先修改环境变量 `GO111MODULE=off`，然后到对应的目录下执行 `go run main.go` 即可。
+
 ## 数据结构的分类
 
 ### 1. 线性结构
