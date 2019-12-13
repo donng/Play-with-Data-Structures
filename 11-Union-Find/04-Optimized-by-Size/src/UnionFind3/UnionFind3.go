@@ -22,21 +22,21 @@ func Constructor(size int) *UnionFind3 {
 	}
 }
 
-func (this *UnionFind3) GetSize() int {
-	return len(this.parent)
+func (u3 *UnionFind3) GetSize() int {
+	return len(u3.parent)
 }
 
 // 查找过程, 查找元素p所对应的集合编号
 // O(h)复杂度, h为树的高度
-func (this *UnionFind3) find(p int) int {
-	if p < 0 || p > len(this.parent) {
+func (u3 *UnionFind3) find(p int) int {
+	if p < 0 || p > len(u3.parent) {
 		panic("p is out of range.")
 	}
 
 	// 不断去查询自己的父亲节点, 直到到达根节点
 	// 根节点的特点: parent[p] == p
-	for p != this.parent[p] {
-		p = this.parent[p]
+	for p != u3.parent[p] {
+		p = u3.parent[p]
 	}
 
 	return p
@@ -44,15 +44,15 @@ func (this *UnionFind3) find(p int) int {
 
 // 查看元素p和元素q是否所属一个集合
 // O(h)复杂度, h为树的高度
-func (this *UnionFind3) IsConnected(p int, q int) bool {
-	return this.find(p) == this.find(q)
+func (u3 *UnionFind3) IsConnected(p int, q int) bool {
+	return u3.find(p) == u3.find(q)
 }
 
 // 合并元素p和元素q所属的集合
 // O(h)复杂度, h为树的高度
-func (this *UnionFind3) UnionElements(p int, q int) {
-	pRoot := this.find(p)
-	qRoot := this.find(q)
+func (u3 *UnionFind3) UnionElements(p int, q int) {
+	pRoot := u3.find(p)
+	qRoot := u3.find(q)
 
 	if pRoot == qRoot {
 		return
@@ -60,11 +60,11 @@ func (this *UnionFind3) UnionElements(p int, q int) {
 
 	// 根据两个元素所在树的元素个数不同判断合并方向
 	// 将元素个数少的集合合并到元素个数多的集合上
-	if this.sz[pRoot] < this.sz[qRoot] {
-		this.parent[pRoot] = qRoot
-		this.sz[qRoot] += this.sz[pRoot]
+	if u3.sz[pRoot] < u3.sz[qRoot] {
+		u3.parent[pRoot] = qRoot
+		u3.sz[qRoot] += u3.sz[pRoot]
 	} else { // sz[qRoot] <= sz[pRoot]
-		this.parent[qRoot] = pRoot
-		this.sz[pRoot] += this.sz[qRoot]
+		u3.parent[qRoot] = pRoot
+		u3.sz[pRoot] += u3.sz[qRoot]
 	}
 }

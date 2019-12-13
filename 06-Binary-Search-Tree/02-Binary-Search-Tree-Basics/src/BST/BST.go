@@ -19,10 +19,10 @@ func Constructor() *BST {
 	return &BST{}
 }
 
-func (this *BST) GetSize() int {
-	return this.size
+func (b *BST) GetSize() int {
+	return b.size
 }
 
-func (this *BST) IsEmpty() bool {
-	return this.size == 0
+func (b *BST) IsEmpty() bool {
+	return b.size == 0
 }

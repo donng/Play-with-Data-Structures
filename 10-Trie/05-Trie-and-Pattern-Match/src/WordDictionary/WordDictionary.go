@@ -27,8 +27,8 @@ func Constructor() WordDictionary {
 }
 
 /** Adds a word into the data structure. */
-func (this *WordDictionary) AddWord(word string) {
-	cur := this.root
+func (wd *WordDictionary) AddWord(word string) {
+	cur := wd.root
 
 	for _, w := range []rune(word) {
 		c := string(w)
@@ -42,11 +42,11 @@ func (this *WordDictionary) AddWord(word string) {
 }
 
 /** Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter. */
-func (this *WordDictionary) Search(word string) bool {
-	return this.match(this.root, word, 0)
+func (wd *WordDictionary) Search(word string) bool {
+	return wd.match(wd.root, word, 0)
 }
 
-func (this *WordDictionary) match(n *Node, word string, index int) bool {
+func (wd *WordDictionary) match(n *Node, word string, index int) bool {
 	if index == len(word) {
 		return n.isWord
 	}
@@ -57,10 +57,10 @@ func (this *WordDictionary) match(n *Node, word string, index int) bool {
 		if n.next[c] == nil {
 			return false
 		}
-		return this.match(n.next[c], word, index+1)
+		return wd.match(n.next[c], word, index+1)
 	} else {
 		for w := range n.next {
-			if this.match(n.next[w], word, index+1) {
+			if wd.match(n.next[w], word, index+1) {
 				return true
 			}
 		}

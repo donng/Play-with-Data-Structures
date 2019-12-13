@@ -24,8 +24,8 @@ func Constructor() MapSum {
 	}
 }
 
-func (this *MapSum) Insert(key string, val int) {
-	cur := this.root
+func (s *MapSum) Insert(key string, val int) {
+	cur := s.root
 
 	for _, w := range []rune(key) {
 		c := string(w)
@@ -38,8 +38,8 @@ func (this *MapSum) Insert(key string, val int) {
 	cur.value = val
 }
 
-func (this *MapSum) Sum(prefix string) int {
-	cur := this.root
+func (s *MapSum) Sum(prefix string) int {
+	cur := s.root
 	for _, w := range []rune(prefix) {
 		c := string(w)
 		if cur.next[c] == nil {
@@ -48,13 +48,13 @@ func (this *MapSum) Sum(prefix string) int {
 		cur = cur.next[c]
 	}
 
-	return this.sum(cur)
+	return s.sum(cur)
 }
 
-func (this *MapSum) sum(n *Node) int {
+func (s *MapSum) sum(n *Node) int {
 	res := n.value
 	for s := range n.next {
-		res += this.sum(n.next[s])
+		res += s.sum(n.next[s])
 	}
 	return res
 }

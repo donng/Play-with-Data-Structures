@@ -33,7 +33,7 @@ func Constructor() *AVLTree {
 }
 
 // 返回以 Node 为根节点的二分搜索树中，key所在的节点
-func (this *AVLTree) getNode(Node *Node, key interface{}) *Node {
+func (at *AVLTree) getNode(Node *Node, key interface{}) *Node {
 	// 未找到等于 key 的节点
 	if Node == nil {
 		return nil
@@ -42,14 +42,14 @@ func (this *AVLTree) getNode(Node *Node, key interface{}) *Node {
 	if Interfaces.Compare(key, Node.key) == 0 {
 		return Node
 	} else if Interfaces.Compare(key, Node.key) == -1 {
-		return this.getNode(Node.left, key)
+		return at.getNode(Node.left, key)
 	} else {
-		return this.getNode(Node.right, key)
+		return at.getNode(Node.right, key)
 	}
 }
 
 // 获得节点 Node 的高度
-func (this *AVLTree) getHeight(n *Node) int {
+func (at *AVLTree) getHeight(n *Node) int {
 	if n == nil {
 		return 0
 	} else {
@@ -58,24 +58,24 @@ func (this *AVLTree) getHeight(n *Node) int {
 }
 
 // 获得节点 Node 的平衡因子
-func (this *AVLTree) getBalanceFactor(n *Node) int {
+func (at *AVLTree) getBalanceFactor(n *Node) int {
 	if n == nil {
 		return 0
 	} else {
-		return this.getHeight(n.left) - this.getHeight(n.right)
+		return at.getHeight(n.left) - at.getHeight(n.right)
 	}
 }
 
 // 向二分搜索树中添加新的元素(key, value)
-func (this *AVLTree) Add(key interface{}, val interface{}) {
-	this.root = this.add(this.root, key, val)
+func (at *AVLTree) Add(key interface{}, val interface{}) {
+	at.root = at.add(at.root, key, val)
 }
 
 // 向以node为根的二分搜索树中插入元素(key, value)，递归算法
 // 返回插入新节点后二分搜索树的根
-func (this *AVLTree) add(n *Node, key interface{}, val interface{}) *Node {
+func (at *AVLTree) add(n *Node, key interface{}, val interface{}) *Node {
 	if n == nil {
-		this.size++
+		at.size++
 		return &Node{
 			key: key,
 			val: val,
@@ -83,17 +83,17 @@ func (this *AVLTree) add(n *Node, key interface{}, val interface{}) *Node {
 	}
 
 	if Interfaces.Compare(key, n.key) == -1 {
-		n.left = this.add(n.left, key, val)
+		n.left = at.add(n.left, key, val)
 	} else if Interfaces.Compare(key, n.key) == 1 {
-		n.right = this.add(n.right, key, val)
+		n.right = at.add(n.right, key, val)
 	} else {
 		n.val = val
 	}
 
 	// 更新 height
-	n.height = 1 + int(math.Max(float64(this.getHeight(n.left)), float64(this.getHeight(n.right))))
+	n.height = 1 + int(math.Max(float64(at.getHeight(n.left)), float64(at.getHeight(n.right))))
 	// 计算平衡因子
-	balanceFactor := this.getBalanceFactor(n)
+	balanceFactor := at.getBalanceFactor(n)
 	if math.Abs(float64(balanceFactor)) > 1 {
 		fmt.Println("unbalanced: ", balanceFactor)
 	}
@@ -102,48 +102,48 @@ func (this *AVLTree) add(n *Node, key interface{}, val interface{}) *Node {
 }
 
 // 从二分搜索树中删除键为 key 的节点
-func (this *AVLTree) Remove(key interface{}) interface{} {
-	n := this.getNode(this.root, key)
+func (at *AVLTree) Remove(key interface{}) interface{} {
+	n := at.getNode(at.root, key)
 	if n != nil {
-		this.root = this.remove(this.root, key)
+		at.root = at.remove(at.root, key)
 		return n.val
 	}
 
 	return nil
 }
 
-func (this *AVLTree) remove(n *Node, key interface{}) *Node {
+func (at *AVLTree) remove(n *Node, key interface{}) *Node {
 	if n == nil {
 		return nil
 	}
 
 	if Interfaces.Compare(key, n.key) == -1 {
-		n.left = this.remove(n.left, key)
+		n.left = at.remove(n.left, key)
 		return n
 	} else if Interfaces.Compare(key, n.key) == 1 {
-		n.right = this.remove(n.right, key)
+		n.right = at.remove(n.right, key)
 		return n
 	} else {
 		// 待删除节点左子树为空的情况
 		if n.left == nil {
 			rightNode := n.right
 			n.right = nil
-			this.size--
+			at.size--
 			return rightNode
 		}
 		// 待删除节点右子树为空的情况
 		if n.right == nil {
 			leftNode := n.left
 			n.left = nil
-			this.size--
+			at.size--
 			return leftNode
 		}
 		// 待删除节点左右子树均不为空的情况
 
 		// 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
 		// 用这个节点顶替待删除节点的位置
-		successor := this.minimum(n.right)
-		successor.right = this.removeMin(n.right)
+		successor := at.minimum(n.right)
+		successor.right = at.removeMin(n.right)
 		successor.left = n.left
 
 		n.left, n.right = nil, nil
@@ -153,34 +153,34 @@ func (this *AVLTree) remove(n *Node, key interface{}) *Node {
 }
 
 // 返回以node为根的二分搜索树的最小值所在的节点
-func (this *AVLTree) minimum(n *Node) *Node {
+func (at *AVLTree) minimum(n *Node) *Node {
 	if n.left == nil {
 		return n
 	}
-	return this.minimum(n.left)
+	return at.minimum(n.left)
 }
 
 // 删除掉以node为根的二分搜索树中的最小节点
 // 返回删除节点后新的二分搜索树的根
-func (this *AVLTree) removeMin(n *Node) *Node {
+func (at *AVLTree) removeMin(n *Node) *Node {
 	if n.left == nil {
 		rightNode := n.right
 		n.right = nil
-		this.size--
+		at.size--
 
 		return rightNode
 	}
 
-	n.left = this.removeMin(n.left)
+	n.left = at.removeMin(n.left)
 	return n
 }
 
-func (this *AVLTree) Contains(key interface{}) bool {
-	return this.getNode(this.root, key) != nil
+func (at *AVLTree) Contains(key interface{}) bool {
+	return at.getNode(at.root, key) != nil
 }
 
-func (this *AVLTree) Get(key interface{}) interface{} {
-	n := this.getNode(this.root, key)
+func (at *AVLTree) Get(key interface{}) interface{} {
+	n := at.getNode(at.root, key)
 	if n == nil {
 		return nil
 	} else {
@@ -188,8 +188,8 @@ func (this *AVLTree) Get(key interface{}) interface{} {
 	}
 }
 
-func (this *AVLTree) Set(key interface{}, val interface{}) {
-	n := this.getNode(this.root, key)
+func (at *AVLTree) Set(key interface{}, val interface{}) {
+	n := at.getNode(at.root, key)
 	if n == nil {
 		panic(fmt.Sprintf("%v, doesn't exist", key))
 	}
@@ -197,17 +197,17 @@ func (this *AVLTree) Set(key interface{}, val interface{}) {
 	n.val = val
 }
 
-func (this *AVLTree) GetSize() int {
-	return this.size
+func (at *AVLTree) GetSize() int {
+	return at.size
 }
 
-func (this *AVLTree) IsEmpty() bool {
-	return this.size == 0
+func (at *AVLTree) IsEmpty() bool {
+	return at.size == 0
 }
 
-func (this *AVLTree) String() string {
+func (at *AVLTree) String() string {
 	var buffer bytes.Buffer
-	generateBSTSting(this.root, 0, &buffer)
+	generateBSTSting(at.root, 0, &buffer)
 	return buffer.String()
 }
 

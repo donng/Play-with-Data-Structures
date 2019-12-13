@@ -19,73 +19,73 @@ func Constructor(capacity int) *Array {
 }
 
 // 获取数组的容量
-func (this *Array) GetCapacity() int {
-	return len(this.data)
+func (a *Array) GetCapacity() int {
+	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (this *Array) GetSize() int {
-	return this.size
+func (a *Array) GetSize() int {
+	return a.size
 }
 
 // 返回数组是否为空
-func (this *Array) IsEmpty() bool {
-	return this.size == 0
+func (a *Array) IsEmpty() bool {
+	return a.size == 0
 }
 
 // 向所有元素后添加一个新元素
-func (this *Array) AddLast(e int) {
-	this.Add(this.size, e)
+func (a *Array) AddLast(e int) {
+	a.Add(a.size, e)
 }
 
 // 向所有元素前添加一个新元素
-func (this *Array) AddFirst(e int) {
-	this.Add(0, e)
+func (a *Array) AddFirst(e int) {
+	a.Add(0, e)
 }
 
 // 在第 index 个位置插入一个新元素 e
-func (this *Array) Add(index int, e int) {
-	if this.size == len(this.data) {
+func (a *Array) Add(index int, e int) {
+	if a.size == len(a.data) {
 		panic("Add failed. Array is full.")
 	}
 
-	if index < 0 || index > this.size {
+	if index < 0 || index > a.size {
 		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 
-	for i := this.size - 1; i >= index; i-- {
-		this.data[i+1] = this.data[i]
+	for i := a.size - 1; i >= index; i-- {
+		a.data[i+1] = a.data[i]
 	}
 
-	this.data[index] = e
-	this.size++
+	a.data[index] = e
+	a.size++
 }
 
 // 获取 index 索引位置的元素
-func (this *Array) Get(index int) int {
-	if index < 0 || index >= this.size {
+func (a *Array) Get(index int) int {
+	if index < 0 || index >= a.size {
 		panic("Get failed. Index is illegal.")
 	}
-	return this.data[index]
+	return a.data[index]
 }
 
 // 修改 index 索引位置的元素
-func (this *Array) Set(index int, e int) {
-	if index < 0 || index >= this.size {
+func (a *Array) Set(index int, e int) {
+	if index < 0 || index >= a.size {
 		panic("Set failed. Index is illegal.")
 	}
-	this.data[index] = e
+	a.data[index] = e
 }
 
 // 重写 Array 的 string 方法
-func (this *Array) String() string {
+func (a *Array) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", this.size, len(this.data)))
+	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
 	buffer.WriteString("[")
-	for i := 0; i < this.size; i++ {
-		buffer.WriteString(strconv.Itoa(this.data[i]))
-		if i != (this.size - 1) {
+	for i := 0; i < a.size; i++ {
+		buffer.WriteString(strconv.Itoa(a.data[i]))
+		if i != (a.size - 1) {
 			buffer.WriteString(", ")
 		}
 	}

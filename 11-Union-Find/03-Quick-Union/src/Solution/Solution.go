@@ -28,21 +28,21 @@ func Constructor(size int) *UnionFind2 {
 	return &UnionFind2{parent}
 }
 
-func (this *UnionFind2) GetSize() int {
-	return len(this.parent)
+func (u2 *UnionFind2) GetSize() int {
+	return len(u2.parent)
 }
 
 // 查找过程, 查找元素p所对应的集合编号
 // O(h)复杂度, h为树的高度
-func (this *UnionFind2) find(p int) int {
-	if p < 0 || p > len(this.parent) {
+func (u2 *UnionFind2) find(p int) int {
+	if p < 0 || p > len(u2.parent) {
 		panic("p is out of range.")
 	}
 
 	// 不断去查询自己的父亲节点, 直到到达根节点
 	// 根节点的特点: parent[p] == p
-	for p != this.parent[p] {
-		p = this.parent[p]
+	for p != u2.parent[p] {
+		p = u2.parent[p]
 	}
 
 	return p
@@ -50,21 +50,21 @@ func (this *UnionFind2) find(p int) int {
 
 // 查看元素p和元素q是否所属一个集合
 // O(h)复杂度, h为树的高度
-func (this *UnionFind2) IsConnected(p int, q int) bool {
-	return this.find(p) == this.find(q)
+func (u2 *UnionFind2) IsConnected(p int, q int) bool {
+	return u2.find(p) == u2.find(q)
 }
 
 // 合并元素p和元素q所属的集合
 // O(h)复杂度, h为树的高度
-func (this *UnionFind2) UnionElements(p int, q int) {
-	pRoot := this.find(p)
-	qRoot := this.find(q)
+func (u2 *UnionFind2) UnionElements(p int, q int) {
+	pRoot := u2.find(p)
+	qRoot := u2.find(q)
 
 	if pRoot == qRoot {
 		return
 	}
 
-	this.parent[pRoot] = qRoot
+	u2.parent[pRoot] = qRoot
 }
 
 func findCircleNum(M [][]int) int {

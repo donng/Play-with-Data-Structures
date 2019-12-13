@@ -16,37 +16,37 @@ func Constructor(capacity int) *ArrayStack {
 	}
 }
 
-func (this *ArrayStack) GetSize() int {
-	return this.array.GetSize()
+func (as *ArrayStack) GetSize() int {
+	return as.array.GetSize()
 }
 
-func (this *ArrayStack) IsEmpty() bool {
-	return this.array.IsEmpty()
+func (as *ArrayStack) IsEmpty() bool {
+	return as.array.IsEmpty()
 }
 
 // 压入栈顶元素
-func (this *ArrayStack) Push(element interface{}) {
-	this.array.AddLast(element)
+func (as *ArrayStack) Push(element interface{}) {
+	as.array.AddLast(element)
 }
 
 // 弹出栈顶元素
-func (this *ArrayStack) Pop() interface{} {
-	return this.array.RemoveLast()
+func (as *ArrayStack) Pop() interface{} {
+	return as.array.RemoveLast()
 }
 
 // 查看栈顶元素
-func (this *ArrayStack) Peek() interface{} {
-	return this.array.GetLast()
+func (as *ArrayStack) Peek() interface{} {
+	return as.array.GetLast()
 }
 
-func (this *ArrayStack) String() string {
+func (as *ArrayStack) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString("Stack: ")
 	buffer.WriteString("[")
-	for i := 0; i < this.array.GetSize(); i++ {
-		buffer.WriteString(fmt.Sprint(this.array.Get(i)))
-		if i != this.array.GetSize()-1 {
+	for i := 0; i < as.array.GetSize(); i++ {
+		buffer.WriteString(fmt.Sprint(as.array.Get(i)))
+		if i != as.array.GetSize()-1 {
 			buffer.WriteString(", ")
 		}
 	}

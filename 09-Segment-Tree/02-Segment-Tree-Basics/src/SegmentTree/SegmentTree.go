@@ -18,16 +18,16 @@ func Constructor(arr []interface{}) *SegmentTree {
 	return segmentTree
 }
 
-func (this *SegmentTree) GetSize() int {
-	return len(this.data)
+func (st *SegmentTree) GetSize() int {
+	return len(st.data)
 }
 
-func (this *SegmentTree) Get(index int) interface{} {
-	if index < 0 || index >= len(this.data) {
+func (st *SegmentTree) Get(index int) interface{} {
+	if index < 0 || index >= len(st.data) {
 		panic("Index is illegal.")
 	}
 
-	return this.data[index]
+	return st.data[index]
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引

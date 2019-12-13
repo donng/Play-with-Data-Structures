@@ -13,50 +13,50 @@ func Constructor(capacity int) *Array {
 }
 
 // 获取数组的容量
-func (this *Array) GetCapacity() int {
-	return len(this.data)
+func (a *Array) GetCapacity() int {
+	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (this *Array) GetSize() int {
-	return this.size
+func (a *Array) GetSize() int {
+	return a.size
 }
 
 // 返回数组是否为空
-func (this *Array) IsEmpty() bool {
-	return this.size == 0
+func (a *Array) IsEmpty() bool {
+	return a.size == 0
 }
 
 // 在第 index 个位置插入一个新元素 e
-func (this *Array) Add(index int, e int) {
-	if this.size == len(this.data) {
+func (a *Array) Add(index int, e int) {
+	if a.size == len(a.data) {
 		panic("Add failed. Array is full.")
 	}
 
-	if index < 0 || index > this.size {
+	if index < 0 || index > a.size {
 		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 
-	for i := this.size - 1; i >= index; i-- {
-		this.data[i+1] = this.data[i]
+	for i := a.size - 1; i >= index; i-- {
+		a.data[i+1] = a.data[i]
 	}
 
-	this.data[index] = e
-	this.size++
+	a.data[index] = e
+	a.size++
 }
 
 // 向所有元素后添加一个新元素
-func (this *Array) AddLast(e int) {
-	//if this.size == len(this.data) {
+func (a *Array) AddLast(e int) {
+	//if a.size == len(a.data) {
 	//	panic("AddLast failed,Array is full.")
 	//}
 	//
-	//this.data[this.size] = e
-	//this.size++
-	this.Add(this.size, e)
+	//a.data[a.size] = e
+	//a.size++
+	a.Add(a.size, e)
 }
 
 // 向所有元素前添加一个新元素
-func (this *Array) AddFirst(e int) {
-	this.Add(0, e)
+func (a *Array) AddFirst(e int) {
+	a.Add(0, e)
 }

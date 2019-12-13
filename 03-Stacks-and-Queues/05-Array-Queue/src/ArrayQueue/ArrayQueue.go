@@ -17,39 +17,39 @@ func Constructor(capacity int) *ArrayQueue {
 	}
 }
 
-func (this *ArrayQueue) GetSize() int {
-	return this.array.GetSize()
+func (aq *ArrayQueue) GetSize() int {
+	return aq.array.GetSize()
 }
 
-func (this *ArrayQueue) IsEmpty() bool {
-	return this.array.IsEmpty()
+func (aq *ArrayQueue) IsEmpty() bool {
+	return aq.array.IsEmpty()
 }
 
-func (this *ArrayQueue) GetCapacity() int {
-	return this.array.GetCapacity()
+func (aq *ArrayQueue) GetCapacity() int {
+	return aq.array.GetCapacity()
 }
 
-func (this *ArrayQueue) Enqueue(e interface{}) {
-	this.array.AddLast(e)
+func (aq *ArrayQueue) Enqueue(e interface{}) {
+	aq.array.AddLast(e)
 }
 
-func (this *ArrayQueue) Dequeue() interface{} {
-	return this.array.RemoveFirst()
+func (aq *ArrayQueue) Dequeue() interface{} {
+	return aq.array.RemoveFirst()
 }
 
-func (this *ArrayQueue) GetFront() interface{} {
-	return this.array.GetFirst()
+func (aq *ArrayQueue) GetFront() interface{} {
+	return aq.array.GetFirst()
 }
 
-func (this *ArrayQueue) String() string {
+func (aq *ArrayQueue) String() string {
 	var buffer bytes.Buffer
 
 	buffer.WriteString("Queue: ")
 	buffer.WriteString("front [")
-	for i := 0; i < this.array.GetSize(); i++ {
+	for i := 0; i < aq.array.GetSize(); i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(this.array.Get(i)))
-		if i != (this.array.GetSize() - 1) {
+		buffer.WriteString(fmt.Sprint(aq.array.Get(i)))
+		if i != (aq.array.GetSize() - 1) {
 			buffer.WriteString(", ")
 		}
 	}

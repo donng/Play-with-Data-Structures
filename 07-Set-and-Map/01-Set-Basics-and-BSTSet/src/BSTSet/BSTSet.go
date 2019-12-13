@@ -14,22 +14,22 @@ func Constructor() *BSTSet {
 	}
 }
 
-func (this *BSTSet) Add(e interface{}) {
-	this.BST.Add(e)
+func (bs *BSTSet) Add(e interface{}) {
+	bs.BST.Add(e)
 }
 
-func (this *BSTSet) Remove(e interface{}) {
-	this.BST.Remove(e)
+func (bs *BSTSet) Remove(e interface{}) {
+	bs.BST.Remove(e)
 }
 
-func (this *BSTSet) Contains(e interface{}) bool {
-	return this.BST.Contains(e)
+func (bs *BSTSet) Contains(e interface{}) bool {
+	return bs.BST.Contains(e)
 }
 
-func (this *BSTSet) GetSize() int {
-	return this.BST.GetSize()
+func (bs *BSTSet) GetSize() int {
+	return bs.BST.GetSize()
 }
 
-func (this *BSTSet) IsEmpty() bool {
-	return this.BST.IsEmpty()
+func (bs *BSTSet) IsEmpty() bool {
+	return bs.BST.IsEmpty()
 }

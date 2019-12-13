@@ -24,53 +24,53 @@ func Constructor() *LinkedListQueue {
 	return &LinkedListQueue{}
 }
 
-func (this *LinkedListQueue) GetSize() int {
-	return this.size
+func (lq *LinkedListQueue) GetSize() int {
+	return lq.size
 }
 
-func (this *LinkedListQueue) IsEmpty() bool {
-	return this.size == 0
+func (lq *LinkedListQueue) IsEmpty() bool {
+	return lq.size == 0
 }
 
-func (this *LinkedListQueue) Enqueue(e interface{}) {
-	if this.tail == nil {
-		this.tail = &node{e: e}
-		this.head = this.tail
+func (lq *LinkedListQueue) Enqueue(e interface{}) {
+	if lq.tail == nil {
+		lq.tail = &node{e: e}
+		lq.head = lq.tail
 	} else {
-		this.tail.next = &node{e: e}
-		this.tail = this.tail.next
+		lq.tail.next = &node{e: e}
+		lq.tail = lq.tail.next
 	}
-	this.size++
+	lq.size++
 }
 
-func (this *LinkedListQueue) Dequeue() interface{} {
-	if this.IsEmpty() {
+func (lq *LinkedListQueue) Dequeue() interface{} {
+	if lq.IsEmpty() {
 		panic("Cannot dequeue from an empty queue.")
 	}
-	head := this.head
-	this.head = this.head.next
+	head := lq.head
+	lq.head = lq.head.next
 	head.next = nil
 	if head == nil {
-		this.tail = nil
+		lq.tail = nil
 	}
-	this.size--
+	lq.size--
 
 	return head.e
 }
 
-func (this *LinkedListQueue) GetFront() interface{} {
-	if this.IsEmpty() {
+func (lq *LinkedListQueue) GetFront() interface{} {
+	if lq.IsEmpty() {
 		panic("Cannot dequeue from an empty queue.")
 	}
 
-	return this.head.e
+	return lq.head.e
 }
 
-func (this *LinkedListQueue) String() string {
+func (lq *LinkedListQueue) String() string {
 	var buffer bytes.Buffer
 	buffer.WriteString("Queue: front ")
 
-	cur := this.head
+	cur := lq.head
 	for cur != nil {
 		buffer.WriteString(fmt.Sprintf("%v ->", cur.e))
 		cur = cur.next

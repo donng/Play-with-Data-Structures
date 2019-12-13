@@ -21,16 +21,16 @@ func Constructor() *LinkedListMap {
 	}
 }
 
-func (this *LinkedListMap) GetSize() int {
-	return this.size
+func (lm *LinkedListMap) GetSize() int {
+	return lm.size
 }
 
-func (this *LinkedListMap) IsEmpty() bool {
-	return this.size == 0
+func (lm *LinkedListMap) IsEmpty() bool {
+	return lm.size == 0
 }
 
-func (this *LinkedListMap) getNode(key interface{}) *Node {
-	prev := this.dummyHead.next
+func (lm *LinkedListMap) getNode(key interface{}) *Node {
+	prev := lm.dummyHead.next
 	for prev != nil {
 		if prev.key == key {
 			return prev
@@ -41,24 +41,24 @@ func (this *LinkedListMap) getNode(key interface{}) *Node {
 	return nil
 }
 
-func (this *LinkedListMap) Add(key interface{}, val interface{}) {
-	n := this.getNode(key)
+func (lm *LinkedListMap) Add(key interface{}, val interface{}) {
+	n := lm.getNode(key)
 
 	if n == nil {
 		newNode := &Node{
 			key:  key,
 			val:  val,
-			next: this.dummyHead.next,
+			next: lm.dummyHead.next,
 		}
-		this.dummyHead.next = newNode
-		this.size++
+		lm.dummyHead.next = newNode
+		lm.size++
 	} else {
 		n.val = val
 	}
 }
 
-func (this *LinkedListMap) Get(key interface{}) interface{} {
-	n := this.getNode(key)
+func (lm *LinkedListMap) Get(key interface{}) interface{} {
+	n := lm.getNode(key)
 	if n == nil {
 		return nil
 	} else {
@@ -66,8 +66,8 @@ func (this *LinkedListMap) Get(key interface{}) interface{} {
 	}
 }
 
-func (this *LinkedListMap) Set(key interface{}, val interface{}) {
-	Node := this.getNode(key)
+func (lm *LinkedListMap) Set(key interface{}, val interface{}) {
+	Node := lm.getNode(key)
 	if Node == nil {
 		panic(fmt.Sprintf("%v, doesn't exist", key))
 	}
@@ -75,8 +75,8 @@ func (this *LinkedListMap) Set(key interface{}, val interface{}) {
 	Node.val = val
 }
 
-func (this *LinkedListMap) Remove(key interface{}) interface{} {
-	prev := this.dummyHead
+func (lm *LinkedListMap) Remove(key interface{}) interface{} {
+	prev := lm.dummyHead
 	for prev.next != nil {
 		if prev.next.key == key {
 			delNode := prev.next
@@ -91,6 +91,6 @@ func (this *LinkedListMap) Remove(key interface{}) interface{} {
 	return nil
 }
 
-func (this *LinkedListMap) Contains(key interface{}) bool {
-	return this.getNode(key) != nil
+func (lm *LinkedListMap) Contains(key interface{}) bool {
+	return lm.getNode(key) != nil
 }

@@ -10,22 +10,22 @@ func Constructor() *AVLSet {
 	return &AVLSet{}
 }
 
-func (this *AVLSet) Add(k interface{}) {
-	this.avl.Add(k, nil)
+func (as *AVLSet) Add(k interface{}) {
+	as.avl.Add(k, nil)
 }
 
-func (this *AVLSet) Remove(k interface{}) {
-	this.avl.Remove(k)
+func (as *AVLSet) Remove(k interface{}) {
+	as.avl.Remove(k)
 }
 
-func (this *AVLSet) Contains(k interface{}) bool {
-	return this.avl.Contains(k)
+func (as *AVLSet) Contains(k interface{}) bool {
+	return as.avl.Contains(k)
 }
 
-func (this *AVLSet) GetSize() int {
-	return this.avl.GetSize()
+func (as *AVLSet) GetSize() int {
+	return as.avl.GetSize()
 }
 
-func (this *AVLSet) IsEmpty() bool {
-	return this.avl.IsEmpty()
+func (as *AVLSet) IsEmpty() bool {
+	return as.avl.IsEmpty()
 }

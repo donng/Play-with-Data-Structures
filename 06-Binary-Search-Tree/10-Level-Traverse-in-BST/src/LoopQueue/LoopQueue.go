@@ -18,74 +18,74 @@ func Constructor(capacity int) *LoopQueue {
 	}
 }
 
-func (this *LoopQueue) GetCapacity() int {
-	return len(this.data) - 1
+func (lq *LoopQueue) GetCapacity() int {
+	return len(lq.data) - 1
 }
 
-func (this *LoopQueue) GetSize() int {
-	return this.size
+func (lq *LoopQueue) GetSize() int {
+	return lq.size
 }
 
-func (this *LoopQueue) IsEmpty() bool {
-	return this.front == this.tail
+func (lq *LoopQueue) IsEmpty() bool {
+	return lq.front == lq.tail
 }
 
 // 入队
-func (this *LoopQueue) Enqueue(e interface{}) {
-	if (this.tail+1)%len(this.data) == this.front {
-		this.resize(this.GetCapacity() * 2)
+func (lq *LoopQueue) Enqueue(e interface{}) {
+	if (lq.tail+1)%len(lq.data) == lq.front {
+		lq.resize(lq.GetCapacity() * 2)
 	}
-	this.data[this.tail] = e
-	this.tail = (this.tail + 1) % len(this.data)
-	this.size++
+	lq.data[lq.tail] = e
+	lq.tail = (lq.tail + 1) % len(lq.data)
+	lq.size++
 }
 
 // 获得队列头部元素
-func (this *LoopQueue) Dequeue() (e interface{}) {
-	if this.IsEmpty() {
+func (lq *LoopQueue) Dequeue() (e interface{}) {
+	if lq.IsEmpty() {
 		panic("cannot dequeue from empty queue")
 	}
 
-	e = this.data[this.front]
-	this.data[this.front] = nil
+	e = lq.data[lq.front]
+	lq.data[lq.front] = nil
 	// 循环队列需要执行求余运算
-	this.front = (this.front + 1) % len(this.data)
-	this.size--
-	if this.size == this.GetCapacity()/4 && this.GetCapacity()/2 != 0 {
-		this.resize(this.GetCapacity() / 2)
+	lq.front = (lq.front + 1) % len(lq.data)
+	lq.size--
+	if lq.size == lq.GetCapacity()/4 && lq.GetCapacity()/2 != 0 {
+		lq.resize(lq.GetCapacity() / 2)
 	}
 
 	return
 }
 
 // 查看队列头部元素
-func (this *LoopQueue) GetFront() interface{} {
-	if this.IsEmpty() {
+func (lq *LoopQueue) GetFront() interface{} {
+	if lq.IsEmpty() {
 		panic("Queue is empty")
 	}
 
-	return this.data[this.front]
+	return lq.data[lq.front]
 }
 
-func (this *LoopQueue) resize(capacity int) {
+func (lq *LoopQueue) resize(capacity int) {
 	newData := make([]interface{}, capacity+1)
-	for i := 0; i < this.size; i++ {
-		newData[i] = this.data[(i+this.front)%len(this.data)]
+	for i := 0; i < lq.size; i++ {
+		newData[i] = lq.data[(i+lq.front)%len(lq.data)]
 	}
-	this.data = newData
-	this.front = 0
-	this.tail = this.size
+	lq.data = newData
+	lq.front = 0
+	lq.tail = lq.size
 }
 
-func (this *LoopQueue) String() string {
+func (lq *LoopQueue) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", this.size, this.GetCapacity()))
+	buffer.WriteString(fmt.Sprintf("Queue: size = %d, capacity = %d\n", lq.size, lq.GetCapacity()))
 	buffer.WriteString("front [")
-	for i := this.front; i != this.tail; i = (i + 1) % len(this.data) {
+	for i := lq.front; i != lq.tail; i = (i + 1) % len(lq.data) {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(this.data[i]))
-		if (i+1)%len(this.data) != this.tail {
+		buffer.WriteString(fmt.Sprint(lq.data[i]))
+		if (i+1)%len(lq.data) != lq.tail {
 			buffer.WriteString(", ")
 		}
 	}

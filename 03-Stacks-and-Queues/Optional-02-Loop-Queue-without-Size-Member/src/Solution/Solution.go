@@ -41,67 +41,67 @@ func Constructor(capacity int) *LoopQueue {
 	}
 }
 
-func (this *LoopQueue) GetCapacity() int {
-	return len(this.data)
+func (lq *LoopQueue) GetCapacity() int {
+	return len(lq.data)
 }
 
-func (this *LoopQueue) GetSize() int {
-	return this.size
+func (lq *LoopQueue) GetSize() int {
+	return lq.size
 }
 
-func (this *LoopQueue) IsEmpty() bool {
+func (lq *LoopQueue) IsEmpty() bool {
 	// 注意，我们不再使用front和tail之间的关系来判断队列是否为空，而直接使用size
-	return this.size == 0
+	return lq.size == 0
 }
 
 // 入队
-func (this *LoopQueue) Enqueue(e interface{}) {
+func (lq *LoopQueue) Enqueue(e interface{}) {
 	// 注意，我们不再使用front和tail之间的关系来判断队列是否为满，而直接使用size
-	capacity := this.GetCapacity()
-	if this.size == capacity {
-		this.resize(capacity * 2)
+	capacity := lq.GetCapacity()
+	if lq.size == capacity {
+		lq.resize(capacity * 2)
 	}
-	this.data[this.tail] = e
-	this.tail = (this.tail + 1) % len(this.data)
-	this.size++
+	lq.data[lq.tail] = e
+	lq.tail = (lq.tail + 1) % len(lq.data)
+	lq.size++
 }
 
 // 获得队列头部元素
-func (this *LoopQueue) Dequeue() (e interface{}) {
-	if this.IsEmpty() {
+func (lq *LoopQueue) Dequeue() (e interface{}) {
+	if lq.IsEmpty() {
 		panic("Cannot dequeue from empty queue")
 	}
 
-	e = this.data[this.front]
-	this.data[this.front] = nil
+	e = lq.data[lq.front]
+	lq.data[lq.front] = nil
 	// 循环队列需要执行求余运算
-	this.front = (this.front + 1) % len(this.data)
-	this.size--
-	if this.size == this.GetCapacity()/4 && this.size != 0 {
-		this.resize(this.GetCapacity() / 2)
+	lq.front = (lq.front + 1) % len(lq.data)
+	lq.size--
+	if lq.size == lq.GetCapacity()/4 && lq.size != 0 {
+		lq.resize(lq.GetCapacity() / 2)
 	}
 
 	return
 }
 
 // 查看队列头部元素
-func (this *LoopQueue) GetFront() interface{} {
-	if this.IsEmpty() {
+func (lq *LoopQueue) GetFront() interface{} {
+	if lq.IsEmpty() {
 		panic("Queue is empty")
 	}
 
-	return this.data[this.front]
+	return lq.data[lq.front]
 }
 
-func (this *LoopQueue) resize(capacity int) {
-	length := len(this.data)
+func (lq *LoopQueue) resize(capacity int) {
+	length := len(lq.data)
 	newData := make([]interface{}, capacity)
-	for i := 0; i < this.size; i++ {
-		newData[i] = this.data[(i+this.front)%length]
+	for i := 0; i < lq.size; i++ {
+		newData[i] = lq.data[(i+lq.front)%length]
 	}
-	this.data = newData
-	this.front = 0
-	this.tail = this.size
+	lq.data = newData
+	lq.front = 0
+	lq.tail = lq.size
 }
 
 type Pair struct {

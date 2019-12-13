@@ -21,13 +21,13 @@ func Constructor() *Trie {
 }
 
 // 获得Trie中存储的单词数量
-func (this *Trie) GetSize() int {
-	return this.size
+func (t *Trie) GetSize() int {
+	return t.size
 }
 
 // 向Trie中添加一个新的单词word
-func (this *Trie) Add(word string) {
-	cur := this.root
+func (t *Trie) Add(word string) {
+	cur := t.root
 
 	for _, w := range []rune(word) {
 		c := string(w)
@@ -40,13 +40,13 @@ func (this *Trie) Add(word string) {
 
 	if cur.isWord == false {
 		cur.isWord = true
-		this.size++
+		t.size++
 	}
 }
 
 // 查询单词word是否在Trie中
-func (this *Trie) Contains(word string) bool {
-	cur := this.root
+func (t *Trie) Contains(word string) bool {
+	cur := t.root
 
 	for _, w := range []rune(word) {
 		c := string(w)

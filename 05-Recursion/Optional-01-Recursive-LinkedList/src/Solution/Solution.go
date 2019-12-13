@@ -21,29 +21,29 @@ type LinkedListStack struct {
 
 func GetLinkedListStack() *LinkedListStack {
 	list := &LinkedListStack{}
-	list.listR = LinkedListR.GetLinkedListR()
+	list.listR = LinkedListR.Constructor()
 
 	return list
 }
 
-func (l *LinkedListStack) GetSize() int {
-	return l.listR.GetSize()
+func (ls *LinkedListStack) GetSize() int {
+	return ls.listR.GetSize()
 }
 
-func (l *LinkedListStack) IsEmpty() bool {
-	return l.listR.IsEmpty()
+func (ls *LinkedListStack) IsEmpty() bool {
+	return ls.listR.IsEmpty()
 }
 
-func (l *LinkedListStack) Push(e E) {
-	l.listR.AddFirst(e)
+func (ls *LinkedListStack) Push(e E) {
+	ls.listR.AddFirst(e)
 }
 
-func (l *LinkedListStack) Pop() E {
-	return l.listR.RemoveFirst()
+func (ls *LinkedListStack) Pop() E {
+	return ls.listR.RemoveFirst()
 }
 
-func (l *LinkedListStack) Peek() E {
-	return l.listR.GetFirst()
+func (ls *LinkedListStack) Peek() E {
+	return ls.listR.GetFirst()
 }
 
 func isValid(s string) bool {

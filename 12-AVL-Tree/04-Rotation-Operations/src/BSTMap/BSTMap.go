@@ -22,7 +22,7 @@ func Constructor() *BSTMap {
 }
 
 // 返回以node为根节点的二分搜索树中，key所在的节点
-func (m *BSTMap) getNode(node *node, key interface{}) *node {
+func (bm *BSTMap) getNode(node *node, key interface{}) *node {
 	// 未找到等于 key 的节点
 	if node == nil {
 		return nil
@@ -31,22 +31,22 @@ func (m *BSTMap) getNode(node *node, key interface{}) *node {
 	if key.(int) == node.key.(int) {
 		return node
 	} else if key.(int) < node.key.(int) {
-		return m.getNode(node.left, key)
+		return bm.getNode(node.left, key)
 	} else {
-		return m.getNode(node.right, key)
+		return bm.getNode(node.right, key)
 	}
 }
 
 // 向二分搜索树中添加新的元素(key, value)
-func (m *BSTMap) Add(key interface{}, val interface{}) {
-	m.root = m.add(m.root, key, val)
+func (bm *BSTMap) Add(key interface{}, val interface{}) {
+	bm.root = bm.add(bm.root, key, val)
 }
 
 // 向以node为根的二分搜索树中插入元素(key, value)，递归算法
 // 返回插入新节点后二分搜索树的根
-func (m *BSTMap) add(n *node, key interface{}, val interface{}) *node {
+func (bm *BSTMap) add(n *node, key interface{}, val interface{}) *node {
 	if n == nil {
-		m.size++
+		bm.size++
 		return &node{
 			key: key,
 			val: val,
@@ -54,9 +54,9 @@ func (m *BSTMap) add(n *node, key interface{}, val interface{}) *node {
 	}
 
 	if key.(int) < n.key.(int) {
-		n.left = m.add(n.left, key, val)
+		n.left = bm.add(n.left, key, val)
 	} else if key.(int) > n.key.(int) {
-		n.right = m.add(n.right, key, val)
+		n.right = bm.add(n.right, key, val)
 	} else {
 		n.val = val
 	}
@@ -65,48 +65,48 @@ func (m *BSTMap) add(n *node, key interface{}, val interface{}) *node {
 }
 
 // 从二分搜索树中删除键为key的节点
-func (m *BSTMap) Remove(key interface{}) interface{} {
-	n := m.getNode(m.root, key)
+func (bm *BSTMap) Remove(key interface{}) interface{} {
+	n := bm.getNode(bm.root, key)
 	if n != nil {
-		m.root = m.remove(m.root, key)
+		bm.root = bm.remove(bm.root, key)
 		return n.val
 	}
 
 	return nil
 }
 
-func (m *BSTMap) remove(n *node, key interface{}) *node {
+func (bm *BSTMap) remove(n *node, key interface{}) *node {
 	if n == nil {
 		return nil
 	}
 
 	if key.(int) < n.key.(int) {
-		n.left = m.remove(n.left, key)
+		n.left = bm.remove(n.left, key)
 		return n
 	} else if key.(int) > n.key.(int) {
-		n.right = m.remove(n.right, key)
+		n.right = bm.remove(n.right, key)
 		return n
 	} else {
 		// 待删除节点左子树为空的情况
 		if n.left == nil {
 			rightNode := n.right
 			n.right = nil
-			m.size--
+			bm.size--
 			return rightNode
 		}
 		// 待删除节点右子树为空的情况
 		if n.right == nil {
 			leftNode := n.left
 			n.left = nil
-			m.size--
+			bm.size--
 			return leftNode
 		}
 		// 待删除节点左右子树均不为空的情况
 
 		// 找到比待删除节点大的最小节点, 即待删除节点右子树的最小节点
 		// 用这个节点顶替待删除节点的位置
-		successor := m.minimum(n.right)
-		successor.right = m.removeMin(n.right)
+		successor := bm.minimum(n.right)
+		successor.right = bm.removeMin(n.right)
 		successor.left = n.left
 
 		n.left, n.right = nil, nil
@@ -116,34 +116,34 @@ func (m *BSTMap) remove(n *node, key interface{}) *node {
 }
 
 // 返回以node为根的二分搜索树的最小值所在的节点
-func (m *BSTMap) minimum(n *node) *node {
+func (bm *BSTMap) minimum(n *node) *node {
 	if n.left == nil {
 		return n
 	}
-	return m.minimum(n.left)
+	return bm.minimum(n.left)
 }
 
 // 删除掉以node为根的二分搜索树中的最小节点
 // 返回删除节点后新的二分搜索树的根
-func (m *BSTMap) removeMin(n *node) *node {
+func (bm *BSTMap) removeMin(n *node) *node {
 	if n.left == nil {
 		rightNode := n.right
 		n.right = nil
-		m.size--
+		bm.size--
 
 		return rightNode
 	}
 
-	n.left = m.removeMin(n.left)
+	n.left = bm.removeMin(n.left)
 	return n
 }
 
-func (m *BSTMap) Contains(key interface{}) bool {
-	return m.getNode(m.root, key) != nil
+func (bm *BSTMap) Contains(key interface{}) bool {
+	return bm.getNode(bm.root, key) != nil
 }
 
-func (m *BSTMap) Get(key interface{}) interface{} {
-	n := m.getNode(m.root, key)
+func (bm *BSTMap) Get(key interface{}) interface{} {
+	n := bm.getNode(bm.root, key)
 	if n == nil {
 		return nil
 	} else {
@@ -151,8 +151,8 @@ func (m *BSTMap) Get(key interface{}) interface{} {
 	}
 }
 
-func (m *BSTMap) Set(key interface{}, val interface{}) {
-	n := m.getNode(m.root, key)
+func (bm *BSTMap) Set(key interface{}, val interface{}) {
+	n := bm.getNode(bm.root, key)
 	if n == nil {
 		panic(fmt.Sprintf("%v, doesn't exist", key))
 	}
@@ -160,17 +160,17 @@ func (m *BSTMap) Set(key interface{}, val interface{}) {
 	n.val = val
 }
 
-func (m *BSTMap) GetSize() int {
-	return m.size
+func (bm *BSTMap) GetSize() int {
+	return bm.size
 }
 
-func (m *BSTMap) IsEmpty() bool {
-	return m.size == 0
+func (bm *BSTMap) IsEmpty() bool {
+	return bm.size == 0
 }
 
-func (m *BSTMap) String() string {
+func (bm *BSTMap) String() string {
 	var buffer bytes.Buffer
-	generateBSTSting(m.root, 0, &buffer)
+	generateBSTSting(bm.root, 0, &buffer)
 	return buffer.String()
 }
 

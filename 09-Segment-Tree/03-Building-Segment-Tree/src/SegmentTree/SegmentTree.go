@@ -27,31 +27,31 @@ func Constructor(arr []interface{}, merger func(interface{}, interface{}) interf
 }
 
 // 在treeIndex的位置创建表示区间[l...r]的线段树
-func (this *SegmentTree) buildSegmentTree(treeIndex int, l int, r int) {
+func (st *SegmentTree) buildSegmentTree(treeIndex int, l int, r int) {
 	if l == r {
-		this.tree[treeIndex] = this.data[l]
+		st.tree[treeIndex] = st.data[l]
 		return
 	}
 	leftTreeIndex := leftChild(treeIndex)
 	rightTreeIndex := rightChild(treeIndex)
 
 	mid := l + (r-l)/2
-	this.buildSegmentTree(leftTreeIndex, l, mid)
-	this.buildSegmentTree(rightTreeIndex, mid+1, r)
+	st.buildSegmentTree(leftTreeIndex, l, mid)
+	st.buildSegmentTree(rightTreeIndex, mid+1, r)
 
-	this.tree[treeIndex] = this.merger(this.tree[leftTreeIndex], this.tree[rightTreeIndex])
+	st.tree[treeIndex] = st.merger(st.tree[leftTreeIndex], st.tree[rightTreeIndex])
 }
 
-func (this *SegmentTree) GetSize() int {
-	return len(this.data)
+func (st *SegmentTree) GetSize() int {
+	return len(st.data)
 }
 
-func (this *SegmentTree) Get(index int) interface{} {
-	if index < 0 || index >= len(this.data) {
+func (st *SegmentTree) Get(index int) interface{} {
+	if index < 0 || index >= len(st.data) {
 		panic("Index is illegal.")
 	}
 
-	return this.data[index]
+	return st.data[index]
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的左孩子节点的索引
@@ -64,18 +64,18 @@ func rightChild(index int) int {
 	return index*2 + 2
 }
 
-func (this *SegmentTree) String() string {
+func (st *SegmentTree) String() string {
 	buffer := bytes.Buffer{}
 
 	buffer.WriteString("[")
-	for i := 0; i < len(this.tree); i++ {
-		if this.tree[i] != nil {
-			buffer.WriteString(fmt.Sprint(this.tree[i]))
+	for i := 0; i < len(st.tree); i++ {
+		if st.tree[i] != nil {
+			buffer.WriteString(fmt.Sprint(st.tree[i]))
 		} else {
 			buffer.WriteString("nil")
 		}
 
-		if i != len(this.tree)-1 {
+		if i != len(st.tree)-1 {
 			buffer.WriteString(", ")
 		}
 	}

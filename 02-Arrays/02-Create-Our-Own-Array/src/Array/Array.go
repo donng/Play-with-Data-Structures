@@ -14,16 +14,16 @@ func Constructor(capacity int) *Array {
 }
 
 // 获取数组的容量
-func (this *Array) GetCapacity() int {
-	return len(this.data)
+func (a *Array) GetCapacity() int {
+	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (this *Array) GetSize() int {
-	return this.size
+func (a *Array) GetSize() int {
+	return a.size
 }
 
 // 返回数组是否为空
-func (this *Array) IsEmpty() bool {
-	return this.size == 0
+func (a *Array) IsEmpty() bool {
+	return a.size == 0
 }

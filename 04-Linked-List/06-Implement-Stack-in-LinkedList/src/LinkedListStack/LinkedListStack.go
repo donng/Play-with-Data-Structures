@@ -15,30 +15,30 @@ func Constructor() *LinkedListStack {
 	}
 }
 
-func (this *LinkedListStack) GetSize() int {
-	return this.list.GetSize()
+func (ls *LinkedListStack) GetSize() int {
+	return ls.list.GetSize()
 }
 
-func (this *LinkedListStack) IsEmpty() bool {
-	return this.list.IsEmpty()
+func (ls *LinkedListStack) IsEmpty() bool {
+	return ls.list.IsEmpty()
 }
 
-func (this *LinkedListStack) Push(e interface{}) {
-	this.list.AddFirst(e)
+func (ls *LinkedListStack) Push(e interface{}) {
+	ls.list.AddFirst(e)
 }
 
-func (this *LinkedListStack) Pop() interface{} {
-	return this.list.RemoveFirst()
+func (ls *LinkedListStack) Pop() interface{} {
+	return ls.list.RemoveFirst()
 }
 
-func (this *LinkedListStack) Peek() interface{} {
-	return this.list.GetFirst()
+func (ls *LinkedListStack) Peek() interface{} {
+	return ls.list.GetFirst()
 }
 
-func (this *LinkedListStack) String() string {
+func (ls *LinkedListStack) String() string {
 	buffer := bytes.Buffer{}
 	buffer.WriteString("Stack: top ")
-	buffer.WriteString(this.list.String())
+	buffer.WriteString(ls.list.String())
 
 	return buffer.String()
 }

@@ -26,39 +26,39 @@ func Constructor() *BST {
 	return &BST{}
 }
 
-func (this *BST) GetSize() int {
-	return this.size
+func (b *BST) GetSize() int {
+	return b.size
 }
 
-func (this *BST) IsEmpty() bool {
-	return this.size == 0
+func (b *BST) IsEmpty() bool {
+	return b.size == 0
 }
 
 // 向二分搜索树中添加新的元素 e
-func (this *BST) Add(e interface{}) {
-	this.root = this.add(this.root, e)
+func (b *BST) Add(e interface{}) {
+	b.root = b.add(b.root, e)
 }
 
 // 向以 Node 为跟的二分搜索树中插入元素 e，递归算法
 // 返回插入新节点后二分搜索树的根
-func (this *BST) add(n *Node, e interface{}) *Node {
+func (b *BST) add(n *Node, e interface{}) *Node {
 	if n == nil {
-		this.size++
+		b.size++
 		return generateNode(e)
 	}
 
 	// 递归调用
 	if Interfaces.Compare(e, n.e) < 0 {
-		n.left = this.add(n.left, e)
+		n.left = b.add(n.left, e)
 	} else if Interfaces.Compare(e, n.e) > 0 {
-		n.right = this.add(n.right, e)
+		n.right = b.add(n.right, e)
 	}
 	return n
 }
 
 // 看二分搜索树中是否包含元素 e
-func (this *BST) Contains(e interface{}) bool {
-	return contains(this.root, e)
+func (b *BST) Contains(e interface{}) bool {
+	return contains(b.root, e)
 }
 
 // 看以 Node 为根的二分搜索树是否包含元素 e，递归算法
@@ -77,8 +77,8 @@ func contains(n *Node, e interface{}) bool {
 }
 
 // 二分搜索树的前序遍历
-func (this *BST) PreOrder() {
-	preOrder(this.root)
+func (b *BST) PreOrder() {
+	preOrder(b.root)
 }
 
 // 前序遍历以 Node 为根的二分搜索树，递归算法
@@ -93,8 +93,8 @@ func preOrder(n *Node) {
 }
 
 // 二分搜索树的中序遍历
-func (this *BST) InOrder() {
-	inOrder(this.root)
+func (b *BST) InOrder() {
+	inOrder(b.root)
 }
 
 // 中序遍历以 Node 为根的二分搜索树，递归算法
@@ -109,8 +109,8 @@ func inOrder(n *Node) {
 }
 
 // 二分搜索树的后序遍历
-func (this *BST) PostOrder() {
-	postOrder(this.root)
+func (b *BST) PostOrder() {
+	postOrder(b.root)
 }
 
 // 后序遍历以 Node 为根的二分搜索树，递归算法
@@ -125,10 +125,10 @@ func postOrder(n *Node) {
 }
 
 // 二分搜索树的层序遍历
-func (this *BST) LevelOrder() {
+func (b *BST) LevelOrder() {
 	// 使用我们之前实现的循环队列
 	queue := LoopQueue.Constructor(20)
-	queue.Enqueue(this.root)
+	queue.Enqueue(b.root)
 	for !queue.IsEmpty() {
 		cur := queue.Dequeue().(*Node)
 		fmt.Println(cur.e)
@@ -142,9 +142,9 @@ func (this *BST) LevelOrder() {
 	}
 }
 
-func (this *BST) String() string {
+func (b *BST) String() string {
 	var buffer bytes.Buffer
-	generateBSTSting(this.root, 0, &buffer)
+	generateBSTSting(b.root, 0, &buffer)
 	return buffer.String()
 }
 

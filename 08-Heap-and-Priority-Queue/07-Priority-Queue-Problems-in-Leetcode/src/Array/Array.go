@@ -1,6 +1,7 @@
 package Array
 
 import (
+	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
 )
@@ -30,68 +31,68 @@ func GetArrayFromArr(arr []interface{}) *Array {
 }
 
 // 获取数组的容量
-func (this *Array) GetCapacity() int {
-	return len(this.data)
+func (a *Array) GetCapacity() int {
+	return len(a.data)
 }
 
 // 获得数组中的元素个数
-func (this *Array) GetSize() int {
-	return this.size
+func (a *Array) GetSize() int {
+	return a.size
 }
 
 // 返回数组是否为空
-func (this *Array) IsEmpty() bool {
-	return this.size == 0
+func (a *Array) IsEmpty() bool {
+	return a.size == 0
 }
 
 // 在第 index 个位置插入一个新元素 e
-func (this *Array) Add(index int, e interface{}) {
-	if index < 0 || index > this.size {
+func (a *Array) Add(index int, e interface{}) {
+	if index < 0 || index > a.size {
 		panic("Add failed. Require index >= 0 and index <= size.")
 	}
 
-	if this.size == len(this.data) {
-		this.resize(2 * this.size)
+	if a.size == len(a.data) {
+		a.resize(2 * a.size)
 	}
 
-	for i := this.size - 1; i >= index; i-- {
-		this.data[i+1] = this.data[i]
+	for i := a.size - 1; i >= index; i-- {
+		a.data[i+1] = a.data[i]
 	}
 
-	this.data[index] = e
-	this.size++
+	a.data[index] = e
+	a.size++
 }
 
 // 向所有元素后添加一个新元素
-func (this *Array) AddLast(e interface{}) {
-	this.Add(this.size, e)
+func (a *Array) AddLast(e interface{}) {
+	a.Add(a.size, e)
 }
 
 // 向所有元素前添加一个新元素
-func (this *Array) AddFirst(e interface{}) {
-	this.Add(0, e)
+func (a *Array) AddFirst(e interface{}) {
+	a.Add(0, e)
 }
 
 // 获取 index 索引位置的元素
-func (this *Array) Get(index int) interface{} {
-	if index < 0 || index >= this.size {
+func (a *Array) Get(index int) interface{} {
+	if index < 0 || index >= a.size {
 		panic("Get failed. Index is illegal.")
 	}
-	return this.data[index]
+	return a.data[index]
 }
 
 // 修改 index 索引位置的元素
-func (this *Array) Set(index int, e interface{}) {
-	if index < 0 || index >= this.size {
+func (a *Array) Set(index int, e interface{}) {
+	if index < 0 || index >= a.size {
 		panic("Set failed. Index is illegal.")
 	}
-	this.data[index] = e
+	a.data[index] = e
 }
 
 // 查找数组中是否有元素 e
-func (this *Array) Contains(e interface{}) bool {
-	for i := 0; i < this.size; i++ {
-		if Interfaces.Compare(this.data[i], e) == 0 {
+func (a *Array) Contains(e interface{}) bool {
+	for i := 0; i < a.size; i++ {
+		if Interfaces.Compare(a.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -99,9 +100,9 @@ func (this *Array) Contains(e interface{}) bool {
 }
 
 // 查找数组中元素 e 所在的索引，不存在则返回 -1
-func (this *Array) Find(e interface{}) int {
-	for i := 0; i < this.size; i++ {
-		if Interfaces.Compare(this.data[i], e) == 0 {
+func (a *Array) Find(e interface{}) int {
+	for i := 0; i < a.size; i++ {
+		if Interfaces.Compare(a.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -109,9 +110,9 @@ func (this *Array) Find(e interface{}) int {
 }
 
 // 查找数组中元素 e 所有的索引组成的切片，不存在则返回 -1
-func (this *Array) FindAll(e interface{}) (indexes []int) {
-	for i := 0; i < this.size; i++ {
-		if Interfaces.Compare(this.data[i], e) == 0 {
+func (a *Array) FindAll(e interface{}) (indexes []int) {
+	for i := 0; i < a.size; i++ {
+		if Interfaces.Compare(a.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -119,68 +120,68 @@ func (this *Array) FindAll(e interface{}) (indexes []int) {
 }
 
 // 从数组中删除 index 位置的元素，返回删除的元素
-func (this *Array) Remove(index int) interface{} {
-	if index < 0 || index >= this.size {
+func (a *Array) Remove(index int) interface{} {
+	if index < 0 || index >= a.size {
 		panic("Remove failed,Index is illegal.")
 	}
 
-	e := this.data[index]
-	for i := index + 1; i < this.size; i++ {
-		this.data[i-1] = this.data[i]
+	e := a.data[index]
+	for i := index + 1; i < a.size; i++ {
+		a.data[i-1] = a.data[i]
 	}
-	this.size--
-	this.data[this.size] = nil //loitering object != memory leak
+	a.size--
+	a.data[a.size] = nil //loitering object != memory leak
 
 	// 考虑边界条件，避免长度为 1 时，resize 为 0
-	if this.size == len(this.data)/4 && len(this.data)/2 != 0 {
-		this.resize(len(this.data) / 2)
+	if a.size == len(a.data)/4 && len(a.data)/2 != 0 {
+		a.resize(len(a.data) / 2)
 	}
 	return e
 }
 
 // 从数组中删除第一个元素，返回删除的元素
-func (this *Array) RemoveFirst() interface{} {
-	return this.Remove(0)
+func (a *Array) RemoveFirst() interface{} {
+	return a.Remove(0)
 }
 
 // 从数组中删除最后一个元素，返回删除的元素
-func (this *Array) RemoveLast() interface{} {
-	return this.Remove(this.size - 1)
+func (a *Array) RemoveLast() interface{} {
+	return a.Remove(a.size - 1)
 }
 
 // 从数组中删除一个元素 e
-func (this *Array) RemoveElement(e interface{}) bool {
-	index := this.Find(e)
+func (a *Array) RemoveElement(e interface{}) bool {
+	index := a.Find(e)
 	if index == -1 {
 		return false
 	}
 
-	this.Remove(index)
+	a.Remove(index)
 	return true
 }
 
 // 从数组中删除所有元素 e
-func (this *Array) RemoveAllElement(e interface{}) bool {
-	if this.Find(e) == -1 {
+func (a *Array) RemoveAllElement(e interface{}) bool {
+	if a.Find(e) == -1 {
 		return false
 	}
 
-	for i := 0; i < this.size; i++ {
-		if Interfaces.Compare(this.data[i], e) == 0 {
-			this.Remove(i)
+	for i := 0; i < a.size; i++ {
+		if Interfaces.Compare(a.data[i], e) == 0 {
+			a.Remove(i)
 		}
 	}
 	return true
 }
 
 // 为数组扩容
-func (this *Array) resize(newCapacity int) {
+func (a *Array) resize(newCapacity int) {
 	newData := make([]interface{}, newCapacity)
-	for i := 0; i < this.size; i++ {
-		newData[i] = this.data[i]
+	for i := 0; i < a.size; i++ {
+		newData[i] = a.data[i]
 	}
 
-	this.data = newData
+	a.data = newData
 }
 
 func (a *Array) Swap(i int, j int) {
@@ -191,15 +192,15 @@ func (a *Array) Swap(i int, j int) {
 }
 
 // 重写 Array 的 string 方法
-func (this *Array) String() string {
+func (a *Array) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", this.size, len(this.data)))
+	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
 	buffer.WriteString("[")
-	for i := 0; i < this.size; i++ {
+	for i := 0; i < a.size; i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprint(this.data[i]))
-		if i != (this.size - 1) {
+		buffer.WriteString(fmt.Sprint(a.data[i]))
+		if i != (a.size - 1) {
 			buffer.WriteString(", ")
 		}
 	}

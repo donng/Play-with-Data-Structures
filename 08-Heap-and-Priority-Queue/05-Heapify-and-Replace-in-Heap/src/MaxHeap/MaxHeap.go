@@ -28,13 +28,13 @@ func GetMaxHeapFromArr(arr []interface{}) *MaxHeap {
 }
 
 // 返回堆中的元素个数
-func (this *MaxHeap) Size() int {
-	return this.data.GetSize()
+func (h *MaxHeap) Size() int {
+	return h.data.GetSize()
 }
 
 // 返回一个布尔值, 表示堆中是否为空
-func (this *MaxHeap) IsEmpty() bool {
-	return this.data.IsEmpty()
+func (h *MaxHeap) IsEmpty() bool {
+	return h.data.IsEmpty()
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的父亲节点的索引
@@ -56,60 +56,60 @@ func rightChild(index int) int {
 }
 
 // 向堆中添加元素
-func (this *MaxHeap) Add(e interface{}) {
-	this.data.AddLast(e)
-	this.siftUp(this.data.GetSize() - 1)
+func (h *MaxHeap) Add(e interface{}) {
+	h.data.AddLast(e)
+	h.siftUp(h.data.GetSize() - 1)
 }
 
-func (this *MaxHeap) siftUp(k int) {
-	for k > 0 && Interfaces.Compare(this.data.Get(k), this.data.Get(parent(k))) > 0 {
-		this.data.Swap(k, parent(k))
+func (h *MaxHeap) siftUp(k int) {
+	for k > 0 && Interfaces.Compare(h.data.Get(k), h.data.Get(parent(k))) > 0 {
+		h.data.Swap(k, parent(k))
 		k = parent(k)
 	}
 }
 
-func (this *MaxHeap) FindMax() interface{} {
-	if this.data.GetSize() == 0 {
+func (h *MaxHeap) FindMax() interface{} {
+	if h.data.GetSize() == 0 {
 		panic("Can not findMax when heap is empty.")
 	}
-	return this.data.Get(0)
+	return h.data.Get(0)
 }
 
 // 取出堆中最大元素
-func (this *MaxHeap) ExtractMax() interface{} {
-	ret := this.FindMax()
+func (h *MaxHeap) ExtractMax() interface{} {
+	ret := h.FindMax()
 
-	this.data.Swap(0, this.data.GetSize()-1)
-	this.data.RemoveLast()
-	this.siftDown(0)
+	h.data.Swap(0, h.data.GetSize()-1)
+	h.data.RemoveLast()
+	h.siftDown(0)
 
 	return ret
 }
 
 // data[j] 是 leftChild 和 rightChild 中的最大值
-func (this *MaxHeap) siftDown(k int) {
-	for leftChild(k) < this.data.GetSize() {
+func (h *MaxHeap) siftDown(k int) {
+	for leftChild(k) < h.data.GetSize() {
 		j := leftChild(k)
 		// j+1是右孩子索引，如果存在右孩子比较后获得左右孩子中较大值的索引
-		if j+1 < this.data.GetSize() && Interfaces.Compare(this.data.Get(j+1), this.data.Get(j)) > 0 {
+		if j+1 < h.data.GetSize() && Interfaces.Compare(h.data.Get(j+1), h.data.Get(j)) > 0 {
 			j++
 		}
 		// data[j] 是 leftChild 和 rightChild 中的最大值
-		if Interfaces.Compare(this.data.Get(k), this.data.Get(j)) > 0 {
+		if Interfaces.Compare(h.data.Get(k), h.data.Get(j)) > 0 {
 			break
 		}
 
-		this.data.Swap(k, j)
+		h.data.Swap(k, j)
 		k = j
 	}
 }
 
 // 取出堆中的最大元素，并且替换成元素e
-func (this *MaxHeap) Replace(e interface{}) interface{} {
-	ret := this.FindMax()
+func (h *MaxHeap) Replace(e interface{}) interface{} {
+	ret := h.FindMax()
 
-	this.data.Set(0, e)
-	this.siftDown(0)
+	h.data.Set(0, e)
+	h.siftDown(0)
 
 	return ret
 }

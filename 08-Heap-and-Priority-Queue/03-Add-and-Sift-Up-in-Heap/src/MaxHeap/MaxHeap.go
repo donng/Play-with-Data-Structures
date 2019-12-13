@@ -16,13 +16,13 @@ func Constructor() *MaxHeap {
 }
 
 // 返回堆中的元素个数
-func (this *MaxHeap) Size() int {
-	return this.data.GetSize()
+func (h *MaxHeap) Size() int {
+	return h.data.GetSize()
 }
 
 // 返回一个布尔值, 表示堆中是否为空
-func (this *MaxHeap) IsEmpty() bool {
-	return this.data.IsEmpty()
+func (h *MaxHeap) IsEmpty() bool {
+	return h.data.IsEmpty()
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的父亲节点的索引
@@ -44,14 +44,14 @@ func rightChild(index int) int {
 }
 
 // 向堆中添加元素
-func (this *MaxHeap) Add(e interface{}) {
-	this.data.AddLast(e)
-	this.siftUp(this.data.GetSize() - 1)
+func (h *MaxHeap) Add(e interface{}) {
+	h.data.AddLast(e)
+	h.siftUp(h.data.GetSize() - 1)
 }
 
-func (this *MaxHeap) siftUp(k int) {
-	for k > 0 && Interfaces.Compare(this.data.Get(k), this.data.Get(parent(k))) > 0 {
-		this.data.Swap(k, parent(k))
+func (h *MaxHeap) siftUp(k int) {
+	for k > 0 && Interfaces.Compare(h.data.Get(k), h.data.Get(parent(k))) > 0 {
+		h.data.Swap(k, parent(k))
 		k = parent(k)
 	}
 }

@@ -22,49 +22,49 @@ func Constructor(M int) *HashTable {
 	return &HashTable{hashtable, M, 0}
 }
 
-func (this *HashTable) GetSize() int {
-	return this.size
+func (h *HashTable) GetSize() int {
+	return h.size
 }
 
-func (this *HashTable) Add(key interface{}, value interface{}) {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Add(key interface{}, value interface{}) {
+	m := h.hashtable[h.hash(key)]
 	if m.Contains(key) {
 		m.Add(key, value)
 	} else {
 		m.Add(key, value)
-		this.size++
+		h.size++
 	}
 }
 
-func (this *HashTable) Remove(key interface{}) interface{} {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Remove(key interface{}) interface{} {
+	m := h.hashtable[h.hash(key)]
 	if m.Contains(key) {
 		ret := m.Remove(key)
-		this.size--
+		h.size--
 		return ret
 	} else {
 		return nil
 	}
 }
 
-func (this *HashTable) Set(key interface{}, value interface{}) {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Set(key interface{}, value interface{}) {
+	m := h.hashtable[h.hash(key)]
 	if !m.Contains(key) {
 		panic(fmt.Sprintf("%s doesn't exist!", key))
 	}
 	m.Set(key, value)
 }
 
-func (this *HashTable) Contains(key interface{}) bool {
-	return this.hashtable[this.hash(key)].Contains(key)
+func (h *HashTable) Contains(key interface{}) bool {
+	return h.hashtable[h.hash(key)].Contains(key)
 }
 
-func (this *HashTable) Get(key interface{}) interface{} {
-	return this.hashtable[this.hash(key)].Get(key)
+func (h *HashTable) Get(key interface{}) interface{} {
+	return h.hashtable[h.hash(key)].Get(key)
 }
 
-func (this *HashTable) hash(key interface{}) int {
-	return (int(HashCode(key)) & 0x7fffffff) % this.M
+func (h *HashTable) hash(key interface{}) int {
+	return (int(HashCode(key)) & 0x7fffffff) % h.M
 }
 
 func HashCode(source interface{}) uint64 {

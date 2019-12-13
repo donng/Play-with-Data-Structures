@@ -31,33 +31,33 @@ func Constructor() *HashTable {
 	return &HashTable{hashtable, M, 0}
 }
 
-func (this *HashTable) GetSize() int {
-	return this.size
+func (h *HashTable) GetSize() int {
+	return h.size
 }
 
-func (this *HashTable) Add(key interface{}, value interface{}) {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Add(key interface{}, value interface{}) {
+	m := h.hashtable[h.hash(key)]
 	if m.Contains(key) {
 		m.Add(key, value)
 	} else {
 		m.Add(key, value)
-		this.size++
+		h.size++
 
-		if this.size >= upperTol*this.M && capacityIndex+1 < len(capacity) {
+		if h.size >= upperTol*h.M && capacityIndex+1 < len(capacity) {
 			capacityIndex++
-			this.resize(capacity[capacityIndex])
+			h.resize(capacity[capacityIndex])
 		}
 	}
 }
 
-func (this *HashTable) Remove(key interface{}) interface{} {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Remove(key interface{}) interface{} {
+	m := h.hashtable[h.hash(key)]
 	if m.Contains(key) {
 		ret := m.Remove(key)
-		this.size--
-		if this.size < lowerTol*this.M && capacityIndex-1 >= 0 {
+		h.size--
+		if h.size < lowerTol*h.M && capacityIndex-1 >= 0 {
 			capacityIndex--
-			this.resize(capacity[capacityIndex])
+			h.resize(capacity[capacityIndex])
 		}
 		return ret
 	} else {
@@ -65,40 +65,40 @@ func (this *HashTable) Remove(key interface{}) interface{} {
 	}
 }
 
-func (this *HashTable) Set(key interface{}, value interface{}) {
-	m := this.hashtable[this.hash(key)]
+func (h *HashTable) Set(key interface{}, value interface{}) {
+	m := h.hashtable[h.hash(key)]
 	if !m.Contains(key) {
 		panic(fmt.Sprintf("%s doesn't exist!", key))
 	}
 	m.Set(key, value)
 }
 
-func (this *HashTable) Contains(key interface{}) bool {
-	return this.hashtable[this.hash(key)].Contains(key)
+func (h *HashTable) Contains(key interface{}) bool {
+	return h.hashtable[h.hash(key)].Contains(key)
 }
 
-func (this *HashTable) Get(key interface{}) interface{} {
-	return this.hashtable[this.hash(key)].Get(key)
+func (h *HashTable) Get(key interface{}) interface{} {
+	return h.hashtable[h.hash(key)].Get(key)
 }
 
-func (this *HashTable) resize(newM int) {
+func (h *HashTable) resize(newM int) {
 	var newHashTable []*RBTree.RBTree
 	for i := 0; i < newM; i++ {
 		newHashTable = append(newHashTable, RBTree.Constructor())
 	}
-	oldM := this.M
-	this.M = newM
+	oldM := h.M
+	h.M = newM
 	for i := 0; i < oldM; i++ {
-		m := this.hashtable[i]
+		m := h.hashtable[i]
 		for _, key := range m.KeySet() {
-			newHashTable[this.hash(key)].Add(key, m.Get(key))
+			newHashTable[h.hash(key)].Add(key, m.Get(key))
 		}
 	}
-	this.hashtable = newHashTable
+	h.hashtable = newHashTable
 }
 
-func (this *HashTable) hash(key interface{}) int {
-	return (int(HashCode(key)) & 0x7fffffff) % this.M
+func (h *HashTable) hash(key interface{}) int {
+	return (int(HashCode(key)) & 0x7fffffff) % h.M
 }
 
 func HashCode(source interface{}) uint64 {

@@ -29,10 +29,10 @@ func GetListNode(arr []int) *ListNode {
 	return head
 }
 
-func (l *ListNode) String() string {
+func (ln *ListNode) String() string {
 	var buffer bytes.Buffer
 
-	cur := l
+	cur := ln
 	for cur != nil {
 		buffer.WriteString(fmt.Sprintf("%v ->", cur.Val))
 		cur = cur.Next

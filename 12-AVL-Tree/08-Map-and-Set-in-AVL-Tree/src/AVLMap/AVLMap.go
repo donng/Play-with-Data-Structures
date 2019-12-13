@@ -10,30 +10,30 @@ func Constructor() *AVLMap {
 	return &AVLMap{}
 }
 
-func (this *AVLMap) Add(k interface{}, v interface{}) {
-	this.avl.Add(k, v)
+func (am *AVLMap) Add(k interface{}, v interface{}) {
+	am.avl.Add(k, v)
 }
 
-func (this *AVLMap) Remove(k interface{}) interface{} {
-	return this.avl.Remove(k)
+func (am *AVLMap) Remove(k interface{}) interface{} {
+	return am.avl.Remove(k)
 }
 
-func (this *AVLMap) Contains(k interface{}) bool {
-	return this.avl.Contains(k)
+func (am *AVLMap) Contains(k interface{}) bool {
+	return am.avl.Contains(k)
 }
 
-func (this *AVLMap) Get(k interface{}) interface{} {
-	return this.avl.Get(k)
+func (am *AVLMap) Get(k interface{}) interface{} {
+	return am.avl.Get(k)
 }
 
-func (this *AVLMap) Set(k interface{}, v interface{}) {
-	this.avl.Set(k, v)
+func (am *AVLMap) Set(k interface{}, v interface{}) {
+	am.avl.Set(k, v)
 }
 
-func (this *AVLMap) GetSize() int {
-	return this.avl.GetSize()
+func (am *AVLMap) GetSize() int {
+	return am.avl.GetSize()
 }
 
-func (this *AVLMap) IsEmpty() bool {
-	return this.avl.IsEmpty()
+func (am *AVLMap) IsEmpty() bool {
+	return am.avl.IsEmpty()
 }

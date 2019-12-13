@@ -16,13 +16,13 @@ func Constructor(grade int, cls int, firstName string, lastName string) *Student
 	return &Student{grade, cls, firstName, lastName}
 }
 
-func (this *Student) HashCode() int {
+func (s *Student) HashCode() int {
 	B := 31
 	hash := 0
-	hash = hash*B + int(HashCode(this.grade))
-	hash = hash*B + int(HashCode(this.cls))
-	hash = hash*B + int(HashCode(this.firstName))
-	hash = hash*B + int(HashCode(this.lastName))
+	hash = hash*B + int(HashCode(s.grade))
+	hash = hash*B + int(HashCode(s.cls))
+	hash = hash*B + int(HashCode(s.firstName))
+	hash = hash*B + int(HashCode(s.lastName))
 
 	return hash
 }
@@ -40,7 +40,7 @@ func HashCode(source interface{}) uint64 {
 	return h.Sum64()
 }
 
-func (this *Student) equals(another Student) bool {
-	return this.grade == another.grade && this.cls == another.cls &&
-		this.firstName == another.firstName && this.lastName == another.lastName
+func (s *Student) equals(another Student) bool {
+	return s.grade == another.grade && s.cls == another.cls &&
+		s.firstName == another.firstName && s.lastName == another.lastName
 }

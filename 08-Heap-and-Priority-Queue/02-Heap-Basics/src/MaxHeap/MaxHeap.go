@@ -13,13 +13,13 @@ func Constructor() *MaxHeap {
 }
 
 // 返回堆中的元素个数
-func (this *MaxHeap) Size() int {
-	return this.data.GetSize()
+func (h *MaxHeap) Size() int {
+	return h.data.GetSize()
 }
 
 // 返回一个布尔值, 表示堆中是否为空
-func (this *MaxHeap) IsEmpty() bool {
-	return this.data.IsEmpty()
+func (h *MaxHeap) IsEmpty() bool {
+	return h.data.IsEmpty()
 }
 
 // 返回完全二叉树的数组表示中，一个索引所表示的元素的父亲节点的索引
