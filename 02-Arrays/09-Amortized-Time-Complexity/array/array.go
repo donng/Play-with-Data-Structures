@@ -3,8 +3,9 @@ package array
 import (
 	"bytes"
 	"fmt"
-	"github.com/donng/Play-with-Data-Structures/Utils/Interfaces"
 	"log"
+
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 type Array struct {
@@ -81,7 +82,7 @@ func (a *Array) Set(index int, e interface{}) {
 // 查找数组中是否有元素 e
 func (a *Array) Contains(e interface{}) bool {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -91,7 +92,7 @@ func (a *Array) Contains(e interface{}) bool {
 // 查找数组中元素 e 所在的索引，不存在则返回 -1
 func (a *Array) Find(e interface{}) int {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -101,7 +102,7 @@ func (a *Array) Find(e interface{}) int {
 // 查找数组中元素 e 所有的索引组成的切片，不存在则返回 -1
 func (a *Array) FindAll(e interface{}) (indexes []int) {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -156,7 +157,7 @@ func (a *Array) RemoveAllElement(e interface{}) bool {
 	}
 
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			a.Remove(i)
 		}
 	}

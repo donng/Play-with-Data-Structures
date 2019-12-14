@@ -3,8 +3,9 @@ package array
 import (
 	"bytes"
 	"fmt"
-	"github.com/donng/Play-with-Data-Structures/utils"
 	"log"
+
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 type Array struct {
