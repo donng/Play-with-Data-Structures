@@ -1,20 +1,23 @@
-package Array
+package array
 
 import (
-	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
+	"log"
+	"strconv"
+
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 type Array struct {
-	data []interface{}
+	data []int
 	size int
 }
 
 // 构造函数，传入数组的容量capacity构造Array
-func Constructor(capacity int) *Array {
+func New(capacity int) *Array {
 	return &Array{
-		data: make([]interface{}, capacity),
+		data: make([]int, capacity),
 	}
 }
 
@@ -33,14 +36,24 @@ func (a *Array) IsEmpty() bool {
 	return a.size == 0
 }
 
+// 向所有元素后添加一个新元素
+func (a *Array) AddLast(e int) {
+	a.Add(a.size, e)
+}
+
+// 向所有元素前添加一个新元素
+func (a *Array) AddFirst(e int) {
+	a.Add(0, e)
+}
+
 // 在第 index 个位置插入一个新元素 e
-func (a *Array) Add(index int, e interface{}) {
+func (a *Array) Add(index int, e int) {
 	if a.size == len(a.data) {
-		panic("Add failed. Array is full.")
+		log.Panicln("add failed, array is full")
 	}
 
 	if index < 0 || index > a.size {
-		panic("Add failed. Require index >= 0 and index <= size.")
+		log.Panicf("add failed, require index >= 0 and index <= %d but get index = %d", a.size, index)
 	}
 
 	for i := a.size - 1; i >= index; i-- {
@@ -51,36 +64,26 @@ func (a *Array) Add(index int, e interface{}) {
 	a.size++
 }
 
-// 向所有元素后添加一个新元素
-func (a *Array) AddLast(e interface{}) {
-	a.Add(a.size, e)
-}
-
-// 向所有元素前添加一个新元素
-func (a *Array) AddFirst(e interface{}) {
-	a.Add(0, e)
-}
-
 // 获取 index 索引位置的元素
-func (a *Array) Get(index int) interface{} {
+func (a *Array) Get(index int) int {
 	if index < 0 || index >= a.size {
-		panic("Get failed. Index is illegal.")
+		log.Panicf("get failed, require index >= 0 and < %d but get index = %d", a.size, index)
 	}
 	return a.data[index]
 }
 
 // 修改 index 索引位置的元素
-func (a *Array) Set(index int, e interface{}) {
+func (a *Array) Set(index int, e int) {
 	if index < 0 || index >= a.size {
-		panic("Set failed. Index is illegal.")
+		log.Panicf("set failed, require index >= 0 and < %d but get index = %d", a.size, index)
 	}
 	a.data[index] = e
 }
 
 // 查找数组中是否有元素 e
-func (a *Array) Contains(e interface{}) bool {
+func (a *Array) Contains(e int) bool {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			return true
 		}
 	}
@@ -88,9 +91,9 @@ func (a *Array) Contains(e interface{}) bool {
 }
 
 // 查找数组中元素 e 所在的索引，不存在则返回 -1
-func (a *Array) Find(e interface{}) int {
+func (a *Array) Find(e int) int {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			return i
 		}
 	}
@@ -98,9 +101,9 @@ func (a *Array) Find(e interface{}) int {
 }
 
 // 查找数组中元素 e 所有的索引组成的切片，不存在则返回 -1
-func (a *Array) FindAll(e interface{}) (indexes []int) {
+func (a *Array) FindAll(e int) (indexes []int) {
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			indexes = append(indexes, i)
 		}
 	}
@@ -108,9 +111,9 @@ func (a *Array) FindAll(e interface{}) (indexes []int) {
 }
 
 // 从数组中删除 index 位置的元素，返回删除的元素
-func (a *Array) Remove(index int) interface{} {
+func (a *Array) Remove(index int) int {
 	if index < 0 || index >= a.size {
-		panic("Set failed,Index is illegal.")
+		log.Panicf("set failed, require index >= 0 and < %d but get index = %d", a.size, index)
 	}
 
 	e := a.data[index]
@@ -118,22 +121,21 @@ func (a *Array) Remove(index int) interface{} {
 		a.data[i-1] = a.data[i]
 	}
 	a.size--
-	a.data[a.size] = nil //loitering object != memory leak
 	return e
 }
 
 // 从数组中删除第一个元素，返回删除的元素
-func (a *Array) RemoveFirst() interface{} {
+func (a *Array) RemoveFirst() int {
 	return a.Remove(0)
 }
 
 // 从数组中删除最后一个元素，返回删除的元素
-func (a *Array) RemoveLast() interface{} {
+func (a *Array) RemoveLast() int {
 	return a.Remove(a.size - 1)
 }
 
 // 从数组中删除一个元素 e
-func (a *Array) RemoveElement(e interface{}) bool {
+func (a *Array) RemoveElement(e int) bool {
 	index := a.Find(e)
 	if index == -1 {
 		return false
@@ -144,13 +146,13 @@ func (a *Array) RemoveElement(e interface{}) bool {
 }
 
 // 从数组中删除所有元素 e
-func (a *Array) RemoveAllElement(e interface{}) bool {
+func (a *Array) RemoveAllElement(e int) bool {
 	if a.Find(e) == -1 {
 		return false
 	}
 
 	for i := 0; i < a.size; i++ {
-		if Interfaces.Compare(a.data[i], e) == 0 {
+		if utils.Compare(a.data[i], e) == 0 {
 			a.Remove(i)
 		}
 	}
@@ -164,8 +166,7 @@ func (a *Array) String() string {
 	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
 	buffer.WriteString("[")
 	for i := 0; i < a.size; i++ {
-		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprintf("%v", a.data[i]))
+		buffer.WriteString(strconv.Itoa(a.data[i]))
 		if i != (a.size - 1) {
 			buffer.WriteString(", ")
 		}

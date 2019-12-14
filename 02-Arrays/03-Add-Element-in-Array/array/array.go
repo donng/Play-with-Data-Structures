@@ -1,4 +1,8 @@
-package Array
+package array
+
+import (
+	"log"
+)
 
 type Array struct {
 	data []int
@@ -6,7 +10,7 @@ type Array struct {
 }
 
 // 构造函数，传入数组的容量capacity构造Array
-func Constructor(capacity int) *Array {
+func New(capacity int) *Array {
 	return &Array{
 		data: make([]int, capacity),
 	}
@@ -30,11 +34,11 @@ func (a *Array) IsEmpty() bool {
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e int) {
 	if a.size == len(a.data) {
-		panic("Add failed. Array is full.")
+		log.Panicln("add failed, array is full")
 	}
 
 	if index < 0 || index > a.size {
-		panic("Add failed. Require index >= 0 and index <= size.")
+		log.Panicf("add failed, require index >= 0 and index <= %d but get index = %d", a.size, index)
 	}
 
 	for i := a.size - 1; i >= index; i-- {
@@ -47,12 +51,6 @@ func (a *Array) Add(index int, e int) {
 
 // 向所有元素后添加一个新元素
 func (a *Array) AddLast(e int) {
-	//if a.size == len(a.data) {
-	//	panic("AddLast failed,Array is full.")
-	//}
-	//
-	//a.data[a.size] = e
-	//a.size++
 	a.Add(a.size, e)
 }
 

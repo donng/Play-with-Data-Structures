@@ -1,4 +1,4 @@
-package Student
+package student
 
 import "fmt"
 
@@ -7,7 +7,7 @@ type Student struct {
 	score int
 }
 
-func GetStudent(name string, score int) *Student {
+func New(name string, score int) *Student {
 	return &Student{name, score}
 }
 

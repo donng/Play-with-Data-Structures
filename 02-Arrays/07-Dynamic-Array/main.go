@@ -1,12 +1,12 @@
 package main
 
 import (
-	"Play-with-Data-Structures/02-Arrays/07-Dynamic-Array/src/Array"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/07-Dynamic-Array/array"
 )
 
 func main() {
-	arr := Array.Constructor(10)
+	arr := array.New(10)
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}

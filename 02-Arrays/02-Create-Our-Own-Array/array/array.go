@@ -1,4 +1,4 @@
-package Array
+package array
 
 type Array struct {
 	data []int
@@ -6,7 +6,7 @@ type Array struct {
 }
 
 // 构造函数，传入数组的容量capacity构造Array
-func Constructor(capacity int) *Array {
+func New(capacity int) *Array {
 	// size 默认为 0
 	return &Array{
 		data: make([]int, capacity),

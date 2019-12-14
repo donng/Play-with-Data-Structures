@@ -1,13 +1,13 @@
 package main
 
 import (
-	"Play-with-Data-Structures/02-Arrays/04-Query-and-Update-Element/src/Array"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/04-Query-and-Update-Element/array"
 )
 
 func main() {
-	arr := Array.Constructor(20)
-	for i := 0; i < 10; i++ {
+	arr := array.New(20)
+	for i := 0; i < 21; i++ {
 		arr.AddLast(i)
 	}
 	fmt.Println(arr)

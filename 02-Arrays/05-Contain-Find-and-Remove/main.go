@@ -1,12 +1,12 @@
 package main
 
 import (
-	"Play-with-Data-Structures/02-Arrays/05-Contain-Find-and-Remove/src/Array"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/05-Contain-Find-and-Remove/array"
 )
 
 func main() {
-	arr := Array.Constructor(20)
+	arr := array.New(20)
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}

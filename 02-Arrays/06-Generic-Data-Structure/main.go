@@ -1,13 +1,13 @@
 package main
 
 import (
-	"Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/src/Array"
-	"Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/src/Student"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/array"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/student"
 )
 
 func main() {
-	arr := Array.Constructor(20)
+	arr := array.New(20)
 
 	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
@@ -38,9 +38,9 @@ func main() {
 	fmt.Println(arr, isRemove)
 
 	// 测试 student 类型
-	students := Array.Constructor(10)
-	students.AddLast(Student.GetStudent("Alice", 100))
-	students.AddLast(Student.GetStudent("Bob", 66))
-	students.AddLast(Student.GetStudent("Charlie", 88))
+	students := array.New(10)
+	students.AddLast(student.New("Alice", 100))
+	students.AddLast(student.New("Bob", 66))
+	students.AddLast(student.New("Charlie", 88))
 	fmt.Println(students)
 }

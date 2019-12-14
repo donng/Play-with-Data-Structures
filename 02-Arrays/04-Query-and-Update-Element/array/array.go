@@ -1,8 +1,9 @@
-package Array
+package array
 
 import (
 	"bytes"
 	"fmt"
+	"log"
 	"strconv"
 )
 
@@ -12,7 +13,7 @@ type Array struct {
 }
 
 // 构造函数，传入数组的容量capacity构造Array
-func Constructor(capacity int) *Array {
+func New(capacity int) *Array {
 	return &Array{
 		data: make([]int, capacity),
 	}
@@ -46,11 +47,11 @@ func (a *Array) AddFirst(e int) {
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e int) {
 	if a.size == len(a.data) {
-		panic("Add failed. Array is full.")
+		log.Panicln("add failed, array is full")
 	}
 
 	if index < 0 || index > a.size {
-		panic("Add failed. Require index >= 0 and index <= size.")
+		log.Panicf("add failed, require index >= 0 and index <= %d but get index = %d", a.size, index)
 	}
 
 	for i := a.size - 1; i >= index; i-- {
@@ -64,7 +65,7 @@ func (a *Array) Add(index int, e int) {
 // 获取 index 索引位置的元素
 func (a *Array) Get(index int) int {
 	if index < 0 || index >= a.size {
-		panic("Get failed. Index is illegal.")
+		log.Panicf("get failed, require index >= 0 and < %d but get index = %d", a.size, index)
 	}
 	return a.data[index]
 }
@@ -72,7 +73,7 @@ func (a *Array) Get(index int) int {
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e int) {
 	if index < 0 || index >= a.size {
-		panic("Set failed. Index is illegal.")
+		log.Panicf("set failed, require index >= 0 and < %d but get index = %d", a.size, index)
 	}
 	a.data[index] = e
 }
