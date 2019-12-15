@@ -3,7 +3,6 @@ package array
 import (
 	"bytes"
 	"fmt"
-	"log"
 	"strconv"
 
 	"github.com/donng/Play-with-Data-Structures/utils"
@@ -49,11 +48,11 @@ func (a *Array) AddFirst(e int) {
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e int) {
 	if a.size == len(a.data) {
-		log.Panicln("add failed, array is full")
+		panic("add failed, array is full")
 	}
 
 	if index < 0 || index > a.size {
-		log.Panicf("add failed, require index >= 0 and index <= %d but get index = %d", a.size, index)
+		panic("add failed, index out of range")
 	}
 
 	for i := a.size - 1; i >= index; i-- {
@@ -67,7 +66,7 @@ func (a *Array) Add(index int, e int) {
 // 获取 index 索引位置的元素
 func (a *Array) Get(index int) int {
 	if index < 0 || index >= a.size {
-		log.Panicf("get failed, require index >= 0 and < %d but get index = %d", a.size, index)
+		panic("get failed, index out of range")
 	}
 	return a.data[index]
 }
@@ -75,7 +74,7 @@ func (a *Array) Get(index int) int {
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e int) {
 	if index < 0 || index >= a.size {
-		log.Panicf("set failed, require index >= 0 and < %d but get index = %d", a.size, index)
+		panic("set failed, index out of range")
 	}
 	a.data[index] = e
 }
@@ -113,7 +112,7 @@ func (a *Array) FindAll(e int) (indexes []int) {
 // 从数组中删除 index 位置的元素，返回删除的元素
 func (a *Array) Remove(index int) int {
 	if index < 0 || index >= a.size {
-		log.Panicf("set failed, require index >= 0 and < %d but get index = %d", a.size, index)
+		panic("remove failed, index out of range")
 	}
 
 	e := a.data[index]

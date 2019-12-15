@@ -1,9 +1,5 @@
 package array
 
-import (
-	"log"
-)
-
 type Array struct {
 	data []int
 	size int
@@ -34,11 +30,11 @@ func (a *Array) IsEmpty() bool {
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e int) {
 	if a.size == len(a.data) {
-		log.Panicln("add failed, array is full")
+		panic("add failed, array is full")
 	}
 
 	if index < 0 || index > a.size {
-		log.Panicf("add failed, require index >= 0 and index <= %d but get index = %d", a.size, index)
+		panic("add failed, index out of range")
 	}
 
 	for i := a.size - 1; i >= index; i-- {
