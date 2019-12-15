@@ -3,6 +3,7 @@ package array
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
@@ -63,17 +64,15 @@ func (a *Array) AddFirst(e interface{}) {
 
 // 获取 index 索引位置的元素
 func (a *Array) Get(index int) interface{} {
-	if index < 0 || index >= a.size {
-		panic("get failed, index out of range")
-	}
+	a.checkIndex(index)
+
 	return a.data[index]
 }
 
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e interface{}) {
-	if index < 0 || index >= a.size {
-		panic("set failed, index out of range")
-	}
+	a.checkIndex(index)
+
 	a.data[index] = e
 }
 
@@ -109,9 +108,7 @@ func (a *Array) FindAll(e interface{}) (indexes []int) {
 
 // 从数组中删除 index 位置的元素，返回删除的元素
 func (a *Array) Remove(index int) interface{} {
-	if index < 0 || index >= a.size {
-		panic("remove failed, index out of range")
-	}
+	a.checkIndex(index)
 
 	e := a.data[index]
 	for i := index + 1; i < a.size; i++ {
@@ -170,6 +167,12 @@ func (a *Array) resize(newCapacity int) {
 	}
 
 	a.data = newData
+}
+
+func (a *Array) checkIndex(index int) {
+	if index < 0 || index >= a.size {
+		panic(fmt.Sprintf("index is out of range, required range: [0, %d) but get %d", a.size, index))
+	}
 }
 
 // 重写 Array 的 string 方法
