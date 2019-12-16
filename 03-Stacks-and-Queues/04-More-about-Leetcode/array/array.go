@@ -35,12 +35,12 @@ func (a *Array) IsEmpty() bool {
 
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e interface{}) {
-	if a.size == len(a.data) {
-		panic("add failed, array is full")
-	}
-
 	if index < 0 || index > a.size {
 		panic("add failed, index out of range")
+	}
+
+	if a.size == len(a.data) {
+		a.resize(2 * a.size)
 	}
 
 	for i := a.size - 1; i >= index; i-- {
@@ -63,17 +63,23 @@ func (a *Array) AddFirst(e interface{}) {
 
 // 获取 index 索引位置的元素
 func (a *Array) Get(index int) interface{} {
-	if index < 0 || index >= a.size {
-		panic("get failed, index out of range")
-	}
+	a.checkIndex(index)
+
 	return a.data[index]
+}
+
+func (a *Array) GetLast() interface{} {
+	return a.Get(a.size - 1)
+}
+
+func (a *Array) GetFirst() interface{} {
+	return a.Get(0)
 }
 
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e interface{}) {
-	if index < 0 || index >= a.size {
-		panic("set failed, index out of range")
-	}
+	a.checkIndex(index)
+
 	a.data[index] = e
 }
 
@@ -109,9 +115,7 @@ func (a *Array) FindAll(e interface{}) (indexes []int) {
 
 // 从数组中删除 index 位置的元素，返回删除的元素
 func (a *Array) Remove(index int) interface{} {
-	if index < 0 || index >= a.size {
-		panic("remove failed, index out of range")
-	}
+	a.checkIndex(index)
 
 	e := a.data[index]
 	for i := index + 1; i < a.size; i++ {
@@ -119,6 +123,11 @@ func (a *Array) Remove(index int) interface{} {
 	}
 	a.size--
 	a.data[a.size] = nil //loitering object != memory leak
+
+	// 考虑边界条件，避免长度为 1 时，resize 为 0
+	if a.size == len(a.data)/4 && len(a.data)/2 != 0 {
+		a.resize(len(a.data) / 2)
+	}
 	return e
 }
 
@@ -133,14 +142,11 @@ func (a *Array) RemoveLast() interface{} {
 }
 
 // 从数组中删除一个元素 e
-func (a *Array) RemoveElement(e interface{}) bool {
+func (a *Array) RemoveElement(e interface{}) {
 	index := a.Find(e)
-	if index == -1 {
-		return false
+	if index != -1 {
+		a.Remove(index)
 	}
-
-	a.Remove(index)
-	return true
 }
 
 // 从数组中删除所有元素 e
@@ -157,6 +163,22 @@ func (a *Array) RemoveAllElement(e interface{}) bool {
 	return true
 }
 
+// 为数组扩容
+func (a *Array) resize(newCapacity int) {
+	newData := make([]interface{}, newCapacity)
+	for i := 0; i < a.size; i++ {
+		newData[i] = a.data[i]
+	}
+
+	a.data = newData
+}
+
+func (a *Array) checkIndex(index int) {
+	if index < 0 || index >= a.size {
+		panic(fmt.Sprintf("index is out of range, required range: [0, %d) but get %d", a.size, index))
+	}
+}
+
 // 重写 Array 的 string 方法
 func (a *Array) String() string {
 	var buffer bytes.Buffer
@@ -165,7 +187,7 @@ func (a *Array) String() string {
 	buffer.WriteString("[")
 	for i := 0; i < a.size; i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串
-		buffer.WriteString(fmt.Sprintf("%v", a.data[i]))
+		buffer.WriteString(fmt.Sprint(a.data[i]))
 		if i != (a.size - 1) {
 			buffer.WriteString(", ")
 		}

@@ -80,7 +80,7 @@ func (h *MaxHeap) FindMax() interface{} {
 // 最大堆删除的都是堆顶元素
 func (h *MaxHeap) Remove() interface{} {
 	e := h.FindMax()
-	h.data.Set(0, h.data.Get(h.data.GetSize() - 1))
+	h.data.Set(0, h.data.Get(h.data.GetSize()-1))
 	h.data.RemoveLast()
 	h.SiftDown(0)
 

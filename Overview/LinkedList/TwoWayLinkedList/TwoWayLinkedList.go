@@ -40,7 +40,7 @@ func (l *TwoWayLinkedList) Add(index int, e interface{}) {
 			l.head = &Node{e: e}
 		} else {
 			retNode := &Node{
-				e: e,
+				e:    e,
 				next: l.head,
 			}
 			l.head.prev = retNode
@@ -49,12 +49,12 @@ func (l *TwoWayLinkedList) Add(index int, e interface{}) {
 
 	} else {
 		prev := l.head
-		for i := 0; i < index - 1; i++ {
+		for i := 0; i < index-1; i++ {
 			prev = prev.next
 		}
 
 		newNode := &Node{
-			e: e,
+			e:    e,
 			prev: prev,
 			next: prev.next,
 		}
@@ -88,7 +88,7 @@ func (l *TwoWayLinkedList) Remove(index int) interface{} {
 		l.head = l.head.next
 	} else {
 		prev := l.head
-		for i := 0; i < index - 1; i++ {
+		for i := 0; i < index-1; i++ {
 			prev = prev.next
 		}
 		ele = prev.next

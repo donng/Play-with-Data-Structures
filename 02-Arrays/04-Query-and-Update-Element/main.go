@@ -7,7 +7,7 @@ import (
 
 func main() {
 	arr := array.New(20)
-	for i := 0; i < 21; i++ {
+	for i := 0; i < 10; i++ {
 		arr.AddLast(i)
 	}
 	fmt.Println(arr)
