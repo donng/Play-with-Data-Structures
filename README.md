@@ -10,7 +10,7 @@
 - [x] 03-Stacks-and-Queues
 - [x] 04-Linked-List
 - [x] 05-Recursion
-- [ ] 06-Binary-Search-Tree
+- [x] 06-Binary-Search-Tree
 - [ ] 07-Set-and-Map
 - [ ] 08-Heap-and-Priority-Queue
 - [ ] 09-Segment-Tree

@@ -68,6 +68,14 @@ func (a *Array) Get(index int) interface{} {
 	return a.data[index]
 }
 
+func (a *Array) GetLast() interface{} {
+	return a.Get(a.size - 1)
+}
+
+func (a *Array) GetFirst() interface{} {
+	return a.Get(0)
+}
+
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e interface{}) {
 	a.checkIndex(index)
@@ -134,14 +142,11 @@ func (a *Array) RemoveLast() interface{} {
 }
 
 // 从数组中删除一个元素 e
-func (a *Array) RemoveElement(e interface{}) bool {
+func (a *Array) RemoveElement(e interface{}) {
 	index := a.Find(e)
-	if index == -1 {
-		return false
+	if index != -1 {
+		a.Remove(index)
 	}
-
-	a.Remove(index)
-	return true
 }
 
 // 从数组中删除所有元素 e
