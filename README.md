@@ -15,7 +15,7 @@
 - [x] 08-Heap-and-Priority-Queue
 - [x] 09-Segment-Tree
 - [x] 10-Trie
-- [ ] 11-Union-Find
+- [x] 11-Union-Find
 - [ ] 12-Avl-Tree
 - [ ] 13-Red-Black-Tree
 - [ ] 14-Hash-Table 
