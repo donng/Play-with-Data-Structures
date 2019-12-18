@@ -11,7 +11,7 @@
 - [x] 04-Linked-List
 - [x] 05-Recursion
 - [x] 06-Binary-Search-Tree
-- [ ] 07-Set-and-Map
+- [x] 07-Set-and-Map
 - [ ] 08-Heap-and-Priority-Queue
 - [ ] 09-Segment-Tree
 - [ ] 10-Trie
