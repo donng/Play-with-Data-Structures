@@ -13,7 +13,7 @@
 - [x] 06-Binary-Search-Tree
 - [x] 07-Set-and-Map
 - [x] 08-Heap-and-Priority-Queue
-- [ ] 09-Segment-Tree
+- [x] 09-Segment-Tree
 - [ ] 10-Trie
 - [ ] 11-Union-Find
 - [ ] 12-Avl-Tree
