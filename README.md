@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/language-go-blue.svg)
+![](https://img.shields.io/badge/language-go-blue.svg) ![](https://img.shields.io/github/issues-raw/donng/Play-with-Data-Structures)
 
 本仓库使用 Go 语言实现常用的数据结构。实现逻辑基于 liuyubobobo 老师在慕课网上的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，以及使用 Java 实现的原仓库地址：https://github.com/liuyubobobo/Play-with-Data-Structures 。
 
@@ -12,7 +12,7 @@
 - [x] 05-Recursion
 - [x] 06-Binary-Search-Tree
 - [x] 07-Set-and-Map
-- [ ] 08-Heap-and-Priority-Queue
+- [x] 08-Heap-and-Priority-Queue
 - [ ] 09-Segment-Tree
 - [ ] 10-Trie
 - [ ] 11-Union-Find
