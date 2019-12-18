@@ -14,7 +14,7 @@
 - [x] 07-Set-and-Map
 - [x] 08-Heap-and-Priority-Queue
 - [x] 09-Segment-Tree
-- [ ] 10-Trie
+- [x] 10-Trie
 - [ ] 11-Union-Find
 - [ ] 12-Avl-Tree
 - [ ] 13-Red-Black-Tree
