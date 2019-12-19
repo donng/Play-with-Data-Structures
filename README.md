@@ -1,55 +1,38 @@
+# Play-with-Data-Structures
+
 ![](https://img.shields.io/badge/language-go-blue.svg) ![](https://img.shields.io/github/issues-raw/donng/Play-with-Data-Structures)
 
-本仓库使用 Go 语言实现常用的数据结构。实现逻辑基于 liuyubobobo 老师在慕课网上的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，以及使用 Java 实现的原仓库地址：https://github.com/liuyubobobo/Play-with-Data-Structures 。
+本仓库使用 Go 语言实现常用的数据结构。实现逻辑基于 liuyubobobo 老师在慕课网上的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，课程代码中的 Java 仓库地址如下：https://github.com/liuyubobobo/Play-with-Data-Structures 。
 
-代码当前正基于 go module 和 [effective-go](https://go-zh.org/doc/effective_go.html) 重写中，原版本请查看 [tag v1.0](https://github.com/donng/Play-with-Data-Structures/tree/v1.0)。
-
-重写进度：
-
-- [x] 02-Arrays
-- [x] 03-Stacks-and-Queues
-- [x] 04-Linked-List
-- [x] 05-Recursion
-- [x] 06-Binary-Search-Tree
-- [x] 07-Set-and-Map
-- [x] 08-Heap-and-Priority-Queue
-- [x] 09-Segment-Tree
-- [x] 10-Trie
-- [x] 11-Union-Find
-- [x] 12-Avl-Tree
-- [x] 13-Red-Black-Tree
-- [x] 14-Hash-Table 
+目前的代码参照 [Modules](https://github.com/golang/go/wiki/Modules) 和 [effective-go](https://go-zh.org/doc/effective_go.html) 进行了重写，原版请查看 [tag v1.0](https://github.com/donng/Play-with-Data-Structures/tree/v1.0)。
 
 ## Installation
 
 ```
-cd $GOPATH/src
-
-# 基于Go Module的实现版本
 git clone https://github.com/donng/Play-with-Data-Structures.git
-# 原基于Go Path的实现版本
-git clone -b v1.0 https://github.com/donng/Play-with-Data-Structures.git
 ```
 
-注意： 本仓库暂未支持 `go module`，需要执行请先确认环境变量 `GO111MODULE=off`，然后到 main.og 对应的目录下执行 `go run main.go` 即可。
+## Run
 
-## 数据结构的分类
+建议使用 GoLand 点击 main.go 中的运行可以直接执行代码，或者在项目**根目录**下运行：
 
-### 1. 线性结构
+```
+go run 02-Arrays/09-Amortized-Time-Complexity/main.go
+```
 
-数组，栈，队列，链表，哈希表...
+## Description
 
-### 2. 树结构
+-  02-Arrays：动态数组
+-  03-Stacks-and-Queues：栈和队列
+-  04-Linked-List：链表
+-  05-Recursion：链表和递归
+-  06-Binary-Search-Tree：二分搜索树
+-  07-Set-and-Map：集合和映射
+-  08-Heap-and-Priority-Queue：优先队列和堆
+-  09-Segment-Tree：线段树
+-  10-Trie：字典树
+-  11-Union-Find：并查集
+-  12-Avl-Tree：AVL树
+-  13-Red-Black-Tree：红黑树
+-  14-Hash-Table ：哈希表
 
-二叉树，二分搜索树，AVL，红黑树，Treap，Splay，堆，Trie，线段树，K-D树，并查集，哈夫曼树...
-
-### 3. 图结构
-
-邻接矩阵，邻接表
-
-## 此项目涉及的数据结构
-不包含图结构，图论领域以算法为主。
-
-- 数组 栈 队列 链表
-- 二分搜索树 堆 线段树 Trie
-- 并查集 AVL 红黑树 哈希表
