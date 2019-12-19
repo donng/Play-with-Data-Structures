@@ -17,7 +17,7 @@
 - [x] 10-Trie
 - [x] 11-Union-Find
 - [ ] 12-Avl-Tree
-- [ ] 13-Red-Black-Tree
+- [x] 13-Red-Black-Tree
 - [ ] 14-Hash-Table 
 
 ## Installation
