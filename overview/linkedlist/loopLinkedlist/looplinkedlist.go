@@ -18,7 +18,7 @@ type LoopLinkedList struct {
 	size int
 }
 
-func Constructor() *LoopLinkedList {
+func New() *LoopLinkedList {
 	return &LoopLinkedList{}
 }
 
@@ -32,7 +32,7 @@ func (l *LoopLinkedList) GetSize() int {
 
 func (l *LoopLinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
-		panic("Add failed. Index must >= 0 and <= size.")
+		panic("add failed, index is out of range")
 	}
 
 	if l.head == nil {
@@ -78,7 +78,7 @@ func (l *LoopLinkedList) AddLast(e interface{}) {
 
 func (l *LoopLinkedList) Remove(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Remove failed. Index must >= 0 and < size.")
+		panic("remove failed, index is out of range")
 	}
 
 	var ele *Node
@@ -117,7 +117,7 @@ func (l *LoopLinkedList) RemoveLast() interface{} {
 
 func (l *LoopLinkedList) Get(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("get failed, index is out of range")
 	}
 	cur := l.head
 	for i := 0; i < index; i++ {
@@ -147,7 +147,7 @@ func (l *LoopLinkedList) Contains(e interface{}) bool {
 
 func (l *LoopLinkedList) Set(index int, e interface{}) {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("get failed, index is out of range")
 	}
 
 	cur := l.head
@@ -170,7 +170,7 @@ func (l *LoopLinkedList) String() string {
 }
 
 func main() {
-	linkList := Constructor()
+	linkList := New()
 	linkList.AddFirst("are")
 	fmt.Println(linkList)
 	linkList.AddFirst("where")

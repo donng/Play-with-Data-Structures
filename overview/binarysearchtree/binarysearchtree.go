@@ -1,8 +1,8 @@
 package main
 
 import (
-	"Play-with-Data-Structures/Utils/Interfaces"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 type Node struct {
@@ -16,7 +16,7 @@ type Tree struct {
 	size int
 }
 
-func Constructor() *Tree {
+func New() *Tree {
 	return &Tree{}
 }
 
@@ -31,9 +31,9 @@ func (t *Tree) add(n *Node, e interface{}) *Node {
 		return &Node{e: e}
 	}
 
-	if Interfaces.Compare(e, n.e) < 0 {
+	if utils.Compare(e, n.e) < 0 {
 		n.left = t.add(n.left, e)
-	} else if Interfaces.Compare(e, n.e) > 0 {
+	} else if utils.Compare(e, n.e) > 0 {
 		n.right = t.add(n.right, e)
 	}
 
@@ -49,9 +49,9 @@ func contains(n *Node, e interface{}) bool {
 		return false
 	}
 
-	if Interfaces.Compare(e, n.e) < 0 {
+	if utils.Compare(e, n.e) < 0 {
 		return contains(n.left, e)
-	} else if Interfaces.Compare(e, n.e) > 0 {
+	} else if utils.Compare(e, n.e) > 0 {
 		return contains(n.right, e)
 	} else {
 		return true
@@ -172,10 +172,10 @@ func (t *Tree) remove(n *Node, e interface{}) *Node {
 		return nil
 	}
 
-	if Interfaces.Compare(e, n.e) < 0 {
+	if utils.Compare(e, n.e) < 0 {
 		n.left = t.remove(n.left, e)
 		return n
-	} else if Interfaces.Compare(e, n.e) > 0 {
+	} else if utils.Compare(e, n.e) > 0 {
 		n.right = t.remove(n.right, e)
 		return n
 	} else {

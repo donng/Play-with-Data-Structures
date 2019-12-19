@@ -18,7 +18,7 @@ type TwoWayLinkedList struct {
 	size int
 }
 
-func Constructor() *TwoWayLinkedList {
+func New() *TwoWayLinkedList {
 	return &TwoWayLinkedList{}
 }
 
@@ -32,7 +32,7 @@ func (l *TwoWayLinkedList) GetSize() int {
 
 func (l *TwoWayLinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
-		panic("Add failed. Index must >= 0 and <= size.")
+		panic("add failed, index is out of range")
 	}
 
 	if index == 0 {
@@ -77,7 +77,7 @@ func (l *TwoWayLinkedList) AddLast(e interface{}) {
 
 func (l *TwoWayLinkedList) Remove(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Remove failed. Index must >= 0 and < size.")
+		panic("remove failed, index is out of range")
 	}
 
 	var ele *Node
@@ -115,7 +115,7 @@ func (l *TwoWayLinkedList) RemoveLast() interface{} {
 
 func (l *TwoWayLinkedList) Get(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("get failed, index is out of range")
 	}
 	cur := l.head
 	for i := 0; i < index; i++ {
@@ -145,7 +145,7 @@ func (l *TwoWayLinkedList) Contains(e interface{}) bool {
 
 func (l *TwoWayLinkedList) Set(index int, e interface{}) {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("set failed, index is out of range")
 	}
 
 	cur := l.head
@@ -168,7 +168,7 @@ func (l *TwoWayLinkedList) String() string {
 }
 
 func main() {
-	linkList := Constructor()
+	linkList := New()
 	linkList.AddFirst("are")
 	fmt.Println(linkList)
 

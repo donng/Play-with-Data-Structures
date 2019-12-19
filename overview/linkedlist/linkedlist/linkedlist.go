@@ -1,4 +1,4 @@
-package main
+package linkedlist
 
 import (
 	"bytes"
@@ -17,7 +17,7 @@ type LinkedList struct {
 	size      int
 }
 
-func Constructor() *LinkedList {
+func New() *LinkedList {
 	return &LinkedList{
 		dummyHead: &Node{},
 	}
@@ -33,7 +33,7 @@ func (l *LinkedList) GetSize() int {
 
 func (l *LinkedList) Add(index int, e interface{}) {
 	if index < 0 || index > l.size {
-		panic("Add failed. Index must >= 0 and <= size.")
+		panic("add failed, index is out of range")
 	}
 
 	prev := l.dummyHead
@@ -55,7 +55,7 @@ func (l *LinkedList) AddLast(e interface{}) {
 
 func (l *LinkedList) Remove(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Remove failed. Index must >= 0 and < size.")
+		panic("remove failed, index is out of range")
 	}
 	prev := l.dummyHead
 	for i := 0; i < index; i++ {
@@ -80,7 +80,7 @@ func (l *LinkedList) RemoveLast() interface{} {
 
 func (l *LinkedList) Get(index int) interface{} {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("get failed, index is out of range")
 	}
 	cur := l.dummyHead.next
 	for i := 0; i < index; i++ {
@@ -110,7 +110,7 @@ func (l *LinkedList) Contains(e interface{}) bool {
 
 func (l *LinkedList) Set(index int, e interface{}) {
 	if index < 0 || index >= l.size {
-		panic("Get failed. Index must >= 0 and < size.")
+		panic("get failed, index is out of range")
 	}
 
 	cur := l.dummyHead.next
@@ -132,55 +132,18 @@ func (l *LinkedList) String() string {
 	return buffer.String()
 }
 
-func IsPalindrome(head *Node) bool {
-	if head == nil || head.next == nil {
-		return true
-	}
-
-	var prev *Node
-	slow := head
-	fast := head
-
-	for fast != nil && fast.next != nil {
-		fast = fast.next.next
-		// 慢节点将要移动到的下一个节点
-		next := slow.next
-		slow.next = prev
-		prev = slow
-		slow = next
-	}
-
-	// 当 fast 不为 nil，说明 slow 在奇数个节点的中间位置，移动到下一个位置
-	// a<-b->a  prev 在a，slow在b，需要将slow移动到第二个a
-	if fast != nil {
-		slow = slow.next
-	}
-
-	for slow != nil {
-		if slow.e != prev.e {
-			return false
-		}
-		slow = slow.next
-		prev = prev.next
-	}
-	return true
-}
-
 func main() {
-	testStr1 := []string{"a", "b", "c", "b", "a"} // true
-	testStr2 := []string{"a", "b", "c", "a", "b"} // false
+	linkList := New()
+	linkList.AddFirst("are")
+	fmt.Println(linkList)
 
-	linkList1 := Constructor()
-	for _, s := range testStr1 {
-		linkList1.AddLast(s)
-	}
-	fmt.Println(linkList1)
-	fmt.Println(IsPalindrome(linkList1.dummyHead.next))
+	linkList.AddFirst("where")
+	linkList.AddLast("you")
+	linkList.AddLast("form")
+	linkList.RemoveLast()
+	fmt.Println(linkList)
 
-	linkList2 := Constructor()
-	for _, s := range testStr2 {
-		linkList2.AddLast(s)
-	}
-	fmt.Println(linkList2)
-	fmt.Println(IsPalindrome(linkList2.dummyHead.next))
+	linkList.AddLast("from")
+
+	fmt.Println(linkList)
 }

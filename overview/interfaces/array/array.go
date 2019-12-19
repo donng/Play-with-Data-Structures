@@ -1,4 +1,4 @@
-package Array
+package array
 
 type Array interface {
 	Add(int, interface{})

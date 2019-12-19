@@ -1,23 +1,23 @@
-package MaxHeap
+package maxheap
 
 import (
-	"Play-with-Data-Structures/Overview/Array"
-	"Play-with-Data-Structures/Utils/Interfaces"
+	"github.com/donng/Play-with-Data-Structures/overview/array"
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 // 最大堆
 type MaxHeap struct {
-	data *Array.Array
+	data *array.Array
 }
 
 func Constructor(capacity int) *MaxHeap {
 	return &MaxHeap{
-		data: Array.Constructor(capacity),
+		data: array.New(capacity),
 	}
 }
 
 func GetMaxHeapFromArr(arr []interface{}) *MaxHeap {
-	a := Array.Constructor(len(arr))
+	a := array.New(len(arr))
 	for _, v := range arr {
 		a.AddLast(v)
 	}
@@ -39,7 +39,7 @@ func rightChild(key int) int {
 
 func parent(key int) int {
 	if key == 0 {
-		panic("Root don't have parent.")
+		panic("root don't have parent.")
 	}
 
 	return (key - 1) / 2
@@ -59,7 +59,7 @@ func (h *MaxHeap) Add(e interface{}) {
 }
 
 func (h *MaxHeap) SiftUp(index int) {
-	for index > 0 && Interfaces.Compare(h.data.Get(index), h.data.Get(parent(index))) > 0 {
+	for index > 0 && utils.Compare(h.data.Get(index), h.data.Get(parent(index))) > 0 {
 		parentIndex := parent(index)
 		// 交换父子元素
 		temp := h.data.Get(index)
@@ -95,11 +95,11 @@ func (h *MaxHeap) SiftDown(index int) {
 
 		// 判断与左右子节点哪个交换
 		swapIndex := l
-		if r < h.data.GetSize() && Interfaces.Compare(h.data.Get(r), h.data.Get(l)) > 0 {
+		if r < h.data.GetSize() && utils.Compare(h.data.Get(r), h.data.Get(l)) > 0 {
 			swapIndex = r
 		}
 		// 父节点大于较大的子节点，循环结束
-		if Interfaces.Compare(h.data.Get(index), h.data.Get(l)) > 0 {
+		if utils.Compare(h.data.Get(index), h.data.Get(l)) > 0 {
 			break
 		}
 		// 交换父子值

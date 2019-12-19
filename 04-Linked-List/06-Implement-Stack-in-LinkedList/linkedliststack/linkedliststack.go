@@ -6,12 +6,12 @@ import (
 )
 
 type LinkedListStack struct {
-	list *LinkedList.LinkedList
+	list *linkedlist.LinkedList
 }
 
 func New() *LinkedListStack {
 	return &LinkedListStack{
-		LinkedList.Constructor(),
+		linkedlist.Constructor(),
 	}
 }
 
