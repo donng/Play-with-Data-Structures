@@ -16,7 +16,7 @@
 - [x] 09-Segment-Tree
 - [x] 10-Trie
 - [x] 11-Union-Find
-- [ ] 12-Avl-Tree
+- [x] 12-Avl-Tree
 - [x] 13-Red-Black-Tree
 - [ ] 14-Hash-Table 
 
