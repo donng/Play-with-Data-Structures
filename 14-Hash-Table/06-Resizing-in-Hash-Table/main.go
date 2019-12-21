@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
+	"path/filepath"
+	"time"
+
 	"github.com/donng/Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/AVLTree"
 	"github.com/donng/Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/BSTMap"
 	"github.com/donng/Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/RBTree"
 	"github.com/donng/Play-with-Data-Structures/14-Hash-Table/06-Resizing-in-Hash-Table/hashtable"
 	"github.com/donng/Play-with-Data-Structures/utils"
-	"path/filepath"
-	"time"
 )
 
 func main() {

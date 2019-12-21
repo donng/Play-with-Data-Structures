@@ -12,7 +12,7 @@ type LoopQueue struct {
 	tail  int
 }
 
-func Constructor(capacity int) *LoopQueue {
+func New(capacity int) *LoopQueue {
 	return &LoopQueue{
 		data: make([]interface{}, capacity+1),
 	}
@@ -106,7 +106,7 @@ func (lq *LoopQueue) String() string {
 }
 
 func main() {
-	queue := Constructor(10)
+	queue := New(10)
 	for i := 0; i < 10; i++ {
 		queue.Enqueue(i)
 		fmt.Println(queue)

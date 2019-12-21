@@ -50,7 +50,7 @@ func (a *Array) IsEmpty() bool {
 // 在第 index 个位置插入一个新元素 e
 func (a *Array) Add(index int, e interface{}) {
 	if index < 0 || index > a.size {
-		panic("Add failed. Require index >= 0 and index <= size.")
+		panic("add failed, index is out of range")
 	}
 
 	if a.size == len(a.data) {
@@ -78,7 +78,7 @@ func (a *Array) AddFirst(e interface{}) {
 // 获取 index 索引位置的元素
 func (a *Array) Get(index int) interface{} {
 	if index < 0 || index >= a.size {
-		panic("Get failed. Index is illegal.")
+		panic("get failed, index is out of range")
 	}
 	return a.data[index]
 }
@@ -94,7 +94,7 @@ func (a *Array) GetFirst() interface{} {
 // 修改 index 索引位置的元素
 func (a *Array) Set(index int, e interface{}) {
 	if index < 0 || index >= a.size {
-		panic("Set failed. Index is illegal.")
+		panic("set failed, index is out of range")
 	}
 	a.data[index] = e
 }
@@ -132,7 +132,7 @@ func (a *Array) FindAll(e interface{}) (indexes []int) {
 // 从数组中删除 index 位置的元素，返回删除的元素
 func (a *Array) Remove(index int) interface{} {
 	if index < 0 || index >= a.size {
-		panic("Remove failed,Index is illegal.")
+		panic("remove failed, index is out range")
 	}
 
 	e := a.data[index]
