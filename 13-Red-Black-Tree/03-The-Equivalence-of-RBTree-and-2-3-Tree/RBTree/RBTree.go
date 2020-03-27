@@ -1,9 +1,9 @@
 package RBTree
 
 import (
-	"Play-with-Data-Structures/Utils/Interfaces"
 	"bytes"
 	"fmt"
+	"github.com/donng/Play-with-Data-Structures/utils"
 )
 
 const RED = true
@@ -36,9 +36,9 @@ func (rt *RBTree) getNode(n *Node, key interface{}) *Node {
 		return nil
 	}
 
-	if Interfaces.Compare(key, n.key) == 0 {
+	if utils.Compare(key, n.key) == 0 {
 		return n
-	} else if Interfaces.Compare(key, n.key) < 0 {
+	} else if utils.Compare(key, n.key) < 0 {
 		return rt.getNode(n.left, key)
 	} else {
 		return rt.getNode(n.right, key)
@@ -66,9 +66,9 @@ func (rt *RBTree) add(n *Node, key interface{}, val interface{}) *Node {
 		return generateNode(key, val)
 	}
 
-	if Interfaces.Compare(key, n.key) < 0 {
+	if utils.Compare(key, n.key) < 0 {
 		n.left = rt.add(n.left, key, val)
-	} else if Interfaces.Compare(key, n.key) > 0 {
+	} else if utils.Compare(key, n.key) > 0 {
 		n.right = rt.add(n.right, key, val)
 	} else {
 		n.value = val
@@ -93,10 +93,10 @@ func (rt *RBTree) remove(n *Node, key interface{}) *Node {
 		return nil
 	}
 
-	if Interfaces.Compare(key, n.key) < 0 {
+	if utils.Compare(key, n.key) < 0 {
 		n.left = rt.remove(n.left, key)
 		return n
-	} else if Interfaces.Compare(key, n.key) > 0 {
+	} else if utils.Compare(key, n.key) > 0 {
 		n.right = rt.remove(n.right, key)
 		return n
 	} else {
