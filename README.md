@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/language-go-blue.svg) ![](https://img.shields.io/github/issues-raw/donng/Play-with-Data-Structures)
 
-感谢 liuyubobobo 老师在慕课网上推出的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，Go 版本的 Github 仓库地址请访问 https://github.com/liuyubobobo/Play-with-Data-Structures 。
+感谢 liuyubobobo 老师在慕课网上推出的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，Java 版本的 Github 仓库地址请访问: https://github.com/liuyubobobo/Play-with-Data-Structures 。
 
 ### 下载代码
 ```
