@@ -16,23 +16,10 @@ git clone https://github.com/donng/Play-with-Data-Structures.git
 go run 02-Arrays/09-Amortized-Time-Complexity/main.go
 ```
 
-## 目录
-
--  02-Arrays：动态数组
--  03-Stacks-and-Queues：栈和队列
--  04-Linked-List：链表
--  05-Recursion：链表和递归
--  06-Binary-Search-Tree：二分搜索树
--  07-Set-and-Map：集合和映射
--  08-Heap-and-Priority-Queue：优先队列和堆
--  09-Segment-Tree：线段树
--  10-Trie：字典树
--  11-Union-Find：并查集
--  12-Avl-Tree：AVL树
--  13-Red-Black-Tree：红黑树
--  14-Hash-Table ：哈希表
+### 源码目录
 
 | **第二章 不要小瞧数组** | [章节Go源码](02-Arrays/) |
+| :--- | :---: | 
 | 2-1 使用Go中的数组 | [Go](02-Arrays/01-Array-Basics) |
 | 2-2 二次封装属于我们自己的数组 | [Go](02-Arrays/02-Create-Our-Own-Array) |
 | 2-3 向数组中添加元素 | [Go](02-Arrays/03-Add-Element-in-Array) |
