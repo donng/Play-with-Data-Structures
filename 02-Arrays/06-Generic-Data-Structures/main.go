@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/array"
-	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structure/student"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structures/array"
+	"github.com/donng/Play-with-Data-Structures/02-Arrays/06-Generic-Data-Structures/student"
 )
 
 func main() {
