@@ -2,21 +2,31 @@
 
 ![](https://img.shields.io/badge/language-go-blue.svg) ![](https://img.shields.io/github/issues-raw/donng/Play-with-Data-Structures)
 
+## 简介
+
+本仓库基于 go 语言实现常用的数据结构。
+
 感谢 liuyubobobo 老师在慕课网上推出的实战课程[《玩儿转数据结构》](https://coding.imooc.com/class/207.html)，Java 版本的 Github 仓库地址请访问: https://github.com/liuyubobobo/Play-with-Data-Structures 。
 
-### 下载代码
+## 使用篇
+
+仓库使用 go modules 特性，所以 go 版本要在 1.11 之上。
+
+### 安装
+
 ```
 git clone https://github.com/donng/Play-with-Data-Structures.git
 ```
 
 ### 运行
+
 如果你使用的是 Goland，只需要点击 main.go 中的运行按钮即可。如果在命令行下，部分代码需要在根目录下才能执行，原因是将 txt 文件统一放在了根目录下而不是每部分的章节中
 
 ```
 go run 02-Arrays/09-Amortized-Time-Complexity/main.go
 ```
 
-### 源码目录
+## 源码目录
 
 | **第二章 不要小瞧数组** | [章节Go源码](02-Arrays/) |
 | :--- | :---: | 
