@@ -3,8 +3,8 @@ package student
 import "fmt"
 
 type Student struct {
-	name  string
-	score int
+	Name  string
+	Score int
 }
 
 func New(name string, score int) *Student {
@@ -12,5 +12,5 @@ func New(name string, score int) *Student {
 }
 
 func (s *Student) String() string {
-	return fmt.Sprintf("Student(name: %s, score: %d)", s.name, s.score)
+	return fmt.Sprintf("Student(name: %s, score: %d)", s.Name, s.Score)
 }
