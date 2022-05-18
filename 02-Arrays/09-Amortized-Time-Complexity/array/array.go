@@ -188,7 +188,7 @@ func (a *Array) checkIndex(index int) {
 func (a *Array) String() string {
 	var buffer bytes.Buffer
 
-	buffer.WriteString(fmt.Sprintf("Array: size = %d, capacity = %d\n", a.size, len(a.data)))
+	buffer.WriteString(fmt.Sprintf("array: size = %d, capacity = %d\n", a.size, len(a.data)))
 	buffer.WriteString("[")
 	for i := 0; i < a.size; i++ {
 		// fmt.Sprint 将 interface{} 类型转换为字符串

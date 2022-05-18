@@ -89,5 +89,5 @@ func main() {
 	diffTime = time.Now().Sub(startTime)
 
 	fmt.Println("Total different words:", t3.GetSize())
-	fmt.Println("Array(Map) Trie:", diffTime)
+	fmt.Println("array(Map) Trie:", diffTime)
 }

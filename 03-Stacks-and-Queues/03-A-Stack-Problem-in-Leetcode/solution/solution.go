@@ -1,6 +1,6 @@
 package solution
 
-// go 的字符串实际是 byte 类型组成的切片
+// IsValid go 的字符串实际是 byte 类型组成的切片
 func IsValid(s string) bool {
 	brackets := map[rune]rune{')': '(', ']': '[', '}': '{'}
 	var stack []rune

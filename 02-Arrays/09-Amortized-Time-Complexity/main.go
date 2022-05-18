@@ -32,6 +32,6 @@ func main() {
 		arr.RemoveFirst()
 		fmt.Println(arr)
 	}
-	// Array: size = 5, capacity = 10
+	// array: size = 5, capacity = 10
 	// [5, 6, 7, 8, 9]
 }

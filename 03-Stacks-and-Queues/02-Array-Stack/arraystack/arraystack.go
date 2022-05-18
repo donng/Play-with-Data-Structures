@@ -3,6 +3,7 @@ package arraystack
 import (
 	"bytes"
 	"fmt"
+
 	"github.com/donng/Play-with-Data-Structures/03-Stacks-and-Queues/02-Array-Stack/array"
 )
 
