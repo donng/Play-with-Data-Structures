@@ -147,16 +147,25 @@ func (a *Array) RemoveElement(e interface{}) bool {
 
 // RemoveAllElement 从数组中删除所有元素 e
 func (a *Array) RemoveAllElement(e interface{}) bool {
-	if a.Find(e) == -1 {
-		return false
-	}
+	oldSize := a.size
+	read, write := 0, 0
 
-	for i := 0; i < a.size; i++ {
-		if utils.Compare(a.data[i], e) == 0 {
-			a.Remove(i)
+	defer func() {
+		// Keep the unprocessed suffix if Compare panics.
+		write += copy(a.data[write:oldSize], a.data[read:oldSize])
+		for i := write; i < oldSize; i++ {
+			a.data[i] = nil
+		}
+		a.size = write
+	}()
+
+	for ; read < oldSize; read++ {
+		if utils.Compare(a.data[read], e) != 0 {
+			a.data[write] = a.data[read]
+			write++
 		}
 	}
-	return true
+	return write < oldSize
 }
 
 // 重写 Array 的 string 方法
